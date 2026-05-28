@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestão de Terceiros — Dashboard Executivo</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#060b18;--card:#0d1526;--border:rgba(0,212,255,.12);--border2:rgba(255,255,255,.06);--c1:#00d4ff;--c2:#7c3aed;--c3:#10b981;--c4:#f59e0b;--c5:#ef4444;--c6:#a855f7;--text:#e2e8f0;--t2:#94a3b8;--t3:#475569;--r:14px;--rs:8px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:13.5px;line-height:1.5}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:rgba(0,212,255,.2);border-radius:3px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.fu{animation:fadeUp .4s ease both}.d1{animation-delay:.04s}.d2{animation-delay:.08s}.d3{animation-delay:.12s}.d4{animation-delay:.16s}.d5{animation-delay:.2s}.d6{animation-delay:.24s}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#081020,#0d1f3c 60%,#081020);border-bottom:1px solid var(--border);padding:14px 26px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.hdr-l{display:flex;align-items:center;gap:13px}
+.hdr-ico{width:42px;height:42px;background:linear-gradient(135deg,var(--c1),var(--c2));border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:21px;box-shadow:0 0 18px rgba(0,212,255,.3);flex-shrink:0}
+.hdr-t h1{font-size:18px;font-weight:700;letter-spacing:-.3px}
+.hdr-t p{font-size:10.5px;color:var(--t2);margin-top:1px}
+.hdr-r{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.badge{padding:3px 9px;border-radius:20px;font-size:10.5px;font-weight:600}
+.blive{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:#10b981;display:flex;align-items:center;gap:5px}
+.blive::before{content:'';width:6px;height:6px;background:#10b981;border-radius:50%;animation:pulse 1.5s infinite}
+.bsrc{background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:var(--c1)}
+.hdate{font-size:10.5px;color:var(--t2)}
+
+/* MAIN */
+.main{padding:18px 26px;max-width:1640px;margin:0 auto}
+
+/* FILTER BAR */
+.fbar{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:11px 16px;margin-bottom:18px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.fbar label{font-size:10px;color:var(--t2);font-weight:700;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.fbar select{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text);padding:5px 24px 5px 9px;border-radius:var(--rs);font-size:11.5px;cursor:pointer;outline:none;transition:border-color .2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center}
+.fbar select:focus{border-color:var(--c1)}
+.fdiv{width:1px;height:20px;background:var(--border2);margin:0 2px}
+.fgrp{display:flex;align-items:center;gap:5px}
+.brst{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:#ef4444;padding:5px 11px;border-radius:var(--rs);font-size:11px;cursor:pointer;font-weight:600;margin-left:auto;transition:all .2s}
+.brst:hover{background:rgba(239,68,68,.16)}
+
+/* KPI GRID */
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:20px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 15px;position:relative;overflow:hidden;transition:transform .2s}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:var(--r) var(--r) 0 0}
+.ka::before{background:linear-gradient(90deg,var(--c1),var(--c2))}.kb::before{background:linear-gradient(90deg,#f59e0b,#d97706)}
+.kc::before{background:linear-gradient(90deg,var(--c3),#059669)}.kd::before{background:linear-gradient(90deg,#06b6d4,#0284c7)}
+.ke::before{background:linear-gradient(90deg,var(--c2),var(--c6))}.kf::before{background:linear-gradient(90deg,var(--c5),#dc2626)}
+.kpi:hover{transform:translateY(-2px)}
+.kbg{position:absolute;right:11px;top:11px;font-size:32px;opacity:.06;pointer-events:none}
+.kico{font-size:17px;margin-bottom:6px;display:block}
+.klbl{font-size:9.5px;color:var(--t2);text-transform:uppercase;letter-spacing:.6px;font-weight:700;margin-bottom:4px}
+.kval{font-size:20px;font-weight:700;letter-spacing:-.5px;line-height:1;margin-bottom:6px}
+.kfoot{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:var(--t2)}
+.chg{font-weight:700;font-size:10px}.up{color:#10b981}.dn{color:#ef4444}.nt{color:var(--t2)}
+.yoy{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+.yoy-b{font-size:9.5px;padding:1px 6px;border-radius:3px;font-weight:700}
+.y24{background:rgba(0,212,255,.12);color:var(--c1)}.y25{background:rgba(124,58,237,.12);color:#a855f7}.y26{background:rgba(16,185,129,.12);color:#10b981}
+
+/* SECTION TITLE */
+.sec{display:flex;align-items:center;gap:9px;margin:4px 0 13px}
+.sec h2{font-size:14px;font-weight:700}
+.sec .line{flex:1;height:1px;background:var(--border)}
+.sec .tag{font-size:9.5px;color:var(--c1);background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.2);padding:2px 8px;border-radius:20px;font-weight:700}
+
+/* ALUGUEL OFFLINE BANNER */
+.offline-banner{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:var(--rs);padding:8px 14px;font-size:11px;color:#f59e0b;display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.offline-dot{width:7px;height:7px;background:#f59e0b;border-radius:50%;flex-shrink:0;animation:pulse 1.5s infinite}
+/* ALUGUEL CARDS */
+.alu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.alu-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:13px 15px;position:relative;overflow:hidden}
+.alu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f59e0b,#ef4444)}
+.alu-lbl{font-size:9.5px;color:var(--t2);text-transform:uppercase;letter-spacing:.6px;font-weight:700;margin-bottom:4px}
+.alu-val{font-size:20px;font-weight:700;color:#f59e0b;letter-spacing:-.5px;margin-bottom:5px}
+.alu-sub{font-size:10px;color:var(--t2)}
+.alu-bar-wrap{margin-top:10px;height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.alu-bar-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#ef4444);border-radius:2px;transition:width .5s ease}
+/* ALUGUEL CARDS */
+.alu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.alu-card{background:var(--card);border:1px solid rgba(245,158,11,.25);border-radius:var(--r);padding:13px 15px;position:relative;overflow:hidden}
+.alu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f59e0b,#ef4444)}
+.alu-lbl{font-size:9.5px;color:var(--t2);text-transform:uppercase;letter-spacing:.6px;font-weight:700;margin-bottom:4px}
+.alu-val{font-size:20px;font-weight:700;color:#f59e0b;letter-spacing:-.5px;margin-bottom:5px}
+.alu-sub{font-size:10px;color:var(--t2)}
+.alu-bw{margin-top:8px;height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.alu-bf{height:100%;background:linear-gradient(90deg,#f59e0b,#ef4444);border-radius:2px}
+/* YEAR TAB BAR */
+.ytabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.ytab{padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;border:1px solid var(--border);color:var(--t2);transition:all .2s}
+.ytab:hover{border-color:var(--c1);color:var(--c1)}
+.ytab.active-24{background:rgba(0,212,255,.12);border-color:var(--c1);color:var(--c1)}
+.ytab.active-25{background:rgba(124,58,237,.12);border-color:#a855f7;color:#a855f7}
+.ytab.active-26{background:rgba(16,185,129,.12);border-color:#10b981;color:#10b981}
+.ytab.active-all{background:rgba(245,158,11,.12);border-color:#f59e0b;color:#f59e0b}
+
+/* CHART CARDS */
+.crow{display:grid;gap:13px;margin-bottom:18px}
+.c2{grid-template-columns:1fr 1fr}.c32{grid-template-columns:3fr 2fr}.c23{grid-template-columns:2fr 3fr}.c3{grid-template-columns:1fr 1fr 1fr}
+.cc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px}
+.cc-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;gap:8px}
+.cc-tit{font-size:12.5px;font-weight:700}.cc-sub{font-size:10px;color:var(--t2);margin-top:2px}
+.cbadge{font-size:9.5px;padding:2px 8px;border-radius:20px;font-weight:700;white-space:nowrap}
+.cb1{background:rgba(0,212,255,.08);color:var(--c1);border:1px solid rgba(0,212,255,.2)}
+.cb2{background:rgba(124,58,237,.08);color:#a855f7;border:1px solid rgba(124,58,237,.2)}
+.cb3{background:rgba(16,185,129,.08);color:#10b981;border:1px solid rgba(16,185,129,.2)}
+.cb4{background:rgba(245,158,11,.08);color:#f59e0b;border:1px solid rgba(245,158,11,.2)}
+.cw{position:relative}.h260{height:260px}.h300{height:300px}.h220{height:220px}.h170{height:170px}
+.donuts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.dnt{font-size:10px;color:var(--t2);font-weight:700;text-align:center;margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+.dh{position:relative;height:150px}
+
+/* YOY SUMMARY CARDS */
+.ycard-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.ycard{background:var(--card);border-radius:var(--r);padding:14px 16px;border:1px solid var(--border)}
+.ycard-hdr{font-size:11px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.ycard-row-inner{display:flex;justify-content:space-between;align-items:flex-end;margin-top:8px}
+.yval{text-align:center}
+.yval .v{font-size:16px;font-weight:700;line-height:1}
+.yval .l{font-size:9.5px;color:var(--t2);margin-top:3px}
+.yval .s{font-size:9.5px;font-weight:700;margin-top:2px}
+.v24{color:var(--c1)}.v25{color:#a855f7}.v26{color:#10b981}
+.yarrow{font-size:18px;color:var(--t3);align-self:center}
+.ycard-bar{margin-top:10px;display:flex;gap:3px;height:5px;border-radius:3px;overflow:hidden}
+.ybar24{background:var(--c1)}.ybar25{background:#a855f7}.ybar26{background:#10b981}
+
+/* INSIGHTS */
+.igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.ic{background:var(--card);border-radius:var(--r);padding:13px 14px;display:flex;gap:10px;align-items:flex-start}
+.ic-s{border:1px solid rgba(16,185,129,.22);background:rgba(16,185,129,.04)}
+.ic-w{border:1px solid rgba(245,158,11,.22);background:rgba(245,158,11,.04)}
+.ic-d{border:1px solid rgba(239,68,68,.22);background:rgba(239,68,68,.04)}
+.ic-i{border:1px solid rgba(0,212,255,.18);background:rgba(0,212,255,.03)}
+.ic-ico{font-size:21px;flex-shrink:0}
+.ic h3{font-size:11px;font-weight:700;margin-bottom:3px}
+.ic p{font-size:10.5px;color:var(--t2);line-height:1.5}
+.ic-v{font-size:15px;font-weight:700;margin-top:4px}
+.ic-s .ic-v{color:#10b981}.ic-w .ic-v{color:#f59e0b}.ic-d .ic-v{color:#ef4444}.ic-i .ic-v{color:var(--c1)}
+
+/* TABLE */
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-bottom:18px}
+.tctrl{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.tsrch{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text);padding:5px 9px 5px 28px;border-radius:var(--rs);font-size:11.5px;outline:none;width:190px;transition:border-color .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' fill='none'%3E%3Ccircle cx='5.5' cy='5.5' r='4' stroke='%2364748b' stroke-width='1.5'/%3E%3Cpath d='m9 9 2.5 2.5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:8px center}
+.tsrch:focus{border-color:var(--c1)}
+.twrap{overflow:auto;max-height:420px}
+table{width:100%;border-collapse:collapse}
+thead th{background:rgba(255,255,255,.025);padding:8px 10px;font-size:10px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.5px;text-align:left;position:sticky;top:0;z-index:1;border-bottom:1px solid var(--border);cursor:pointer;white-space:nowrap;user-select:none}
+thead th:hover{color:var(--c1)}
+th.sa::after{content:' ▲';color:var(--c1)}th.sd::after{content:' ▼';color:var(--c1)}
+tbody tr{border-bottom:1px solid rgba(255,255,255,.025);transition:background .12s}
+tbody tr:hover{background:rgba(0,212,255,.04)}
+td{padding:7px 10px;font-size:12px}
+.tn{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.tc{text-align:center}
+.bfil{background:rgba(0,212,255,.1);color:var(--c1);padding:2px 7px;border-radius:4px;font-size:10.5px;font-weight:700}
+.bi{display:flex;align-items:center;gap:5px}
+.bbar{height:4px;background:linear-gradient(90deg,var(--c1),var(--c2));border-radius:2px;min-width:3px}
+.pg{color:#10b981;font-weight:700}.pm{color:#f59e0b;font-weight:700}.pb{color:#ef4444;font-weight:700}
+tfoot td{font-weight:700;border-top:2px solid var(--border);background:rgba(0,212,255,.03);font-size:12px}
+.tfoot-yr{font-size:9.5px;padding:2px 5px;border-radius:3px;font-weight:700}
+
+/* POWER BI */
+.pbi-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-bottom:18px}
+.pbi-url-bar{display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap}
+.pbi-url-bar input{flex:1;min-width:260px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:var(--rs);font-size:11.5px;outline:none;transition:border-color .2s}
+.pbi-url-bar input:focus{border-color:var(--c1)}
+.pbi-url-bar input::placeholder{color:var(--t3)}
+.pbi-btn{background:linear-gradient(135deg,var(--c1),var(--c2));border:none;color:#fff;padding:6px 16px;border-radius:var(--rs);font-size:11.5px;font-weight:700;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+.pbi-btn:hover{opacity:.85}
+.pbi-frame-wrap{position:relative;width:100%;padding-bottom:56.25%;background:rgba(0,0,0,.35);border-radius:var(--rs);overflow:hidden;border:1px solid var(--border2)}
+.pbi-frame-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.pbi-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--t3)}
+.pbi-placeholder .pbi-ico{font-size:40px;opacity:.35}
+.pbi-placeholder p{font-size:11.5px;text-align:center;max-width:360px;line-height:1.6}
+.pbi-placeholder a{color:var(--c1);font-size:10.5px;text-decoration:none;border-bottom:1px dashed rgba(0,212,255,.3)}
+/* FOOTER */
+.foot{text-align:center;padding:16px;color:var(--t3);font-size:10px;border-top:1px solid var(--border2);line-height:1.8}
+
+@media(max-width:1200px){.kpis{grid-template-columns:repeat(3,1fr)}.c32,.c23{grid-template-columns:1fr 1fr}.c3{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.alu-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.c2,.c32,.c23,.c3{grid-template-columns:1fr}.igrid{grid-template-columns:1fr 1fr}.main{padding:12px 14px}.ycard-row{grid-template-columns:1fr}}
+@media(max-width:600px){.kpis{grid-template-columns:1fr 1fr}.igrid{grid-template-columns:1fr}.hdr-r{display:none}.donuts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-l">
+    <div style="background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(240,245,255,.95));border-radius:10px;padding:5px 14px;display:flex;align-items:center;flex-shrink:0;box-shadow:0 2px 16px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.15),inset 0 1px 0 rgba(255,255,255,1)">
+      <img src="Captura de tela 2026-05-27 174031.png" alt="Grupo LC Translute" style="height:36px;object-fit:contain;display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.1))">
+    </div>
+    <div style="width:1px;height:32px;background:rgba(255,255,255,.1);margin:0 4px"></div>
+    <div class="hdr-t">
+      <h1>Gestão de Terceiros</h1>
+      <p>Comparativo 2024 × 2025 × 2026 · TMS Senior + DW Grupo LC · SOFTRAN_TRANSLUTE + DWGrupolc</p>
+    </div>
+  </div>
+  <div class="hdr-r">
+    <div class="badge blive">TMS Online</div>
+    <div class="badge bsrc">169.57.181.231</div>
+    <div class="hdate" id="hdrDate"></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- FILTROS -->
+  <div class="fbar fu">
+    <div class="fgrp"><label>Período</label>
+      <select id="fAno" onchange="applyF()">
+        <option value="all">Todos os anos</option>
+        <option value="2024">2024 (Completo)</option>
+        <option value="2025">2025 (Jan–Jul)</option>
+        <option value="2026">2026 (Jan–Mai)</option>
+      </select></div>
+    <div class="fdiv"></div>
+    <div class="fgrp"><label>Mês</label>
+      <select id="fMes" onchange="applyF()">
+        <option value="all">Todos</option>
+        <option value="0">Janeiro</option><option value="1">Fevereiro</option><option value="2">Março</option>
+        <option value="3">Abril</option><option value="4">Maio</option><option value="5">Junho</option>
+        <option value="6">Julho</option><option value="7">Agosto</option><option value="8">Setembro</option>
+        <option value="9">Outubro</option><option value="10">Novembro</option><option value="11">Dezembro</option>
+      </select></div>
+    <div class="fdiv"></div>
+    <div class="fgrp"><label>Filial</label>
+      <select id="fFilial" onchange="applyF()">
+        <option value="all">Todas</option>
+        <option>CGR</option><option>NOD</option><option>BAR</option><option>RES</option>
+        <option>SSA</option><option>SBC</option><option>POA</option><option>REC</option>
+        <option>CWB</option><option>LC2</option><option>VIX</option>
+      </select></div>
+    <div class="fdiv"></div>
+    <div class="fgrp"><label>UF Destino</label>
+      <select id="fUF" onchange="applyF()">
+        <option value="all">Todos</option>
+        <option>SP</option><option>RJ</option><option>BA</option><option>PR</option>
+        <option>PE</option><option>MG</option><option>CE</option><option>ES</option><option>RS</option>
+      </select></div>
+    <div class="fdiv"></div>
+    <div class="fgrp"><label>Tipo Frete</label>
+      <select id="fTipo" onchange="applyF()">
+        <option value="all">Todos</option><option value="C">Carga (C)</option><option value="F">Fracionado (F)</option>
+      </select></div>
+    <button class="brst" onclick="resetF()">✕ Limpar</button>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpis">
+    <div class="kpi ka fu d1"><span class="kbg">💰</span><span class="kico">💰</span>
+      <div class="klbl">Receita Total</div>
+      <div class="kval" id="kR">—</div>
+      <div class="yoy"><span class="yoy-b y24" id="kR24">—</span><span class="yoy-b y25" id="kR25">—</span><span class="yoy-b y26" id="kR26">—</span></div>
+      <div class="kfoot" style="margin-top:4px"><span class="chg" id="kRc">—</span><span id="kRs">—</span></div></div>
+    <div class="kpi kb fu d2"><span class="kbg">🚚</span><span class="kico">🚚</span>
+      <div class="klbl">Custo de Frete</div>
+      <div class="kval" id="kF">—</div>
+      <div class="yoy"><span class="yoy-b y24" id="kF24">—</span><span class="yoy-b y25" id="kF25">—</span><span class="yoy-b y26" id="kF26">—</span></div>
+      <div class="kfoot" style="margin-top:4px"><span class="chg nt" id="kFc">—</span><span>% receita</span></div></div>
+    <div class="kpi kc fu d3"><span class="kbg">📈</span><span class="kico">📈</span>
+      <div class="klbl">Margem Bruta</div>
+      <div class="kval" id="kM">—</div>
+      <div class="yoy"><span class="yoy-b y24" id="kM24">—</span><span class="yoy-b y25" id="kM25">—</span><span class="yoy-b y26" id="kM26">—</span></div>
+      <div class="kfoot" style="margin-top:4px"><span class="chg" id="kMc">—</span><span id="kMs">—</span></div></div>
+    <div class="kpi kd fu d4"><span class="kbg">📦</span><span class="kico">📦</span>
+      <div class="klbl">Volume CTEs</div>
+      <div class="kval" id="kC">—</div>
+      <div class="yoy"><span class="yoy-b y24" id="kC24">—</span><span class="yoy-b y25" id="kC25">—</span><span class="yoy-b y26" id="kC26">—</span></div>
+      <div class="kfoot" style="margin-top:4px"><span class="chg nt" id="kCc">—</span><span>CTEs</span></div></div>
+    <div class="kpi ke fu d5"><span class="kbg">🎯</span><span class="kico">🎯</span>
+      <div class="klbl">Ticket Médio</div>
+      <div class="kval" id="kT">—</div>
+      <div class="yoy"><span class="yoy-b y24" id="kT24">—</span><span class="yoy-b y25" id="kT25">—</span><span class="yoy-b y26" id="kT26">—</span></div>
+      <div class="kfoot" style="margin-top:4px"><span class="chg" id="kTc">—</span><span>por CTE</span></div></div>
+    <div class="kpi kf fu d6"><span class="kbg">🛣️</span><span class="kico">🛣️</span>
+      <div class="klbl">Margem % Média</div>
+      <div class="kval" id="kMp">—</div>
+      <div class="yoy"><span class="yoy-b y24" id="kMp24">—</span><span class="yoy-b y25" id="kMp25">—</span><span class="yoy-b y26" id="kMp26">—</span></div>
+      <div class="kfoot" style="margin-top:4px"><span class="chg nt">Meta ≥ 18%</span><span>s/receita</span></div></div>
+  </div>
+
+  <!-- COMPARATIVO ANUAL RESUMO -->
+  <div class="sec"><h2>📅 Comparativo Anual — Jan–Mai (Período Equivalente)</h2><div class="line"></div><span class="tag">2024 × 2025 × 2026</span></div>
+  <div class="ycard-row">
+    <div class="ycard fu d1">
+      <div class="ycard-hdr">💰 Receita (Jan–Mai)</div>
+      <div class="ycard-row-inner">
+        <div class="yval"><div class="v v24">R$ 98,6M</div><div class="l">2024</div><div class="s nt">base</div></div>
+        <div class="yarrow">→</div>
+        <div class="yval"><div class="v v25">R$ 104,7M</div><div class="l">2025</div><div class="s up">↑ +6,2%</div></div>
+        <div class="yarrow">→</div>
+        <div class="yval"><div class="v v26">R$ 103,5M</div><div class="l">2026</div><div class="s dn">↓ -1,1%</div></div>
+      </div>
+      <div class="ycard-bar"><div class="ybar24" style="flex:98.6"></div><div class="ybar25" style="flex:104.7"></div><div class="ybar26" style="flex:103.5"></div></div>
+    </div>
+    <div class="ycard fu d2">
+      <div class="ycard-hdr">📦 Volume CTEs (Jan–Mai)</div>
+      <div class="ycard-row-inner">
+        <div class="yval"><div class="v v24">45.185</div><div class="l">2024</div><div class="s nt">base</div></div>
+        <div class="yarrow">→</div>
+        <div class="yval"><div class="v v25">45.644</div><div class="l">2025</div><div class="s up">↑ +1,0%</div></div>
+        <div class="yarrow">→</div>
+        <div class="yval"><div class="v v26">42.792</div><div class="l">2026</div><div class="s dn">↓ -6,2%</div></div>
+      </div>
+      <div class="ycard-bar"><div class="ybar24" style="flex:45.185"></div><div class="ybar25" style="flex:45.644"></div><div class="ybar26" style="flex:42.792"></div></div>
+    </div>
+    <div class="ycard fu d3">
+      <div class="ycard-hdr">📈 Margem % (Jan–Mai)</div>
+      <div class="ycard-row-inner">
+        <div class="yval"><div class="v v24">18,5%</div><div class="l">2024</div><div class="s nt">base</div></div>
+        <div class="yarrow">→</div>
+        <div class="yval"><div class="v v25">18,4%</div><div class="l">2025</div><div class="s dn">↓ -0,1pp</div></div>
+        <div class="yarrow">→</div>
+        <div class="yval"><div class="v v26">17,7%</div><div class="l">2026</div><div class="s dn">↓ -0,7pp</div></div>
+      </div>
+      <div class="ycard-bar"><div class="ybar24" style="flex:18.5"></div><div class="ybar25" style="flex:18.4"></div><div class="ybar26" style="flex:17.7"></div></div>
+    </div>
+  </div>
+
+  <!-- EVOLUÇÃO TEMPORAL MULTI-ANO -->
+  <div class="sec"><h2>📊 Evolução Mensal 2024 × 2025 × 2026</h2><div class="line"></div><span class="tag">Sobreposição Anual</span></div>
+  <div class="ytabs" id="ytabs">
+    <span class="ytab active-all" onclick="setYTab('all',this)">Todos os Anos</span>
+    <span class="ytab" onclick="setYTab('rec',this)">Receita</span>
+    <span class="ytab" onclick="setYTab('frt',this)">Custo Frete</span>
+    <span class="ytab" onclick="setYTab('mrg',this)">Margem</span>
+    <span class="ytab" onclick="setYTab('ctes',this)">Volume CTEs</span>
+  </div>
+  <div class="crow c32">
+    <div class="cc fu d1">
+      <div class="cc-hdr"><div><div class="cc-tit">Receita Mensal — 3 Anos Sobrepostos (R$ M)</div><div class="cc-sub">2024 completo · 2025 Jan–Jul · 2026 Jan–Mai</div></div><span class="cbadge cb1">Temporal</span></div>
+      <div class="cw h300"><canvas id="cOverlay"></canvas></div>
+    </div>
+    <div class="cc fu d2">
+      <div class="cc-hdr"><div><div class="cc-tit">Receita por Filial — 2026 (Jan–Mai)</div><div class="cc-sub">Ordenadas por receita · comparativo 2025</div></div><span class="cbadge cb2">Filial 2026</span></div>
+      <div class="cw h300"><canvas id="cFilial26"></canvas></div>
+    </div>
+  </div>
+
+  <!-- COMPARATIVO FILIAL 3 ANOS -->
+  <div class="sec"><h2>🏢 Comparativo de Filiais — 2024 × 2025 × 2026</h2><div class="line"></div><span class="tag">Performance por Filial</span></div>
+  <div class="crow c2">
+    <div class="cc fu d1">
+      <div class="cc-hdr"><div><div class="cc-tit">Receita por Filial — 3 Anos</div><div class="cc-sub">2024 (ano completo) · 2025 (Jan–Jul) · 2026 (Jan–Mai)</div></div><span class="cbadge cb4">YoY Filial</span></div>
+      <div class="cw h260"><canvas id="cFilialYoY"></canvas></div>
+    </div>
+    <div class="cc fu d2">
+      <div class="cc-hdr"><div><div class="cc-tit">Margem % por Filial — Evolução Anual</div><div class="cc-sub">Meta 18% · linha pontilhada</div></div><span class="cbadge cb3">Margem YoY</span></div>
+      <div class="cw h260"><canvas id="cMargYoY"></canvas></div>
+    </div>
+  </div>
+
+  <!-- REGIONAL & DISTRIBUIÇÃO -->
+  <div class="sec"><h2>🗺️ Análise Regional &amp; Distribuição — 2026</h2><div class="line"></div><span class="tag">23 UFs atendidas</span></div>
+  <div class="crow c23">
+    <div class="cc fu d1">
+      <div class="cc-hdr"><div><div class="cc-tit">Receita por UF de Destino — Top 12</div><div class="cc-sub">SP concentra 29,5% · R$ 30,5M</div></div><span class="cbadge cb1">Regional 2026</span></div>
+      <div class="cw h260"><canvas id="cUF"></canvas></div>
+    </div>
+    <div class="cc fu d2">
+      <div class="cc-hdr"><div><div class="cc-tit">Distribuição Operacional</div><div class="cc-sub">Tipo de frete · Vínculo · Volume mensal</div></div><span class="cbadge cb2">Composição</span></div>
+      <div class="donuts">
+        <div><div class="dnt">Tipo de Frete</div><div class="dh"><canvas id="cTipo"></canvas></div></div>
+        <div><div class="dnt">Vínculo</div><div class="dh"><canvas id="cVinc"></canvas></div></div>
+      </div>
+      <div style="margin-top:12px"><div class="cc-sub" style="margin-bottom:6px;font-weight:600">Volume CTEs/mês — 2026</div>
+        <div class="cw" style="height:80px"><canvas id="cVol"></canvas></div></div>
+    </div>
+  </div>
+
+  <!-- ALUGUEL DE CARRETAS -->
+  <div class="sec"><h2>🚛 Aluguel de Carretas</h2><div class="line"></div><span class="tag">VW_CVLD</span></div>
+
+  <div class="alu-grid">
+    <div class="alu-card fu d1">
+      <div class="alu-lbl">Total Aluguel de Carretas</div>
+      <div class="alu-val">R$ 151.250</div>
+      <div class="alu-sub">acumulado todo o período</div>
+      <div class="alu-bar-wrap"><div class="alu-bar-fill" style="width:100%"></div></div>
+    </div>
+    <div class="alu-card fu d2">
+      <div class="alu-lbl">Viagens com Aluguel</div>
+      <div class="alu-val">1.061</div>
+      <div class="alu-sub">1,2% do total de CTRBs</div>
+      <div class="alu-bar-wrap"><div class="alu-bar-fill" style="width:12%"></div></div>
+    </div>
+    <div class="alu-card fu d3">
+      <div class="alu-lbl">Média por Viagem</div>
+      <div class="alu-val">R$ 143</div>
+      <div class="alu-sub">aluguel médio por CTRB</div>
+      <div class="alu-bar-wrap"><div class="alu-bar-fill" style="width:35%"></div></div>
+    </div>
+    <div class="alu-card fu d4">
+      <div class="alu-lbl">% sobre Frete Motorista</div>
+      <div class="alu-val">0,11%</div>
+      <div class="alu-sub">R$151K / R$136,4M frete</div>
+      <div class="alu-bar-wrap"><div class="alu-bar-fill" style="width:5%"></div></div>
+    </div>
+  </div>
+
+  <div class="crow c3">
+    <div class="cc fu d1">
+      <div class="cc-hdr"><div><div class="cc-tit">Aluguel por Filial</div><div class="cc-sub">Total pago por ponto de operação</div></div><span class="cbadge cb4">Filial</span></div>
+      <div class="cw h220"><canvas id="cAluFilial"></canvas></div>
+    </div>
+    <div class="cc fu d2">
+      <div class="cc-hdr"><div><div class="cc-tit">Evolução Mensal — Aluguel 2026</div><div class="cc-sub">Pico em Fev/26 · R$ 59.223</div></div><span class="cbadge cb4">Mensal</span></div>
+      <div class="cw h220"><canvas id="cAluMensal"></canvas></div>
+    </div>
+    <div class="cc fu d3">
+      <div class="cc-hdr"><div><div class="cc-tit">Composição do Custo CTRB</div><div class="cc-sub">Frete · Aluguel · Pedágio · Encargos</div></div><span class="cbadge cb4">Composição</span></div>
+      <div class="cw h220"><canvas id="cAluComp"></canvas></div>
+    </div>
+  </div>
+
+  <!-- TERCEIROS -->
+  <div class="sec"><h2>🔗 Análise de Terceiros — Custo CTRB</h2><div class="line"></div><span class="tag">VW_CVLD</span></div>
+  <div class="crow c2">
+    <div class="cc fu d1">
+      <div class="cc-hdr"><div><div class="cc-tit">Top 10 Transportadoras — Custo CTRB</div><div class="cc-sub">Frete pago + Saldo a pagar</div></div><span class="cbadge cb3">Terceiros</span></div>
+      <div class="cw h260"><canvas id="cTransp"></canvas></div>
+    </div>
+    <div class="cc fu d2">
+      <div class="cc-hdr"><div><div class="cc-tit">Ticket Médio Mensal — Evolução 3 Anos</div><div class="cc-sub">R$ por CTE emitido</div></div><span class="cbadge cb4">Ticket YoY</span></div>
+      <div class="cw h260"><canvas id="cTicket"></canvas></div>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="sec"><h2>💡 Insights &amp; Alertas — Análise 2024→2026</h2><div class="line"></div><span class="tag">YoY</span></div>
+  <div class="igrid">
+    <div class="ic ic-d fu d1"><span class="ic-ico">📉</span><div><h3>Queda de Volume em 2026</h3><p>Jan–Mai/26 registra 42.792 CTEs vs 45.644 em 2025: -6,2%. Ticket médio subiu +5,5% (R$ 2.419 vs R$ 2.294), compensando parcialmente.</p><div class="ic-v">-2.852 CTEs</div></div></div>
+    <div class="ic ic-w fu d2"><span class="ic-ico">⚠️</span><div><h3>Margem em Compressão</h3><p>Margem % caiu de 18,5% (2024) para 17,7% (2026) no período Jan–Mai. Pressão de custo de frete crescendo acima da receita.</p><div class="ic-v">-0,8pp em 2 anos</div></div></div>
+    <div class="ic ic-s fu d3"><span class="ic-ico">🎯</span><div><h3>Ticket Médio em Alta Contínua</h3><p>Ticket médio cresceu: R$ 2.178 (2024) → R$ 2.294 (2025) → R$ 2.419 (2026). Alta de +11% em 2 anos. Precificação melhorando.</p><div class="ic-v">+R$ 241/CTE</div></div></div>
+    <div class="ic ic-s fu d4"><span class="ic-ico">🏆</span><div><h3>CGR — Melhor Margem Consistente</h3><p>CGR mantém liderança: 23,4% (2024) → 23,3% (2025) → 21,9% (2026). Leve queda em 2026 merece atenção, mas ainda acima da meta.</p><div class="ic-v">21,9% margem</div></div></div>
+    <div class="ic ic-w fu d5"><span class="ic-ico">📊</span><div><h3>REC — Margem Cronicamente Baixa</h3><p>Filial REC apresenta margem abaixo de 12% nos 3 anos: 7,7% (2024) → 8,1% (2025) → 11,3% (2026). Melhora recente, mas ainda crítica.</p><div class="ic-v">11,3% → 2026</div></div></div>
+    <div class="ic ic-i fu d6"><span class="ic-ico">🚀</span><div><h3>CWB — Crescimento Acelerado</h3><p>CWB saiu de 58 CTEs/R$ 787K (2024) para 533 CTEs/R$ 3,2M (2026). Crescimento de volume 819% em 2 anos. Filial em expansão.</p><div class="ic-v">+819% CTEs</div></div></div>
+  </div>
+
+  <!-- TABELA ANALÍTICA -->
+  <div class="sec"><h2>📋 Tabela Comparativa por Filial — 2024 × 2025 × 2026</h2><div class="line"></div><span class="tag">Multi-Ano</span></div>
+  <div class="tcard fu">
+    <div class="tctrl">
+      <input type="text" class="tsrch" placeholder="Pesquisar filial..." id="tSrch" oninput="tFilter()">
+      <span style="font-size:10.5px;color:var(--t2)" id="tCnt">11 filiais</span>
+      <div style="margin-left:auto;font-size:10.5px;color:var(--t3)">Clique no cabeçalho para ordenar</div>
+    </div>
+    <div class="twrap">
+      <table id="mainTbl">
+        <thead><tr>
+          <th onclick="tSort(0)">Filial</th>
+          <th onclick="tSort(1)" class="tn">CTEs 2024</th><th onclick="tSort(2)" class="tn">Rec 2024</th><th onclick="tSort(3)" class="tn">Mrg% 2024</th>
+          <th onclick="tSort(4)" class="tn">CTEs 2025</th><th onclick="tSort(5)" class="tn">Rec 2025</th><th onclick="tSort(6)" class="tn">Mrg% 2025</th>
+          <th onclick="tSort(7)" class="tn">CTEs 2026</th><th onclick="tSort(8)" class="tn">Rec 2026</th><th onclick="tSort(9)" class="tn">Mrg% 2026</th>
+          <th class="tc">Tendência</th>
+        </tr></thead>
+        <tbody id="tBody"></tbody>
+        <tfoot><tr>
+          <td><strong>TOTAL</strong></td>
+          <td class="tn">108.673</td><td class="tn">R$ 244M</td><td class="tn pm">18,1%</td>
+          <td class="tn">65.243*</td><td class="tn">R$ 149M*</td><td class="tn pm">18,3%*</td>
+          <td class="tn">42.792</td><td class="tn">R$ 103M</td><td class="tn pb">17,7%</td>
+          <td class="tc">↓ Mrg</td>
+        </tr></tfoot>
+      </table>
+    </div>
+    <div style="font-size:10px;color:var(--t3);margin-top:8px">* 2025: Jan–Jul (DWGrupolc). 2024: Completo. 2026: Jan–Mai (TMS Senior).</div>
+  </div>
+
+</div><!-- /main -->
+
+<div class="foot">
+  <strong>Gestão de Terceiros — Dashboard Executivo Comparativo 2024 × 2025 × 2026</strong><br>
+  Fontes: DWGrupolc (10.100.86.89) · TMS Senior Produção (169.57.181.231) · Bases: DWGrupolc.fBaseCTE, SOFTRAN_TRANSLUTE.vwCTE_Base, VW_CVLD, VW_CONTROLADORIA_DE_FRETE<br>
+  Gerado em: <span id="fDate"></span> · Gráficos requerem internet (Chart.js CDN)
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// DADOS
+// ═══════════════════════════════════════════════════════════════
+const MESES=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+const D24=[
+  {ctes:8311, rec:17997724,frt:14599824,mrg:3397900, mp:18.9,tk:2166},
+  {ctes:8686, rec:20021414,frt:16396502,mrg:3624912, mp:18.1,tk:2305},
+  {ctes:9314, rec:20210878,frt:16509156,mrg:3701723, mp:18.3,tk:2170},
+  {ctes:9532, rec:20042291,frt:16240569,mrg:3801723, mp:19.0,tk:2103},
+  {ctes:9342, rec:20321925,frt:16567398,mrg:3754527, mp:18.5,tk:2175},
+  {ctes:9136, rec:20957111,frt:17149059,mrg:3808052, mp:18.2,tk:2294},
+  {ctes:8930, rec:19778565,frt:16220289,mrg:3558276, mp:18.0,tk:2215},
+  {ctes:9280, rec:21661693,frt:17816891,mrg:3844802, mp:17.7,tk:2334},
+  {ctes:9066, rec:21332260,frt:17561850,mrg:3770411, mp:17.7,tk:2353},
+  {ctes:9767, rec:22833820,frt:18719015,mrg:4114805, mp:18.0,tk:2338},
+  {ctes:9045, rec:20822403,frt:17111180,mrg:3711222, mp:17.8,tk:2302},
+  {ctes:8264, rec:18078422,frt:14896002,mrg:3182420, mp:17.6,tk:2188},
+];
+const D25=[
+  {ctes:8207, rec:18381829,frt:14941482,mrg:3440348, mp:18.7,tk:2240},
+  {ctes:8979, rec:20149166,frt:16459898,mrg:3689268, mp:18.3,tk:2244},
+  {ctes:9096, rec:21876973,frt:17936662,mrg:3940312, mp:18.0,tk:2405},
+  {ctes:9158, rec:21081743,frt:17173644,mrg:3908100, mp:18.5,tk:2302},
+  {ctes:10204,rec:23212305,frt:18967498,mrg:4244807, mp:18.3,tk:2275},
+  {ctes:9124, rec:21373450,frt:17437462,mrg:3935988, mp:18.4,tk:2343},
+  {ctes:10475,rec:23384433,frt:19228385,mrg:4156048, mp:17.8,tk:2232},
+];
+const D26=[
+  {ctes:8725, rec:19325542,frt:15920438,mrg:3405104, mp:17.6,tk:2215},
+  {ctes:8053, rec:19253385,frt:15899751,mrg:3353634, mp:17.4,tk:2391},
+  {ctes:9668, rec:24115226,frt:19759281,mrg:4355945, mp:18.1,tk:2494},
+  {ctes:9215, rec:23443721,frt:19316208,mrg:4127513, mp:17.6,tk:2544},
+  {ctes:7131, rec:17373805,frt:14256035,mrg:3117770, mp:17.9,tk:2436},
+];
+
+const TOT24={ctes:108673,rec:244058506,frt:199787735,mrg:44270771,mp:18.1,tk:2247};
+const TOT25={ctes:65243, rec:149459899,frt:122145031,mrg:27314868,mp:18.3,tk:2291};
+const TOT26={ctes:42792, rec:103511679,frt:85151713, mrg:18359966,mp:17.7,tk:2419};
+
+// Filiais {n, 24:{ctes,rec,mrg,mp}, 25:{...}, 26:{...}}
+const FILIAL=[
+  {n:'CGR',
+   y24:{ctes:20352,rec:75596590,frt:57916954,mrg:17679636,mp:23.4,tk:3715},
+   y25:{ctes:12267,rec:46069089,frt:35357480,mrg:10711609,mp:23.3,tk:3756},
+   y26:{ctes:8322, rec:29238671,frt:22823032,mrg:6415640, mp:21.9,tk:3514}},
+  {n:'NOD',
+   y24:{ctes:30133,rec:53780458,frt:46296579,mrg:7483879, mp:13.9,tk:1785},
+   y25:{ctes:15421,rec:27557514,frt:23833557,mrg:3723957, mp:13.5,tk:1788},
+   y26:{ctes:10807,rec:21967566,frt:18977283,mrg:2990282, mp:13.6,tk:2032}},
+  {n:'BAR',
+   y24:{ctes:14916,rec:28644629,frt:24117601,mrg:4527028, mp:15.8,tk:1921},
+   y25:{ctes:13412,rec:24686406,frt:20669323,mrg:4017083, mp:16.3,tk:1841},
+   y26:{ctes:7624, rec:14376850,frt:12074731,mrg:2302119, mp:16.0,tk:1886}},
+  {n:'RES',
+   y24:{ctes:20924,rec:26715785,frt:20810205,mrg:5905580, mp:22.1,tk:1277},
+   y25:{ctes:12031,rec:16737642,frt:12967149,mrg:3770493, mp:22.5,tk:1391},
+   y26:{ctes:7216, rec:11844048,frt:9296689, mrg:2547358, mp:21.5,tk:1641}},
+  {n:'SSA',
+   y24:{ctes:5021, rec:18459808,frt:15448583,mrg:3011225, mp:16.3,tk:3677},
+   y25:{ctes:3236, rec:12891536,frt:10513145,mrg:2378391, mp:18.4,tk:3983},
+   y26:{ctes:2315, rec:11108831,frt:9160319, mrg:1948512, mp:17.5,tk:4799}},
+  {n:'SBC',
+   y24:{ctes:5685, rec:15500526,frt:12551014,mrg:2949512, mp:19.0,tk:2727},
+   y25:{ctes:3009, rec:6674344, frt:5691131, mrg:983213,  mp:14.7,tk:2218},
+   y26:{ctes:1732, rec:3708270, frt:3066499, mrg:641772,  mp:17.3,tk:2141}},
+  {n:'POA',
+   y24:{ctes:6344, rec:12101093,frt:10549509,mrg:1551584, mp:12.8,tk:1908},
+   y25:{ctes:2953, rec:5723157, frt:4948666, mrg:774491,  mp:13.5,tk:1938},
+   y26:{ctes:1678, rec:3601898, frt:3118022, mrg:483876,  mp:13.4,tk:2146}},
+  {n:'REC',
+   y24:{ctes:5116, rec:11739054,frt:10829397,mrg:909657,  mp:7.7, tk:2295},
+   y25:{ctes:2946, rec:5294798, frt:4868329, mrg:426469,  mp:8.1, tk:1798},
+   y26:{ctes:2339, rec:3387584, frt:3004672, mrg:382911,  mp:11.3,tk:1449}},
+  {n:'CWB',
+   y24:{ctes:58,   rec:787052,  frt:670030,  mrg:117022,  mp:14.9,tk:13570},
+   y25:{ctes:413,  rec:4557741, frt:3896742, mrg:660999,  mp:14.5,tk:11036},
+   y26:{ctes:533,  rec:3225343, frt:2759892, mrg:465451,  mp:14.4,tk:6050}},
+  {n:'LC2',
+   y24:{ctes:9,    rec:46866,   frt:46759,   mrg:107,     mp:0.2, tk:5207},
+   y25:{ctes:119,  rec:631076,  frt:555695,  mrg:75381,   mp:11.9,tk:5303},
+   y26:{ctes:195,  rec:990692,  frt:812620,  mrg:178072,  mp:18.0,tk:5080}},
+  {n:'VIX',
+   y24:{ctes:115,  rec:686647,  frt:551104,  mrg:135543,  mp:19.7,tk:5971},
+   y25:{ctes:76,   rec:169781,  frt:141814,  mrg:27967,   mp:16.5,tk:2234},
+   y26:{ctes:31,   rec:61927,   frt:57953,   mrg:3974,    mp:6.4, tk:1998}},
+];
+
+const UF=[
+  {u:'SP',ctes:15828,rec:30535647,frt:24160533},{u:'RJ',ctes:7481,rec:16180589,frt:12458364},
+  {u:'BA',ctes:3070, rec:7280075, frt:6359109}, {u:'PR',ctes:1777,rec:6861152, frt:5352802},
+  {u:'PE',ctes:2311, rec:6317488, frt:5609545}, {u:'MG',ctes:2594,rec:6074568, frt:4864394},
+  {u:'CE',ctes:1519, rec:5785725, frt:5089716}, {u:'ES',ctes:1076,rec:4942118, frt:4213384},
+  {u:'RS',ctes:1681, rec:4718572, frt:4026455}, {u:'MA',ctes:1013,rec:4119660, frt:3588341},
+  {u:'PI',ctes:704,  rec:2912868, frt:2579159}, {u:'PB',ctes:1424,rec:2496754, frt:2188228},
+];
+const TRANSP=[
+  {n:'IRMAOS GONZALEZ (Terceiro)', frt:2329306,sal:841416},
+  {n:'RAJO TRANSPORTES',           frt:1770071,sal:567300},
+  {n:'ALESSANDRA J. VENTURA',      frt:1607414,sal:499656},
+  {n:'TRANS NOBRINHO SERVICOS',     frt:1501589,sal:1401177},
+  {n:'JOSE AVELINO RT NEVES',      frt:1374061,sal:643332},
+  {n:'THIAGO FERREIRA DE MELO',    frt:1277934,sal:504827},
+  {n:'IRMAOS GONZALEZ (Func.)',    frt:1225849,sal:377078},
+  {n:'IRENE DE JESUS ARAUJO',      frt:1195166,sal:371151},
+  {n:'CEM TRANSPORTES',            frt:1131155,sal:336131},
+  {n:'MARIO G. REICHERT',          frt:1124376,sal:282158},
+];
+
+// ═══════════════════════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════════════════════
+const fM=v=>'R$ '+(v/1e6).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'M';
+const fN=v=>v.toLocaleString('pt-BR');
+const fR=v=>'R$ '+v.toLocaleString('pt-BR');
+const fP=v=>v.toFixed(1)+'%';
+function sum(arr,k){return arr.reduce((a,b)=>a+(b[k]||0),0)}
+function avg(arr,k){return sum(arr,k)/arr.length}
+
+// ═══════════════════════════════════════════════════════════════
+// KPI UPDATE
+// ═══════════════════════════════════════════════════════════════
+function applyF(){
+  const ano=document.getElementById('fAno').value;
+  const mes=document.getElementById('fMes').value;
+
+  let d24,d25,d26,t24,t25,t26;
+  if(mes==='all'){
+    t24=TOT24; t25=TOT25; t26=TOT26;
+  } else {
+    const mi=+mes;
+    const r24=D24[mi]||null, r25=D25[mi]||null, r26=D26[mi]||null;
+    t24=r24?{ctes:r24.ctes,rec:r24.rec,frt:r24.frt,mrg:r24.mrg,mp:r24.mp,tk:r24.tk}:null;
+    t25=r25?{ctes:r25.ctes,rec:r25.rec,frt:r25.frt,mrg:r25.mrg,mp:r25.mp,tk:r25.tk}:null;
+    t26=r26?{ctes:r26.ctes,rec:r26.rec,frt:r26.frt,mrg:r26.mrg,mp:r26.mp,tk:r26.tk}:null;
+  }
+
+  // Primary KPI = selected year or 2026 default
+  const primary = ano==='2024'?t24: ano==='2025'?t25: t26||t25||t24;
+  if(!primary) return;
+
+  set('kR',fM(primary.rec));
+  set('kF',fM(primary.frt));
+  set('kM',fM(primary.mrg));
+  set('kC',fN(primary.ctes));
+  set('kT',fR(primary.tk));
+  set('kMp',fP(primary.mp));
+
+  // Year badges
+  if(t24){set('kR24','24: '+fM(t24.rec));set('kF24','24: '+fM(t24.frt));set('kM24','24: '+fM(t24.mrg));set('kC24','24: '+fN(t24.ctes));set('kT24','24: '+fR(t24.tk));set('kMp24','24: '+fP(t24.mp));}
+  if(t25){set('kR25','25: '+fM(t25.rec));set('kF25','25: '+fM(t25.frt));set('kM25','25: '+fM(t25.mrg));set('kC25','25: '+fN(t25.ctes));set('kT25','25: '+fR(t25.tk));set('kMp25','25: '+fP(t25.mp));}
+  if(t26){set('kR26','26: '+fM(t26.rec));set('kF26','26: '+fM(t26.frt));set('kM26','26: '+fM(t26.mrg));set('kC26','26: '+fN(t26.ctes));set('kT26','26: '+fR(t26.tk));set('kMp26','26: '+fP(t26.mp));}
+
+  // Delta 2026 vs 2025
+  if(t26&&t25){
+    const dR=((t26.rec-t25.rec)/t25.rec*100).toFixed(1);
+    const dC=((t26.ctes-t25.ctes)/t25.ctes*100).toFixed(1);
+    const dT=((t26.tk-t25.tk)/t25.tk*100).toFixed(1);
+    const dM=((t26.mp-t25.mp)).toFixed(1);
+    setChg('kRc',+dR,'vs 2025');setChg('kCc',+dC,'vs 2025');setChg('kTc',+dT,'vs 2025');
+    set('kFc',fP(t26.frt/t26.rec*100)+' da receita');
+    set('kMs',fP(t26.mp));
+    set('kRs',fN(primary.ctes)+' CTEs');
+    setChg('kMc',+dM,'pp vs 2025',true);
+  }
+}
+function set(id,v){const el=document.getElementById(id);if(el)el.textContent=v;}
+function setChg(id,delta,label,pp=false){
+  const el=document.getElementById(id); if(!el)return;
+  const up=delta>=0;
+  el.textContent=(up?'↑ +':'↓ ')+Math.abs(delta)+(pp?'pp':('%'))+' '+label;
+  el.className='chg '+(up?'up':'dn');
+}
+function resetF(){
+  ['fAno','fMes','fFilial','fUF','fTipo'].forEach(id=>document.getElementById(id).value='all');
+  applyF();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// YEAR TAB
+// ═══════════════════════════════════════════════════════════════
+let ytabMode='all';
+function setYTab(mode,el){
+  ytabMode=mode;
+  document.querySelectorAll('.ytab').forEach(t=>t.className='ytab');
+  el.className='ytab active-all';
+  updateOverlayChart();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CHART.JS DEFAULTS
+// ═══════════════════════════════════════════════════════════════
+Chart.defaults.color='#94a3b8';
+Chart.defaults.borderColor='rgba(255,255,255,.05)';
+Chart.defaults.font.family="-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif";
+const TIP={backgroundColor:'rgba(10,18,36,.95)',borderColor:'rgba(0,212,255,.2)',borderWidth:1,padding:10};
+const C1='rgba(0,212,255,',C2='rgba(124,58,237,',C3='rgba(16,185,129,',C4='rgba(245,158,11,',C5='rgba(239,68,68,';
+
+// ═══════════════════════════════════════════════════════════════
+// CHARTS
+// ═══════════════════════════════════════════════════════════════
+let overlayChart;
+
+function getKey(mode){
+  if(mode==='rec'||mode==='all')return 'rec';
+  if(mode==='frt')return 'frt';
+  if(mode==='mrg')return 'mrg';
+  if(mode==='ctes')return 'ctes';
+  return 'rec';
+}
+
+function initCharts(){
+  // 1 — OVERLAY 3 anos
+  const ctx1=document.getElementById('cOverlay').getContext('2d');
+  const g24=ctx1.createLinearGradient(0,0,0,300);g24.addColorStop(0,C1+'.18)');g24.addColorStop(1,C1+'0)');
+  const g25=ctx1.createLinearGradient(0,0,0,300);g25.addColorStop(0,C2+'.18)');g25.addColorStop(1,C2+'0)');
+  const g26=ctx1.createLinearGradient(0,0,0,300);g26.addColorStop(0,C3+'.22)');g26.addColorStop(1,C3+'0)');
+  const null12=Array(12).fill(null);
+
+  overlayChart=new Chart(ctx1,{
+    type:'line',
+    data:{
+      labels:MESES,
+      datasets:[
+        {label:'2024',data:D24.map(d=>+(d.rec/1e6).toFixed(2)),borderColor:'#00d4ff',backgroundColor:g24,fill:true,tension:.4,borderWidth:2.5,pointRadius:4,pointHoverRadius:6,pointBackgroundColor:'#00d4ff'},
+        {label:'2025',data:[...D25.map(d=>+(d.rec/1e6).toFixed(2)),...null12.slice(D25.length)],borderColor:'#a855f7',backgroundColor:g25,fill:true,tension:.4,borderWidth:2.5,pointRadius:4,pointHoverRadius:6,pointBackgroundColor:'#a855f7',spanGaps:false},
+        {label:'2026',data:[...D26.map(d=>+(d.rec/1e6).toFixed(2)),...null12.slice(D26.length)],borderColor:'#10b981',backgroundColor:g26,fill:true,tension:.4,borderWidth:2.5,pointRadius:4,pointHoverRadius:6,pointBackgroundColor:'#10b981',spanGaps:false},
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{padding:14,usePointStyle:true,pointStyleWidth:8,font:{size:11}}},
+        tooltip:{...TIP,callbacks:{label:c=>' '+c.dataset.label+': R$ '+(c.parsed.y||0).toLocaleString('pt-BR',{minimumFractionDigits:1})+'M'}}},
+      scales:{x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{font:{size:11}}},
+        y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{font:{size:10},callback:v=>'R$'+v+'M'},beginAtZero:false}}}
+  });
+
+  function updateOverlayChart(){
+    const k=getKey(ytabMode);
+    const toM=v=>+(v/1e6).toFixed(2);
+    const nk=k==='ctes'?v=>v:toM;
+    overlayChart.data.datasets[0].data=D24.map(d=>nk(d[k]));
+    overlayChart.data.datasets[1].data=[...D25.map(d=>nk(d[k])),...null12.slice(D25.length)];
+    overlayChart.data.datasets[2].data=[...D26.map(d=>nk(d[k])),...null12.slice(D26.length)];
+    const isCtes=k==='ctes';
+    overlayChart.options.scales.y.ticks.callback=isCtes?v=>v.toLocaleString('pt-BR'):v=>'R$'+v+'M';
+    overlayChart.options.plugins.tooltip.callbacks.label=isCtes?c=>' '+c.dataset.label+': '+Math.round(c.parsed.y||0).toLocaleString('pt-BR')+' CTEs':c=>' '+c.dataset.label+': R$ '+(c.parsed.y||0).toLocaleString('pt-BR',{minimumFractionDigits:1})+'M';
+    overlayChart.update();
+  }
+  window.updateOverlayChart=updateOverlayChart;
+
+  // 2 — Filial 2026 barra horizontal
+  new Chart(document.getElementById('cFilial26'),{
+    type:'bar',
+    data:{labels:FILIAL.map(f=>f.n),datasets:[
+      {label:'Receita 2026',data:FILIAL.map(f=>+(f.y26.rec/1e6).toFixed(2)),backgroundColor:C3+'.65)',borderRadius:4,borderWidth:0},
+      {label:'Receita 2025',data:FILIAL.map(f=>+(f.y25.rec/1e6).toFixed(2)),backgroundColor:C2+'.45)',borderRadius:4,borderWidth:0},
+    ]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{padding:10,usePointStyle:true,font:{size:10}}},
+        tooltip:{...TIP,callbacks:{label:c=>' '+c.dataset.label+': R$ '+c.parsed.x.toLocaleString('pt-BR',{minimumFractionDigits:1})+'M'}}},
+      scales:{x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{font:{size:10},callback:v=>'R$'+v+'M'},beginAtZero:true},y:{grid:{display:false},ticks:{font:{size:11}}}}}
+  });
+
+  // 3 — Filial YoY grouped (receita)
+  new Chart(document.getElementById('cFilialYoY'),{
+    type:'bar',
+    data:{labels:FILIAL.map(f=>f.n),datasets:[
+      {label:'2024',data:FILIAL.map(f=>+(f.y24.rec/1e6).toFixed(2)),backgroundColor:C1+'.6)',borderRadius:3,borderWidth:0},
+      {label:'2025',data:FILIAL.map(f=>+(f.y25.rec/1e6).toFixed(2)),backgroundColor:C2+'.6)',borderRadius:3,borderWidth:0},
+      {label:'2026',data:FILIAL.map(f=>+(f.y26.rec/1e6).toFixed(2)),backgroundColor:C3+'.6)',borderRadius:3,borderWidth:0},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{padding:10,usePointStyle:true,font:{size:10}}},
+        tooltip:{...TIP,callbacks:{label:c=>' '+c.dataset.label+': R$ '+c.parsed.y.toLocaleString('pt-BR',{minimumFractionDigits:1})+'M'}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{font:{size:10},callback:v=>'R$'+v+'M'},beginAtZero:true}}}
+  });
+
+  // 4 — Margem % YoY por filial (linhas)
+  new Chart(document.getElementById('cMargYoY'),{
+    type:'line',
+    data:{labels:FILIAL.map(f=>f.n),datasets:[
+      {label:'2024',data:FILIAL.map(f=>f.y24.mp),borderColor:'#00d4ff',backgroundColor:'transparent',tension:.3,borderWidth:2,pointRadius:5,pointBackgroundColor:'#00d4ff'},
+      {label:'2025',data:FILIAL.map(f=>f.y25.mp),borderColor:'#a855f7',backgroundColor:'transparent',tension:.3,borderWidth:2,pointRadius:5,pointBackgroundColor:'#a855f7'},
+      {label:'2026',data:FILIAL.map(f=>f.y26.mp),borderColor:'#10b981',backgroundColor:'transparent',tension:.3,borderWidth:2,pointRadius:5,pointBackgroundColor:'#10b981'},
+      {label:'Meta 18%',data:FILIAL.map(()=>18),borderColor:'rgba(245,158,11,.5)',backgroundColor:'transparent',borderDash:[5,4],borderWidth:1.5,pointRadius:0,fill:false},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{padding:10,usePointStyle:true,font:{size:10}}},
+        tooltip:{...TIP,callbacks:{label:c=>' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%'}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{font:{size:10},callback:v=>v+'%'},min:0,max:26}}}
+  });
+
+  // 5 — UF (2026)
+  const uf12=UF.slice(0,12);
+  new Chart(document.getElementById('cUF'),{
+    type:'bar',
+    data:{labels:uf12.map(u=>u.u),datasets:[
+      {label:'Receita 2026',data:uf12.map(u=>+(u.rec/1e6).toFixed(2)),backgroundColor:uf12.map((_,i)=>`hsla(${190+i*7},75%,55%,.72)`),borderRadius:5,borderWidth:0},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{...TIP,callbacks:{label:c=>' Receita: R$ '+c.parsed.y.toFixed(1)+'M',afterLabel:c=>' CTEs: '+UF[c.dataIndex].ctes.toLocaleString('pt-BR')}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{font:{size:10},callback:v=>'R$'+v+'M'},beginAtZero:true}}}
+  });
+
+  // 6a — Tipo Frete donut
+  new Chart(document.getElementById('cTipo'),{type:'doughnut',data:{labels:['Carga (C)','Fracionado (F)'],datasets:[{data:[84428925,19082754],backgroundColor:[C1+'.8)',C2+'.8)'],borderColor:[C1+'1)',C2+'1)'],borderWidth:2,hoverOffset:5}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:7,usePointStyle:true}},tooltip:{...TIP,callbacks:{label:c=>' '+c.label+': R$ '+(c.parsed/1e6).toFixed(1)+'M'}}}}});
+
+  // 6b — Vínculo donut
+  new Chart(document.getElementById('cVinc'),{type:'doughnut',data:{labels:['Terceiro','Funcionário'],datasets:[{data:[14248855,3360153],backgroundColor:[C4+'.8)',C3+'.8)'],borderColor:[C4+'1)',C3+'1)'],borderWidth:2,hoverOffset:5}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:7,usePointStyle:true}},tooltip:{...TIP,callbacks:{label:c=>' '+c.label+': R$ '+(c.parsed/1e6).toFixed(1)+'M'}}}}});
+
+  // 6c — Vol CTEs mini
+  new Chart(document.getElementById('cVol'),{type:'bar',data:{labels:D26.map((_,i)=>MESES[i]),datasets:[{data:D26.map(d=>d.ctes),backgroundColor:D26.map(d=>d.ctes===Math.max(...D26.map(x=>x.ctes))?C1+'.8)':C1+'.3)'),borderRadius:4,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...TIP,callbacks:{label:c=>' CTEs: '+c.parsed.y.toLocaleString('pt-BR')}}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{display:false,beginAtZero:true}}}});
+
+  // ALU-1 — Aluguel por Filial
+  const ALU_FILIAL=[
+    {f:'CGR',  alu:47452, frete:521573, viagens:368},
+    {f:'BAR',  alu:26013, frete:272977, viagens:183},
+    {f:'RES',  alu:23413, frete:251200, viagens:192},
+    {f:'NOD',  alu:17563, frete:223381, viagens:77},
+    {f:'POA',  alu:12712, frete:138131, viagens:25},
+    {f:'SBC',  alu:8493,  frete:84739,  viagens:134},
+    {f:'SSA',  alu:7943,  frete:96211,  viagens:60},
+    {f:'CWB',  alu:7589,  frete:75872,  viagens:21},
+    {f:'LC2',  alu:72,    frete:716,    viagens:1},
+  ];
+  new Chart(document.getElementById('cAluFilial'),{
+    type:'bar',
+    data:{labels:ALU_FILIAL.map(d=>d.f),datasets:[
+      {label:'Aluguel',     data:ALU_FILIAL.map(d=>d.alu),   backgroundColor:C4+'.8)',borderRadius:5,borderWidth:0},
+      {label:'Frete Motor.',data:ALU_FILIAL.map(d=>d.frete), backgroundColor:C1+'.25)',borderRadius:5,borderWidth:0},
+    ]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{font:{size:10},padding:8,usePointStyle:true}},
+        tooltip:{...TIP,callbacks:{label:c=>' '+c.dataset.label+': R$ '+c.parsed.x.toLocaleString('pt-BR')}}},
+      scales:{x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{font:{size:10},callback:v=>'R$'+(v/1e3).toFixed(0)+'K'},beginAtZero:true},y:{grid:{display:false},ticks:{font:{size:11}}}}}
+  });
+
+  // ALU-2 — Evolução mensal aluguel
+  const ALU_MES=[
+    {m:'Jan/26',alu:790,   viagens:6},
+    {m:'Fev/26',alu:59223, viagens:485},
+    {m:'Mar/26',alu:47621, viagens:328},
+    {m:'Abr/26',alu:18178, viagens:114},
+    {m:'Mai/26',alu:16718, viagens:106},
+  ];
+  new Chart(document.getElementById('cAluMensal'),{
+    type:'bar',
+    data:{labels:ALU_MES.map(d=>d.m),datasets:[
+      {label:'Aluguel (R$)',data:ALU_MES.map(d=>d.alu),
+        backgroundColor:ALU_MES.map(d=>d.alu===Math.max(...ALU_MES.map(x=>x.alu))?C4+'.9)':C4+'.45)'),
+        borderRadius:6,borderWidth:0},
+      {type:'line',label:'Viagens',data:ALU_MES.map(d=>d.viagens),
+        borderColor:'rgba(239,68,68,.8)',backgroundColor:'transparent',
+        tension:.4,borderWidth:2,pointRadius:4,pointBackgroundColor:'#ef4444',yAxisID:'y2'},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{font:{size:10},padding:8,usePointStyle:true}},
+        tooltip:{...TIP,callbacks:{label:c=>c.datasetIndex===0?' Aluguel: R$ '+c.parsed.y.toLocaleString('pt-BR'):' Viagens: '+c.parsed.y}}},
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:11}}},
+        y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{font:{size:10},callback:v=>'R$'+(v/1e3).toFixed(0)+'K'},beginAtZero:true},
+        y2:{position:'right',grid:{display:false},ticks:{font:{size:10},callback:v=>v+' vg'},beginAtZero:true}
+      }}
+  });
+
+  // ALU-3 — Composição custo CTRB (donut)
+  new Chart(document.getElementById('cAluComp'),{
+    type:'doughnut',
+    data:{
+      labels:['Frete Motorista','Pedágio','INSS','SEST/SENAT','Aluguel Carretas','IRRF'],
+      datasets:[{
+        data:[136429967, 11222280, 1711678, 406389, 151250, 107521],
+        backgroundColor:[C1+'.75)',C2+'.7)',C3+'.7)',C4+'.75)','rgba(239,68,68,.75)','rgba(168,85,247,.7)'],
+        borderWidth:2,
+        borderColor:['#0d1526'],
+        hoverOffset:6
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,cutout:'58%',
+      plugins:{
+        legend:{position:'bottom',labels:{font:{size:9.5},padding:7,usePointStyle:true}},
+        tooltip:{...TIP,callbacks:{label:c=>' '+c.label+': R$ '+(c.parsed/1e6).toFixed(2)+'M ('+((c.parsed/150029085)*100).toFixed(1)+'%)'}}
+      }}
+  });
+
+  // 7 — Top Transportadoras
+  new Chart(document.getElementById('cTransp'),{
+    type:'bar',
+    data:{labels:TRANSP.map(t=>t.n),datasets:[
+      {label:'Custo Frete',data:TRANSP.map(t=>t.frt),backgroundColor:TRANSP.map((_,i)=>i%2===0?C1+'.7)':C2+'.7)'),borderRadius:4,borderWidth:0},
+      {label:'Saldo',data:TRANSP.map(t=>t.sal),backgroundColor:C3+'.5)',borderRadius:4,borderWidth:0},
+    ]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{padding:9,usePointStyle:true,font:{size:10}}},tooltip:{...TIP,callbacks:{label:c=>' '+c.dataset.label+': R$ '+c.parsed.x.toLocaleString('pt-BR')}}},
+      scales:{x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{font:{size:10},callback:v=>'R$'+(v/1e3).toFixed(0)+'K'},beginAtZero:true},y:{grid:{display:false},ticks:{font:{size:10}}}}}
+  });
+
+  // 8 — Ticket Médio 3 anos (linha mensal)
+  new Chart(document.getElementById('cTicket'),{
+    type:'line',
+    data:{labels:MESES,datasets:[
+      {label:'2024',data:D24.map(d=>d.tk),borderColor:'#00d4ff',backgroundColor:'transparent',tension:.4,borderWidth:2,pointRadius:3,pointBackgroundColor:'#00d4ff'},
+      {label:'2025',data:[...D25.map(d=>d.tk),...Array(12-D25.length).fill(null)],borderColor:'#a855f7',backgroundColor:'transparent',tension:.4,borderWidth:2,pointRadius:3,pointBackgroundColor:'#a855f7',spanGaps:false},
+      {label:'2026',data:[...D26.map(d=>d.tk),...Array(12-D26.length).fill(null)],borderColor:'#10b981',backgroundColor:'transparent',tension:.4,borderWidth:2,pointRadius:3,pointBackgroundColor:'#10b981',spanGaps:false},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{padding:12,usePointStyle:true,font:{size:10}}},
+        tooltip:{...TIP,callbacks:{label:c=>' '+c.dataset.label+': R$ '+(c.parsed.y||0).toLocaleString('pt-BR')}}},
+      scales:{x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{font:{size:11}}},
+        y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{font:{size:10},callback:v=>'R$'+v.toLocaleString('pt-BR')},beginAtZero:false}}}
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TABELA COMPARATIVA
+// ═══════════════════════════════════════════════════════════════
+function mpClass(v){return v>=18?'pg':v>=14?'pm':'pb'}
+function trend(f){
+  const d=f.y26.mp-f.y24.mp;
+  if(d>1)return'📈 Alta';if(d<-1)return'📉 Queda';return'➡️ Estável';
+}
+let tblData=[...FILIAL];
+let sortSt={};
+
+function renderRows(data){
+  const tb=document.getElementById('tBody');tb.innerHTML='';
+  data.forEach(f=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><span class="bfil">${f.n}</span></td>
+      <td class="tn">${fN(f.y24.ctes)}</td><td class="tn">${fM(f.y24.rec)}</td><td class="tn"><span class="${mpClass(f.y24.mp)}">${fP(f.y24.mp)}</span></td>
+      <td class="tn">${fN(f.y25.ctes)}</td><td class="tn">${fM(f.y25.rec)}</td><td class="tn"><span class="${mpClass(f.y25.mp)}">${fP(f.y25.mp)}</span></td>
+      <td class="tn">${fN(f.y26.ctes)}</td><td class="tn">${fM(f.y26.rec)}</td><td class="tn"><span class="${mpClass(f.y26.mp)}">${fP(f.y26.mp)}</span></td>
+      <td class="tc">${trend(f)}</td>`;
+    tb.appendChild(tr);
+  });
+  document.getElementById('tCnt').textContent=data.length+' filiais';
+}
+
+const SORT_KEYS=[null,'y24.ctes','y24.rec','y24.mp','y25.ctes','y25.rec','y25.mp','y26.ctes','y26.rec','y26.mp'];
+function getNestedVal(obj,path){return path.split('.').reduce((o,k)=>o&&o[k],obj)}
+function tSort(col){
+  const ths=document.querySelectorAll('#mainTbl thead th');
+  ths.forEach((th,i)=>{if(i!==col){th.className=th.className.replace(/\bsa\b|\bsd\b/g,'').trim()}});
+  sortSt[col]=sortSt[col]==='asc'?'desc':'asc';
+  ths[col].classList.remove('sa','sd');ths[col].classList.add(sortSt[col]==='asc'?'sa':'sd');
+  const key=SORT_KEYS[col];
+  const sorted=[...tblData].sort((a,b)=>{
+    if(!key)return sortSt[col]==='asc'?a.n.localeCompare(b.n):b.n.localeCompare(a.n);
+    const va=getNestedVal(a,key),vb=getNestedVal(b,key);
+    return sortSt[col]==='asc'?va-vb:vb-va;
+  });
+  renderRows(sorted);
+}
+function tFilter(){
+  const q=document.getElementById('tSrch').value.toLowerCase();
+  renderRows(FILIAL.filter(f=>f.n.toLowerCase().includes(q)));
+}
+
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded',()=>{
+  const now=new Date();
+  const ds=now.toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'})+' '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('hdrDate').textContent=ds;
+  document.getElementById('fDate').textContent=ds;
+  applyF();
+  renderRows(FILIAL);
+  initCharts();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"><title>SLA Sumitomo — Maio 2026</title>
+<style>
+* { box-sizing: border-box }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+       margin: 0; padding: 22px; background: #f7f8fa; color: #222; font-size: 13px; }
+h1 { margin: 0 0 4px 0; font-size: 22px; }
+h1 small { font-size: 13px; font-weight: normal; color: #666; margin-left: 10px }
+h2 { font-size: 17px; margin: 0 0 12px 0; }
+h2 small { font-size: 11.5px; font-weight: normal; color: #888; margin-left: 8px }
+.card { background: #fff; border-radius: 10px; padding: 18px 22px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.05); margin-bottom: 18px; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
+.kpi { background: #fff; border-radius: 10px; padding: 14px 16px;
+       box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+.kpi .v { font-size: 26px; font-weight: 700 }
+.kpi .l { font-size: 11.5px; color: #666; text-transform: uppercase; letter-spacing: .5px; }
+.kpi .s { font-size: 11px; color: #888; margin-top: 3px }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th, td { padding: 6px 9px; border-bottom: 1px solid #eee; text-align: left; }
+th { background: #f0f3f8; font-weight: 600; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.center { text-align: center; }
+.st-prz { background: #d4edda; color: #155724; padding: 2px 7px; border-radius: 4px; font-weight: 600 }
+.st-tra { background: #fff3cd; color: #856404; padding: 2px 7px; border-radius: 4px; font-weight: 600 }
+.st-atr { background: #f8d7da; color: #721c24; padding: 2px 7px; border-radius: 4px; font-weight: 600 }
+.st-just { background: #fff3cd; color: #b58900; padding: 2px 7px; border-radius: 4px; font-weight: 600; border: 1px solid #b58900 }
+.sn-ok { background: #d4edda; color: #155724; padding: 2px 7px; border-radius: 4px; font-weight: 600 }
+.sn-ri { background: #fff3cd; color: #856404; padding: 2px 7px; border-radius: 4px; font-weight: 600 }
+.sn-at { background: #f8d7da; color: #721c24; padding: 2px 7px; border-radius: 4px; font-weight: 600 }
+.sn-na { background: #e6e7e8; color: #555;    padding: 2px 7px; border-radius: 4px; font-weight: 600 }
+.pct-bom { color: #155724; font-weight: 600 }
+.pct-mid { color: #856404; font-weight: 600 }
+.pct-bad { color: #721c24; font-weight: 600 }
+.tag-via { background: #fde2e1; color: #721c24; padding: 2px 7px; border-radius: 4px; font-weight: 600 }
+.tag-rl  { background: #fff3cd; color: #856404; padding: 2px 7px; border-radius: 4px; font-weight: 600 }
+.tag-eq  { background: #e2e3e5; color: #444;    padding: 2px 7px; border-radius: 4px; font-weight: 600 }
+details { margin-top: 8px }
+summary { cursor: pointer; font-size: 12px; color: #555 }
+.table-wrap { max-height: 600px; overflow: auto; }
+.table-wrap table thead th { position: sticky; top: 0; background: #f0f3f8; z-index: 1 }
+
+/* Sort interativo */
+table.sortable thead th { cursor: pointer; user-select: none; padding-right: 18px !important; position: relative }
+table.sortable thead th:hover { background: #e3e7ee !important }
+table.sortable thead th::after { content: '⇅'; position: absolute; right: 4px; opacity: 0.35; font-size: 11px }
+table.sortable thead th.sort-asc::after { content: '▲'; opacity: 1; color: #1967d2 }
+table.sortable thead th.sort-desc::after { content: '▼'; opacity: 1; color: #1967d2 }
+</style>
+</head><body>
+  <h1>SLA Sumitomo — Maio 2026<small>Universo: CTEs filiais 18+1, Normal, Fracionada/Lotação/Lotação Carreta 122/LOTAÇÃO DUNLOP, Previsao ∈ [01/05/2026, 31/05/2026] · corte: 22/05/2026</small></h1>
+
+  <div style="background:#d1ecf1;border-left:4px solid #17a2b8;border-radius:6px;padding:10px 14px;margin:0 0 16px 0;font-size:12.5px;color:#0c5460">
+    <b>📐 Regra de performance (universal):</b> universo = tudo que tinha que ser entregue no período (<code>Previsão</code> no mês).
+    <b style="color:#155724">No Prazo</b> = entregou até a data prevista ·
+    <b style="color:#721c24">Em Atraso</b> = entregou depois <b>OU</b> não entregou e prazo já passou ·
+    <b style="color:#856404">Em Trânsito</b> = ainda dentro do prazo, sem entrega.
+    <br><span style="font-size:11px;color:#0c5460">Códigos de ocorrência (<code><b>226</b> ATRASO TRANSLUTE</code>, <code><b>232</b> Entrega não realizada RMS</code>, <code><b>216</b> FALTA DE TEMPO HABIL NA ENTREGA</code>) são <b>informativos</b> — mostram qual marcação operacional acompanhou o atraso, mas não decidem o status.</span>
+  </div>
+
+  
+    <div class="kpis">
+      <div class="kpi"><div class="l">Total CTEs (universo)</div><div class="v">58</div>
+        <div class="s">50 entregues + 8 em trânsito</div></div>
+      <div class="kpi"><div class="l">% No Prazo (sobre entregues)</div>
+        <div class="v pct-bad">82,0%</div>
+        <div class="s">denominador = só CTEs entregues (SLA realizado)</div></div>
+      
+      <div class="kpi"><div class="l">% No Prazo (sobre universo)</div>
+        <div class="v pct-bad">70,7%</div>
+        <div class="s">denominador = universo (inclui Em Trânsito)</div></div>
+      <div class="kpi"><div class="l">Em Atraso</div>
+        <div class="v" style="color:#721c24">9</div>
+        <div class="s">CTEs com cod 226, cod 232, cod 216</div></div>
+      
+    </div>
+    
+
+  <div class="card">
+    <h2>📦 Status × Tipo de Transporte</h2>
+    <table>
+      <thead><tr><th>Tipo Transporte</th><th class="num">Total CTEs</th>
+        <th class="num">No Prazo</th><th class="num">Em Trânsito</th><th class="num">Em Atraso</th>
+        <th class="num">% prz (entr.)</th><th class="num">% prz (univ.)</th>
+        <th>Drill CTEs</th></tr></thead>
+      <tbody>
+          <tr><td>Fracionada</td>
+              <td class="num">45</td>
+              <td class="num">29</td>
+              <td class="num">7</td>
+              <td class="num">9</td>
+              <td class="num pct-bad">76,3%</td>
+              <td class="num pct-bad">64,4%</td>
+              <td><details><summary style="cursor:pointer;color:#555">ver 45 CTEs</summary>
+              <div style="max-height:400px;overflow:auto;margin-top:6px">
+              <table style="font-size:11.5px">
+                <thead><tr style="background:#fafbfc">
+                  <th class="center">Filial</th><th class="num">Nr. CTe</th>
+                  <th>Destinatário</th><th>Destino</th>
+                  <th class="center">Prazo</th><th class="center">Entrega</th>
+                  <th class="num">Dias</th><th class="center">Status</th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1540</td>
+                <td>Comercial De Cereais E Transporte Fuga Ltda</td>
+                <td>JALES/<b>SP</b></td>
+                <td class="center">12/05/2026</td>
+                <td class="center">15/05/2026</td>
+                <td class="num">3</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1576</td>
+                <td>Sercon Concreto Ltda</td>
+                <td>BIRIGUI/<b>SP</b></td>
+                <td class="center">19/05/2026</td>
+                <td class="center">22/05/2026</td>
+                <td class="num">3</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1583</td>
+                <td>Transportes Cavalinho Ltda</td>
+                <td>PAULINIA/<b>SP</b></td>
+                <td class="center">19/05/2026</td>
+                <td class="center">22/05/2026</td>
+                <td class="num">3</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1586</td>
+                <td>USINA BATATAIS S/A ACUCAR E ALCOOL</td>
+                <td>BATATAIS/<b>SP</b></td>
+                <td class="center">19/05/2026</td>
+                <td class="center">22/05/2026</td>
+                <td class="num">3</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1532</td>
+                <td>Trans Carlotti Transportes Ltda</td>
+                <td>TUPA/<b>SP</b></td>
+                <td class="center">05/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">2</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1552</td>
+                <td>MANFRIM LOGISTICA LTDA</td>
+                <td>SANTA CRUZ DO RIO PARDO/<b>SP</b></td>
+                <td class="center">12/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">2</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1508</td>
+                <td>Brinks Seg E Transporte De Valores Ltda</td>
+                <td>FLORIANO/<b>PI</b></td>
+                <td class="center">18/05/2026</td>
+                <td class="center">20/05/2026</td>
+                <td class="num">2</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1543</td>
+                <td>Brink's Seguranca E Transporte De Valores Ltda</td>
+                <td>TERESINA/<b>PI</b></td>
+                <td class="center">20/05/2026</td>
+                <td class="center"></td>
+                <td class="num">2</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1584</td>
+                <td>Guerra Transporte E Logistica Barretos Ltda</td>
+                <td>BARRETOS/<b>SP</b></td>
+                <td class="center">22/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1566</td>
+                <td>BRINKS SEG E TRANSPORTE DE VALORES LTDA</td>
+                <td>RECIFE/<b>PE</b></td>
+                <td class="center">25/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1591</td>
+                <td>Transportadora Doiscorreguense Ltda</td>
+                <td>DOIS CORREGOS/<b>SP</b></td>
+                <td class="center">25/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1587</td>
+                <td>REGIONAL TELHAS INDUSTRIA E COM. DE PRODUTOS</td>
+                <td>ASSIS/<b>SP</b></td>
+                <td class="center">26/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1541</td>
+                <td>Brinks Seg E Transporte De Valores Ltda</td>
+                <td>FLORIANO/<b>PI</b></td>
+                <td class="center">28/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1592</td>
+                <td>Transport Simoes Bebedouro Ltda</td>
+                <td>BEBEDOURO/<b>SP</b></td>
+                <td class="center">28/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1593</td>
+                <td>TRANSPORTES IMEDIATO LTDA</td>
+                <td>RIBEIRAO PRETO/<b>SP</b></td>
+                <td class="center">28/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1594</td>
+                <td>NIPAL TRANSPORTES LTDA</td>
+                <td>FEIRA DE SANTANA/<b>BA</b></td>
+                <td class="center">28/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1496</td>
+                <td>Abc Sistema De Transporte Spe S.a.</td>
+                <td>SAO BERNARDO DO CAMPO/<b>SP</b></td>
+                <td class="center">04/05/2026</td>
+                <td class="center">30/04/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1497</td>
+                <td>Mahnic Operadora Logistica Ltda</td>
+                <td>PIRASSUNUNGA/<b>SP</b></td>
+                <td class="center">04/05/2026</td>
+                <td class="center">01/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1436</td>
+                <td>Transmac Transportadora Macaubense Ltda</td>
+                <td>SEABRA/<b>BA</b></td>
+                <td class="center">06/05/2026</td>
+                <td class="center">24/04/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1472</td>
+                <td>A P G TRANSP LOGIST E REPRES LTDA</td>
+                <td>CABO DE SANTO AGOSTINHO/<b>PE</b></td>
+                <td class="center">06/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1505</td>
+                <td>BORELLI BRASIL EXPRESS TRANSPORTE E LOGISTICA LTDA</td>
+                <td>SAO BERNARDO DO CAMPO/<b>SP</b></td>
+                <td class="center">06/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1506</td>
+                <td>Transppass Transporte De Passageiros Ltda.</td>
+                <td>SAO PAULO/<b>SP</b></td>
+                <td class="center">06/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1522</td>
+                <td>Trans Carlotti Transportes Ltda</td>
+                <td>TUPA/<b>SP</b></td>
+                <td class="center">07/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1473</td>
+                <td>C Luna Transporte, Logistica E Armazenagem Ltda</td>
+                <td>IGARASSU/<b>PE</b></td>
+                <td class="center">08/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1526</td>
+                <td>Brinks Seg E Transporte De Valores Ltda</td>
+                <td>SAO JOSE DO RIO PRETO/<b>SP</b></td>
+                <td class="center">08/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1520</td>
+                <td>Pass Transportes E Servicos Ambientais Ltda</td>
+                <td>VALINHOS/<b>SP</b></td>
+                <td class="center">11/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1525</td>
+                <td>Transccema Transportes Rodoviarios Ltda.</td>
+                <td>SAO PAULO/<b>SP</b></td>
+                <td class="center">11/05/2026</td>
+                <td class="center">06/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1521</td>
+                <td>Luiz Gustavo Brandao Inacio Transportes</td>
+                <td>MATAO/<b>SP</b></td>
+                <td class="center">12/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1524</td>
+                <td>Transport Simoes Bebedouro Ltda</td>
+                <td>BEBEDOURO/<b>SP</b></td>
+                <td class="center">12/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1531</td>
+                <td>Luiz Gustavo Brandao Inacio Transportes</td>
+                <td>MATAO/<b>SP</b></td>
+                <td class="center">12/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1523</td>
+                <td>BRINKS SEG E TRANSPORTE DE VALORES LTDA</td>
+                <td>VITORIA DA CONQUISTA/<b>BA</b></td>
+                <td class="center">13/05/2026</td>
+                <td class="center">13/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1549</td>
+                <td>Transportadora Doiscorreguense Ltda</td>
+                <td>DOIS CORREGOS/<b>SP</b></td>
+                <td class="center">14/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1542</td>
+                <td>Guerra Transporte E Logistica Barretos Ltda</td>
+                <td>BARRETOS/<b>SP</b></td>
+                <td class="center">15/05/2026</td>
+                <td class="center">15/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1544</td>
+                <td>Translocave Ltda</td>
+                <td>VALINHOS/<b>SP</b></td>
+                <td class="center">18/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1551</td>
+                <td>TSS - TRANSPORTADORA SAO SEBASTIAO LTDA</td>
+                <td>SAO SEBASTIAO/<b>SP</b></td>
+                <td class="center">18/05/2026</td>
+                <td class="center">18/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1545</td>
+                <td>JOAO LUIZ QUAGLIATO NETO E OUTROS</td>
+                <td>OURINHOS/<b>SP</b></td>
+                <td class="center">19/05/2026</td>
+                <td class="center">15/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1546</td>
+                <td>Boeing Logistica Ltda</td>
+                <td>ASSIS/<b>SP</b></td>
+                <td class="center">19/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1547</td>
+                <td>Crm Transportes Ltda</td>
+                <td>REGENTE FEIJO/<b>SP</b></td>
+                <td class="center">19/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1550</td>
+                <td>Trr Zanforlin Comercio De Combustiveis Ltda</td>
+                <td>TAQUARITUBA/<b>SP</b></td>
+                <td class="center">19/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1564</td>
+                <td>Valorize Reciclagem Comercio E Transporte De Derivados De Pa</td>
+                <td>CAMPINAS/<b>SP</b></td>
+                <td class="center">20/05/2026</td>
+                <td class="center">18/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1570</td>
+                <td>Valorize Reciclagem Comercio E Transporte De Derivados De Pa</td>
+                <td>CAMPINAS/<b>SP</b></td>
+                <td class="center">20/05/2026</td>
+                <td class="center">18/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1507</td>
+                <td>NIPAL TRANSPORTES LTDA</td>
+                <td>FEIRA DE SANTANA/<b>BA</b></td>
+                <td class="center">21/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1565</td>
+                <td>Michel Transportes Altinopolis Ltda</td>
+                <td>ALTINOPOLIS/<b>SP</b></td>
+                <td class="center">21/05/2026</td>
+                <td class="center">18/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1577</td>
+                <td>TRANSPORTES, TERRAPLENAGENS E PARTICIPACOES RUBAO LTDA</td>
+                <td>PRAIA GRANDE/<b>SP</b></td>
+                <td class="center">25/05/2026</td>
+                <td class="center">21/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1585</td>
+                <td>Hm Transportes, Logistica E Locacoes Ltda</td>
+                <td>ORLANDIA/<b>SP</b></td>
+                <td class="center">26/05/2026</td>
+                <td class="center">22/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr></tbody>
+              </table>
+              </div></details></td>
+          </tr>
+          <tr><td>Lotação</td>
+              <td class="num">10</td>
+              <td class="num">9</td>
+              <td class="num">1</td>
+              <td class="num">0</td>
+              <td class="num pct-bom">100,0%</td>
+              <td class="num pct-mid">90,0%</td>
+              <td><details><summary style="cursor:pointer;color:#555">ver 10 CTEs</summary>
+              <div style="max-height:400px;overflow:auto;margin-top:6px">
+              <table style="font-size:11.5px">
+                <thead><tr style="background:#fafbfc">
+                  <th class="center">Filial</th><th class="num">Nr. CTe</th>
+                  <th>Destinatário</th><th>Destino</th>
+                  <th class="center">Prazo</th><th class="center">Entrega</th>
+                  <th class="num">Dias</th><th class="center">Status</th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1589</td>
+                <td>Rm Comercio De Pneus Ltda</td>
+                <td>SERRA/<b>ES</b></td>
+                <td class="center">25/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1486</td>
+                <td>PNEUBRAS COMERCIO DE PNEUS LTDA</td>
+                <td>LUIS EDUARDO MAGALHAES/<b>BA</b></td>
+                <td class="center">01/05/2026</td>
+                <td class="center">01/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1487</td>
+                <td>Pneubras Comercio De Pneus Ltda</td>
+                <td>TEIXEIRA DE FREITAS/<b>BA</b></td>
+                <td class="center">04/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1490</td>
+                <td>Pneubras Comercio de Pneus Ltda</td>
+                <td>LIMOEIRO DO NORTE/<b>CE</b></td>
+                <td class="center">07/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1514</td>
+                <td>Pneubras Comercio De Pneus Ltda</td>
+                <td>URUCUI/<b>PI</b></td>
+                <td class="center">12/05/2026</td>
+                <td class="center">11/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1519</td>
+                <td>Pneubras Comercio De Pneus Ltda</td>
+                <td>IGUATU/<b>CE</b></td>
+                <td class="center">14/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1575</td>
+                <td>VOLKSWAGEN DO BRASIL INDUSTRIA DE VEICULOS AUTOMOTORES LTDA</td>
+                <td>TAUBATE/<b>SP</b></td>
+                <td class="center">20/05/2026</td>
+                <td class="center">20/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1538</td>
+                <td>Pneubras Comercio De Pneus Ltda</td>
+                <td>IMPERATRIZ/<b>MA</b></td>
+                <td class="center">21/05/2026</td>
+                <td class="center">19/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1539</td>
+                <td>Rm Comercio De Pneus Ltda</td>
+                <td>SERRA/<b>ES</b></td>
+                <td class="center">21/05/2026</td>
+                <td class="center">19/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1563</td>
+                <td>Rm Comercio De Pneus Ltda</td>
+                <td>SERRA/<b>ES</b></td>
+                <td class="center">21/05/2026</td>
+                <td class="center">21/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr></tbody>
+              </table>
+              </div></details></td>
+          </tr>
+          <tr><td>Lotação Carreta 122</td>
+              <td class="num">2</td>
+              <td class="num">2</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num pct-bom">100,0%</td>
+              <td class="num pct-bom">100,0%</td>
+              <td><details><summary style="cursor:pointer;color:#555">ver 2 CTEs</summary>
+              <div style="max-height:400px;overflow:auto;margin-top:6px">
+              <table style="font-size:11.5px">
+                <thead><tr style="background:#fafbfc">
+                  <th class="center">Filial</th><th class="num">Nr. CTe</th>
+                  <th>Destinatário</th><th>Destino</th>
+                  <th class="center">Prazo</th><th class="center">Entrega</th>
+                  <th class="num">Dias</th><th class="center">Status</th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1537</td>
+                <td>VOLKSWAGEN DO BRASIL INDUSTRIA DE VEICULOS AUTOMOTORES LTDA</td>
+                <td>TAUBATE/<b>SP</b></td>
+                <td class="center">13/05/2026</td>
+                <td class="center">13/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1562</td>
+                <td>VOLKSWAGEN DO BRASIL INDUSTRIA DE VEICULOS AUTOMOTORES LTDA</td>
+                <td>TAUBATE/<b>SP</b></td>
+                <td class="center">15/05/2026</td>
+                <td class="center">15/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr></tbody>
+              </table>
+              </div></details></td>
+          </tr>
+          <tr><td>LOTAÇÃO DUNLOP</td>
+              <td class="num">1</td>
+              <td class="num">1</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num pct-bom">100,0%</td>
+              <td class="num pct-bom">100,0%</td>
+              <td><details><summary style="cursor:pointer;color:#555">ver 1 CTE</summary>
+              <div style="max-height:400px;overflow:auto;margin-top:6px">
+              <table style="font-size:11.5px">
+                <thead><tr style="background:#fafbfc">
+                  <th class="center">Filial</th><th class="num">Nr. CTe</th>
+                  <th>Destinatário</th><th>Destino</th>
+                  <th class="center">Prazo</th><th class="center">Entrega</th>
+                  <th class="num">Dias</th><th class="center">Status</th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1478</td>
+                <td>Pneubras Comercio De Pneus Ltda</td>
+                <td>TEIXEIRA DE FREITAS/<b>BA</b></td>
+                <td class="center">04/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr></tbody>
+              </table>
+              </div></details></td>
+          </tr></tbody>
+      <tfoot><tr style="font-weight:600;background:#f0f3f8">
+        <td>Total</td><td class="num">58</td>
+        <td class="num">41</td><td class="num">8</td><td class="num">9</td>
+        <td class="num pct-bad">82,0%</td>
+        <td class="num pct-bad">70,7%</td>
+        <td></td>
+      </tr></tfoot>
+    </table>
+    <p style="font-size:11px;color:#666;margin-top:8px">
+      <b>% prz (entr.)</b> = denominador = só CTEs entregues (SLA realizado). <b>% prz (univ.)</b> = denominador = universo (inclui Em Trânsito, visão operacional).
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>🗺️ Distribuição por UF</h2>
+    <table>
+      <thead><tr><th class="center">UF</th><th class="num">Total</th>
+        <th class="num">No Prazo</th><th class="num">Em Trânsito</th><th class="num">Em Atraso</th>
+        <th class="num">% prz (entr.)</th><th>Drill CTEs</th></tr></thead>
+      <tbody>
+          <tr><td class="center"><b>SP</b></td>
+              <td class="num">38</td>
+              <td class="num">27</td>
+              <td class="num">4</td>
+              <td class="num">7</td>
+              <td class="num pct-bad">79,4%</td>
+              <td><details><summary style="cursor:pointer;color:#555">ver 38 CTEs</summary>
+              <div style="max-height:400px;overflow:auto;margin-top:6px">
+              <table style="font-size:11.5px">
+                <thead><tr style="background:#fafbfc">
+                  <th class="center">Filial</th><th class="num">Nr. CTe</th>
+                  <th>Destinatário</th><th>Cidade</th><th>Tipo</th>
+                  <th class="center">Prazo</th><th class="center">Entrega</th>
+                  <th class="num">Dias</th><th class="center">Status</th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1540</td>
+                <td>Comercial De Cereais E Transporte Fuga Ltda</td>
+                <td>JALES</td>
+                <td>Fracionada</td>
+                <td class="center">12/05/2026</td>
+                <td class="center">15/05/2026</td>
+                <td class="num">3</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1576</td>
+                <td>Sercon Concreto Ltda</td>
+                <td>BIRIGUI</td>
+                <td>Fracionada</td>
+                <td class="center">19/05/2026</td>
+                <td class="center">22/05/2026</td>
+                <td class="num">3</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1583</td>
+                <td>Transportes Cavalinho Ltda</td>
+                <td>PAULINIA</td>
+                <td>Fracionada</td>
+                <td class="center">19/05/2026</td>
+                <td class="center">22/05/2026</td>
+                <td class="num">3</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1586</td>
+                <td>USINA BATATAIS S/A ACUCAR E ALCOOL</td>
+                <td>BATATAIS</td>
+                <td>Fracionada</td>
+                <td class="center">19/05/2026</td>
+                <td class="center">22/05/2026</td>
+                <td class="num">3</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1532</td>
+                <td>Trans Carlotti Transportes Ltda</td>
+                <td>TUPA</td>
+                <td>Fracionada</td>
+                <td class="center">05/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">2</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1552</td>
+                <td>MANFRIM LOGISTICA LTDA</td>
+                <td>SANTA CRUZ DO RIO PARDO</td>
+                <td>Fracionada</td>
+                <td class="center">12/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">2</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1584</td>
+                <td>Guerra Transporte E Logistica Barretos Ltda</td>
+                <td>BARRETOS</td>
+                <td>Fracionada</td>
+                <td class="center">22/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1591</td>
+                <td>Transportadora Doiscorreguense Ltda</td>
+                <td>DOIS CORREGOS</td>
+                <td>Fracionada</td>
+                <td class="center">25/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1587</td>
+                <td>REGIONAL TELHAS INDUSTRIA E COM. DE PRODUTOS</td>
+                <td>ASSIS</td>
+                <td>Fracionada</td>
+                <td class="center">26/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1592</td>
+                <td>Transport Simoes Bebedouro Ltda</td>
+                <td>BEBEDOURO</td>
+                <td>Fracionada</td>
+                <td class="center">28/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1593</td>
+                <td>TRANSPORTES IMEDIATO LTDA</td>
+                <td>RIBEIRAO PRETO</td>
+                <td>Fracionada</td>
+                <td class="center">28/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1496</td>
+                <td>Abc Sistema De Transporte Spe S.a.</td>
+                <td>SAO BERNARDO DO CAMPO</td>
+                <td>Fracionada</td>
+                <td class="center">04/05/2026</td>
+                <td class="center">30/04/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1497</td>
+                <td>Mahnic Operadora Logistica Ltda</td>
+                <td>PIRASSUNUNGA</td>
+                <td>Fracionada</td>
+                <td class="center">04/05/2026</td>
+                <td class="center">01/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1505</td>
+                <td>BORELLI BRASIL EXPRESS TRANSPORTE E LOGISTICA LTDA</td>
+                <td>SAO BERNARDO DO CAMPO</td>
+                <td>Fracionada</td>
+                <td class="center">06/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1506</td>
+                <td>Transppass Transporte De Passageiros Ltda.</td>
+                <td>SAO PAULO</td>
+                <td>Fracionada</td>
+                <td class="center">06/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1522</td>
+                <td>Trans Carlotti Transportes Ltda</td>
+                <td>TUPA</td>
+                <td>Fracionada</td>
+                <td class="center">07/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1526</td>
+                <td>Brinks Seg E Transporte De Valores Ltda</td>
+                <td>SAO JOSE DO RIO PRETO</td>
+                <td>Fracionada</td>
+                <td class="center">08/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1520</td>
+                <td>Pass Transportes E Servicos Ambientais Ltda</td>
+                <td>VALINHOS</td>
+                <td>Fracionada</td>
+                <td class="center">11/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1525</td>
+                <td>Transccema Transportes Rodoviarios Ltda.</td>
+                <td>SAO PAULO</td>
+                <td>Fracionada</td>
+                <td class="center">11/05/2026</td>
+                <td class="center">06/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1521</td>
+                <td>Luiz Gustavo Brandao Inacio Transportes</td>
+                <td>MATAO</td>
+                <td>Fracionada</td>
+                <td class="center">12/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1524</td>
+                <td>Transport Simoes Bebedouro Ltda</td>
+                <td>BEBEDOURO</td>
+                <td>Fracionada</td>
+                <td class="center">12/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1531</td>
+                <td>Luiz Gustavo Brandao Inacio Transportes</td>
+                <td>MATAO</td>
+                <td>Fracionada</td>
+                <td class="center">12/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1537</td>
+                <td>VOLKSWAGEN DO BRASIL INDUSTRIA DE VEICULOS AUTOMOTORES LTDA</td>
+                <td>TAUBATE</td>
+                <td>Lotação Carreta 122</td>
+                <td class="center">13/05/2026</td>
+                <td class="center">13/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1549</td>
+                <td>Transportadora Doiscorreguense Ltda</td>
+                <td>DOIS CORREGOS</td>
+                <td>Fracionada</td>
+                <td class="center">14/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1542</td>
+                <td>Guerra Transporte E Logistica Barretos Ltda</td>
+                <td>BARRETOS</td>
+                <td>Fracionada</td>
+                <td class="center">15/05/2026</td>
+                <td class="center">15/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1562</td>
+                <td>VOLKSWAGEN DO BRASIL INDUSTRIA DE VEICULOS AUTOMOTORES LTDA</td>
+                <td>TAUBATE</td>
+                <td>Lotação Carreta 122</td>
+                <td class="center">15/05/2026</td>
+                <td class="center">15/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1544</td>
+                <td>Translocave Ltda</td>
+                <td>VALINHOS</td>
+                <td>Fracionada</td>
+                <td class="center">18/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1551</td>
+                <td>TSS - TRANSPORTADORA SAO SEBASTIAO LTDA</td>
+                <td>SAO SEBASTIAO</td>
+                <td>Fracionada</td>
+                <td class="center">18/05/2026</td>
+                <td class="center">18/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1545</td>
+                <td>JOAO LUIZ QUAGLIATO NETO E OUTROS</td>
+                <td>OURINHOS</td>
+                <td>Fracionada</td>
+                <td class="center">19/05/2026</td>
+                <td class="center">15/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1546</td>
+                <td>Boeing Logistica Ltda</td>
+                <td>ASSIS</td>
+                <td>Fracionada</td>
+                <td class="center">19/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1547</td>
+                <td>Crm Transportes Ltda</td>
+                <td>REGENTE FEIJO</td>
+                <td>Fracionada</td>
+                <td class="center">19/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1550</td>
+                <td>Trr Zanforlin Comercio De Combustiveis Ltda</td>
+                <td>TAQUARITUBA</td>
+                <td>Fracionada</td>
+                <td class="center">19/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1564</td>
+                <td>Valorize Reciclagem Comercio E Transporte De Derivados De Pa</td>
+                <td>CAMPINAS</td>
+                <td>Fracionada</td>
+                <td class="center">20/05/2026</td>
+                <td class="center">18/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1570</td>
+                <td>Valorize Reciclagem Comercio E Transporte De Derivados De Pa</td>
+                <td>CAMPINAS</td>
+                <td>Fracionada</td>
+                <td class="center">20/05/2026</td>
+                <td class="center">18/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1575</td>
+                <td>VOLKSWAGEN DO BRASIL INDUSTRIA DE VEICULOS AUTOMOTORES LTDA</td>
+                <td>TAUBATE</td>
+                <td>Lotação</td>
+                <td class="center">20/05/2026</td>
+                <td class="center">20/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1565</td>
+                <td>Michel Transportes Altinopolis Ltda</td>
+                <td>ALTINOPOLIS</td>
+                <td>Fracionada</td>
+                <td class="center">21/05/2026</td>
+                <td class="center">18/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1577</td>
+                <td>TRANSPORTES, TERRAPLENAGENS E PARTICIPACOES RUBAO LTDA</td>
+                <td>PRAIA GRANDE</td>
+                <td>Fracionada</td>
+                <td class="center">25/05/2026</td>
+                <td class="center">21/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1585</td>
+                <td>Hm Transportes, Logistica E Locacoes Ltda</td>
+                <td>ORLANDIA</td>
+                <td>Fracionada</td>
+                <td class="center">26/05/2026</td>
+                <td class="center">22/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr></tbody>
+              </table>
+              </div></details></td>
+          </tr>
+          <tr><td class="center"><b>BA</b></td>
+              <td class="num">7</td>
+              <td class="num">6</td>
+              <td class="num">1</td>
+              <td class="num">0</td>
+              <td class="num pct-bom">100,0%</td>
+              <td><details><summary style="cursor:pointer;color:#555">ver 7 CTEs</summary>
+              <div style="max-height:400px;overflow:auto;margin-top:6px">
+              <table style="font-size:11.5px">
+                <thead><tr style="background:#fafbfc">
+                  <th class="center">Filial</th><th class="num">Nr. CTe</th>
+                  <th>Destinatário</th><th>Cidade</th><th>Tipo</th>
+                  <th class="center">Prazo</th><th class="center">Entrega</th>
+                  <th class="num">Dias</th><th class="center">Status</th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1594</td>
+                <td>NIPAL TRANSPORTES LTDA</td>
+                <td>FEIRA DE SANTANA</td>
+                <td>Fracionada</td>
+                <td class="center">28/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1486</td>
+                <td>PNEUBRAS COMERCIO DE PNEUS LTDA</td>
+                <td>LUIS EDUARDO MAGALHAES</td>
+                <td>Lotação</td>
+                <td class="center">01/05/2026</td>
+                <td class="center">01/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1478</td>
+                <td>Pneubras Comercio De Pneus Ltda</td>
+                <td>TEIXEIRA DE FREITAS</td>
+                <td>LOTAÇÃO DUNLOP</td>
+                <td class="center">04/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1487</td>
+                <td>Pneubras Comercio De Pneus Ltda</td>
+                <td>TEIXEIRA DE FREITAS</td>
+                <td>Lotação</td>
+                <td class="center">04/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1436</td>
+                <td>Transmac Transportadora Macaubense Ltda</td>
+                <td>SEABRA</td>
+                <td>Fracionada</td>
+                <td class="center">06/05/2026</td>
+                <td class="center">24/04/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1523</td>
+                <td>BRINKS SEG E TRANSPORTE DE VALORES LTDA</td>
+                <td>VITORIA DA CONQUISTA</td>
+                <td>Fracionada</td>
+                <td class="center">13/05/2026</td>
+                <td class="center">13/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1507</td>
+                <td>NIPAL TRANSPORTES LTDA</td>
+                <td>FEIRA DE SANTANA</td>
+                <td>Fracionada</td>
+                <td class="center">21/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr></tbody>
+              </table>
+              </div></details></td>
+          </tr>
+          <tr><td class="center"><b>PI</b></td>
+              <td class="num">4</td>
+              <td class="num">1</td>
+              <td class="num">1</td>
+              <td class="num">2</td>
+              <td class="num pct-bad">33,3%</td>
+              <td><details><summary style="cursor:pointer;color:#555">ver 4 CTEs</summary>
+              <div style="max-height:400px;overflow:auto;margin-top:6px">
+              <table style="font-size:11.5px">
+                <thead><tr style="background:#fafbfc">
+                  <th class="center">Filial</th><th class="num">Nr. CTe</th>
+                  <th>Destinatário</th><th>Cidade</th><th>Tipo</th>
+                  <th class="center">Prazo</th><th class="center">Entrega</th>
+                  <th class="num">Dias</th><th class="center">Status</th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1508</td>
+                <td>Brinks Seg E Transporte De Valores Ltda</td>
+                <td>FLORIANO</td>
+                <td>Fracionada</td>
+                <td class="center">18/05/2026</td>
+                <td class="center">20/05/2026</td>
+                <td class="num">2</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1543</td>
+                <td>Brink's Seguranca E Transporte De Valores Ltda</td>
+                <td>TERESINA</td>
+                <td>Fracionada</td>
+                <td class="center">20/05/2026</td>
+                <td class="center"></td>
+                <td class="num">2</td>
+                <td class="center"><span class="st-atr">Em Atraso</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1541</td>
+                <td>Brinks Seg E Transporte De Valores Ltda</td>
+                <td>FLORIANO</td>
+                <td>Fracionada</td>
+                <td class="center">28/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1514</td>
+                <td>Pneubras Comercio De Pneus Ltda</td>
+                <td>URUCUI</td>
+                <td>Lotação</td>
+                <td class="center">12/05/2026</td>
+                <td class="center">11/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr></tbody>
+              </table>
+              </div></details></td>
+          </tr>
+          <tr><td class="center"><b>PE</b></td>
+              <td class="num">3</td>
+              <td class="num">2</td>
+              <td class="num">1</td>
+              <td class="num">0</td>
+              <td class="num pct-bom">100,0%</td>
+              <td><details><summary style="cursor:pointer;color:#555">ver 3 CTEs</summary>
+              <div style="max-height:400px;overflow:auto;margin-top:6px">
+              <table style="font-size:11.5px">
+                <thead><tr style="background:#fafbfc">
+                  <th class="center">Filial</th><th class="num">Nr. CTe</th>
+                  <th>Destinatário</th><th>Cidade</th><th>Tipo</th>
+                  <th class="center">Prazo</th><th class="center">Entrega</th>
+                  <th class="num">Dias</th><th class="center">Status</th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1566</td>
+                <td>BRINKS SEG E TRANSPORTE DE VALORES LTDA</td>
+                <td>RECIFE</td>
+                <td>Fracionada</td>
+                <td class="center">25/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1472</td>
+                <td>A P G TRANSP LOGIST E REPRES LTDA</td>
+                <td>CABO DE SANTO AGOSTINHO</td>
+                <td>Fracionada</td>
+                <td class="center">06/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1473</td>
+                <td>C Luna Transporte, Logistica E Armazenagem Ltda</td>
+                <td>IGARASSU</td>
+                <td>Fracionada</td>
+                <td class="center">08/05/2026</td>
+                <td class="center">04/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr></tbody>
+              </table>
+              </div></details></td>
+          </tr>
+          <tr><td class="center"><b>ES</b></td>
+              <td class="num">3</td>
+              <td class="num">2</td>
+              <td class="num">1</td>
+              <td class="num">0</td>
+              <td class="num pct-bom">100,0%</td>
+              <td><details><summary style="cursor:pointer;color:#555">ver 3 CTEs</summary>
+              <div style="max-height:400px;overflow:auto;margin-top:6px">
+              <table style="font-size:11.5px">
+                <thead><tr style="background:#fafbfc">
+                  <th class="center">Filial</th><th class="num">Nr. CTe</th>
+                  <th>Destinatário</th><th>Cidade</th><th>Tipo</th>
+                  <th class="center">Prazo</th><th class="center">Entrega</th>
+                  <th class="num">Dias</th><th class="center">Status</th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1589</td>
+                <td>Rm Comercio De Pneus Ltda</td>
+                <td>SERRA</td>
+                <td>Lotação</td>
+                <td class="center">25/05/2026</td>
+                <td class="center"></td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-tra">Em Transito</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1539</td>
+                <td>Rm Comercio De Pneus Ltda</td>
+                <td>SERRA</td>
+                <td>Lotação</td>
+                <td class="center">21/05/2026</td>
+                <td class="center">19/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1563</td>
+                <td>Rm Comercio De Pneus Ltda</td>
+                <td>SERRA</td>
+                <td>Lotação</td>
+                <td class="center">21/05/2026</td>
+                <td class="center">21/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr></tbody>
+              </table>
+              </div></details></td>
+          </tr>
+          <tr><td class="center"><b>CE</b></td>
+              <td class="num">2</td>
+              <td class="num">2</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num pct-bom">100,0%</td>
+              <td><details><summary style="cursor:pointer;color:#555">ver 2 CTEs</summary>
+              <div style="max-height:400px;overflow:auto;margin-top:6px">
+              <table style="font-size:11.5px">
+                <thead><tr style="background:#fafbfc">
+                  <th class="center">Filial</th><th class="num">Nr. CTe</th>
+                  <th>Destinatário</th><th>Cidade</th><th>Tipo</th>
+                  <th class="center">Prazo</th><th class="center">Entrega</th>
+                  <th class="num">Dias</th><th class="center">Status</th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1490</td>
+                <td>Pneubras Comercio de Pneus Ltda</td>
+                <td>LIMOEIRO DO NORTE</td>
+                <td>Lotação</td>
+                <td class="center">07/05/2026</td>
+                <td class="center">07/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1519</td>
+                <td>Pneubras Comercio De Pneus Ltda</td>
+                <td>IGUATU</td>
+                <td>Lotação</td>
+                <td class="center">14/05/2026</td>
+                <td class="center">14/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr></tbody>
+              </table>
+              </div></details></td>
+          </tr>
+          <tr><td class="center"><b>MA</b></td>
+              <td class="num">1</td>
+              <td class="num">1</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num pct-bom">100,0%</td>
+              <td><details><summary style="cursor:pointer;color:#555">ver 1 CTE</summary>
+              <div style="max-height:400px;overflow:auto;margin-top:6px">
+              <table style="font-size:11.5px">
+                <thead><tr style="background:#fafbfc">
+                  <th class="center">Filial</th><th class="num">Nr. CTe</th>
+                  <th>Destinatário</th><th>Cidade</th><th>Tipo</th>
+                  <th class="center">Prazo</th><th class="center">Entrega</th>
+                  <th class="num">Dias</th><th class="center">Status</th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td class="center">CWB - PR</td>
+                <td class="num">1538</td>
+                <td>Pneubras Comercio De Pneus Ltda</td>
+                <td>IMPERATRIZ</td>
+                <td>Lotação</td>
+                <td class="center">21/05/2026</td>
+                <td class="center">19/05/2026</td>
+                <td class="num">—</td>
+                <td class="center"><span class="st-prz">No Prazo</span></td>
+              </tr></tbody>
+              </table>
+              </div></details></td>
+          </tr></tbody>
+    </table>
+  </div>
+
+  
+    <div class="card">
+      <h2>📍 Acompanhamento — CTEs sem entrega
+        <small>escopo: todos · inclui Em Trânsito + Em Atraso + Justificado · placa cavalo + última posição via Sascar/AutoTrac · distância × 1.3</small>
+      </h2>
+      <p style="font-size:11.5px;color:#555;margin-bottom:8px">
+        <span class="sn-at">3 ATRASA</span> ·
+        <span class="sn-ri">0 RISCO</span> ·
+        <span class="sn-ok">2 OK</span> ·
+        <span class="sn-na">5 sem dado</span>
+        &nbsp;|&nbsp; <b>Cálculo:</b> distância × 1,3 ÷ 400 km/dia (truck Brasil) vs. dias até prazo
+      </p>
+      <div class="table-wrap">
+      <table class="sortable" id="tbl-acompanhamento">
+        <thead><tr>
+          <th class="center" data-type="text">Filial</th><th class="num" data-type="num">Nr. CTe</th>
+          <th data-type="text">Destinatário</th><th data-type="text">Destino</th>
+          <th class="num" data-type="num">Peso (kg)</th>
+          <th class="center" data-type="text">Status</th>
+          <th class="center" data-type="text">Onde está</th>
+          <th class="center" data-type="date">Emissão</th><th class="center" data-type="date">Prazo</th><th class="center" data-type="num">Dias até prazo</th>
+          <th data-type="text">Placa</th><th data-type="text">Cidade Atual</th>
+          <th class="num" data-type="num">km/h</th><th class="center" data-type="date">Posição em</th>
+          <th class="num" data-type="num">Distância</th><th class="center" data-type="text">Sinal</th><th data-type="text">Motivo</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td class="center">CWB - PR</td>
+          <td class="num"><a href="#" onclick="abrirIrmaos(this); return false;" data-irmaos="{&quot;cte&quot;: &quot;18/1566&quot;, &quot;ficha&quot;: &quot;14-53074&quot;, &quot;doc&quot;: &quot;NOD/REC-0000296 / CWB/NOD-0000155&quot;, &quot;tipo_op&quot;: &quot;Em Manifesto&quot;, &quot;irmaos&quot;: [{&quot;cte&quot;: &quot;14/102614&quot;, &quot;dest&quot;: &quot;MDM RENOVADORA PNEUS LTDA - ME&quot;, &quot;cid&quot;: &quot;ABREU E LIMA/PE&quot;, &quot;peso&quot;: 745.15, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;14/102684&quot;, &quot;dest&quot;: &quot;MDM RENOVADORA PNEUS LTDA - ME&quot;, &quot;cid&quot;: &quot;ABREU E LIMA/PE&quot;, &quot;peso&quot;: 2221.96, &quot;prev&quot;: &quot;02/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51820&quot;, &quot;dest&quot;: &quot;POLIMIX CONCRETO LTDA&quot;, &quot;cid&quot;: &quot;BARAUNA/RN&quot;, &quot;peso&quot;: 2663.447, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51948&quot;, &quot;dest&quot;: &quot;Comercial E Importadora De Pneus Ltda&quot;, &quot;cid&quot;: &quot;CAMPINA GRANDE/PB&quot;, &quot;peso&quot;: 822.42, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51899&quot;, &quot;dest&quot;: &quot;REGENCE VEICULOS PECAS E SERVICOS LTDA&quot;, &quot;cid&quot;: &quot;CARUARU/PE&quot;, &quot;peso&quot;: 87.72, &quot;prev&quot;: &quot;03/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51816&quot;, &quot;dest&quot;: &quot;TERRALUZ VEÍCULOS E PEÇAS LTDA&quot;, &quot;cid&quot;: &quot;FORTALEZA/CE&quot;, &quot;peso&quot;: 40.791, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51818&quot;, &quot;dest&quot;: &quot;NEWLAND VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;FORTALEZA/CE&quot;, &quot;peso&quot;: 345.719, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51903&quot;, &quot;dest&quot;: &quot;Rico Comercio De Produtos Automotivos Eireli&quot;, &quot;cid&quot;: &quot;FORTALEZA/CE&quot;, &quot;peso&quot;: 23.542, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51905&quot;, &quot;dest&quot;: &quot;GNC SUECIA COMERCIO DE VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;FORTALEZA/CE&quot;, &quot;peso&quot;: 32.91, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;14/102506&quot;, &quot;dest&quot;: &quot;Renov De Pneus Oliveira Ltda - Me&quot;, &quot;cid&quot;: &quot;FORTALEZA/CE&quot;, &quot;peso&quot;: 964.82, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;14/102616&quot;, &quot;dest&quot;: &quot;Renov De Pneus Oliveira Ltda - Me&quot;, &quot;cid&quot;: &quot;FORTALEZA/CE&quot;, &quot;peso&quot;: 330.38, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51827&quot;, &quot;dest&quot;: &quot;Autoline Veiculos Ltda&quot;, &quot;cid&quot;: &quot;JABOATAO DOS GUARARAPES/PE&quot;, &quot;peso&quot;: 29.395, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51896&quot;, &quot;dest&quot;: &quot;EUROVIA VEICULOS S/A&quot;, &quot;cid&quot;: &quot;JABOATAO DOS GUARARAPES/PE&quot;, &quot;peso&quot;: 52.65, &quot;prev&quot;: &quot;03/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51703&quot;, &quot;dest&quot;: &quot;PNEUCAR-COMERCIO DE PNEUS,PECAS E SERVICOS LTDA&quot;, &quot;cid&quot;: &quot;JOAO PESSOA/PB&quot;, &quot;peso&quot;: 72.114, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51902&quot;, &quot;dest&quot;: &quot;SEDAN COM E IMPOR DE VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;JOAO PESSOA/PB&quot;, &quot;peso&quot;: 41.72, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51922&quot;, &quot;dest&quot;: &quot;EUROVIA VEICULOS S/A&quot;, &quot;cid&quot;: &quot;JOAO PESSOA/PB&quot;, &quot;peso&quot;: 74.346, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51825&quot;, &quot;dest&quot;: &quot;NOVO RIO CARIRI COMERCIO DE VEICULOS LTDA.&quot;, &quot;cid&quot;: &quot;JUAZEIRO DO NORTE/CE&quot;, &quot;peso&quot;: 132.213, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51949&quot;, &quot;dest&quot;: &quot;Comercial E Importadora De Pneus Ltda&quot;, &quot;cid&quot;: &quot;JUAZEIRO DO NORTE/CE&quot;, &quot;peso&quot;: 822.42, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;14/102656&quot;, &quot;dest&quot;: &quot;HC PNEUS S/A&quot;, &quot;cid&quot;: &quot;JUAZEIRO/BA&quot;, &quot;peso&quot;: 858.072, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51901&quot;, &quot;dest&quot;: &quot;EUROVIA VEICULOS S/A&quot;, &quot;cid&quot;: &quot;LAURO DE FREITAS/BA&quot;, &quot;peso&quot;: 62.968, &quot;prev&quot;: &quot;03/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51898&quot;, &quot;dest&quot;: &quot;CYRO CAVALCANTI AUTO PECAS LTDA&quot;, &quot;cid&quot;: &quot;NATAL/RN&quot;, &quot;peso&quot;: 84.961, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51817&quot;, &quot;dest&quot;: &quot;NEWLAND VEÍCULOS LTDA&quot;, &quot;cid&quot;: &quot;PARNAIBA/PI&quot;, &quot;peso&quot;: 84.669, &quot;prev&quot;: &quot;02/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51950&quot;, &quot;dest&quot;: &quot;COMERCIAL E IMPORTADORA DE PNEUS LTDA&quot;, &quot;cid&quot;: &quot;PARNAMIRIM/RN&quot;, &quot;peso&quot;: 822.42, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;13/19554&quot;, &quot;dest&quot;: &quot;Comercial E Importadora De Pneus Ltda&quot;, &quot;cid&quot;: &quot;PETROLINA/PE&quot;, &quot;peso&quot;: 323.334, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51750&quot;, &quot;dest&quot;: &quot;Comercial E Importadora De Pneus Ltda&quot;, &quot;cid&quot;: &quot;PETROLINA/PE&quot;, &quot;peso&quot;: 103.376, &quot;prev&quot;: &quot;27/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51826&quot;, &quot;dest&quot;: &quot;RIO CAR COMERCIO DE VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;PETROLINA/PE&quot;, &quot;peso&quot;: 271.335, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51916&quot;, &quot;dest&quot;: &quot;SL PNEUS, PECAS, ACESSORIOS E SERVICOS LTDA&quot;, &quot;cid&quot;: &quot;PETROLINA/PE&quot;, &quot;peso&quot;: 115.484, &quot;prev&quot;: &quot;03/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1566&quot;, &quot;dest&quot;: &quot;BRINKS SEG E TRANSPORTE DE VALORES LTDA&quot;, &quot;cid&quot;: &quot;RECIFE/PE&quot;, &quot;peso&quot;: 55.7, &quot;prev&quot;: &quot;25/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: true}, {&quot;cte&quot;: &quot;1/51706&quot;, &quot;dest&quot;: &quot;Transportes E Servicos Astro Ltda&quot;, &quot;cid&quot;: &quot;RECIFE/PE&quot;, &quot;peso&quot;: 156.36, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51743&quot;, &quot;dest&quot;: &quot;Consorcio Recife Ambiental&quot;, &quot;cid&quot;: &quot;RECIFE/PE&quot;, &quot;peso&quot;: 3358.56, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51755&quot;, &quot;dest&quot;: &quot;Comercial E Importadora De Pneus Ltda&quot;, &quot;cid&quot;: &quot;RECIFE/PE&quot;, &quot;peso&quot;: 2648.808, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51819&quot;, &quot;dest&quot;: &quot;SARAIVA EQUIPAMENTOS LTDA SARAIVA EQUIPAMENTOS LTDA&quot;, &quot;cid&quot;: &quot;RECIFE/PE&quot;, &quot;peso&quot;: 1196.394, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51907&quot;, &quot;dest&quot;: &quot;AUTO PARVI LTDA&quot;, &quot;cid&quot;: &quot;RECIFE/PE&quot;, &quot;peso&quot;: 358.056, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51910&quot;, &quot;dest&quot;: &quot;AUTOLINE VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;RECIFE/PE&quot;, &quot;peso&quot;: 78.6, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51911&quot;, &quot;dest&quot;: &quot;TOTAL PNEUS COMERCIO EIRELI&quot;, &quot;cid&quot;: &quot;RECIFE/PE&quot;, &quot;peso&quot;: 180.328, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51942&quot;, &quot;dest&quot;: &quot;Comercial E Importadora De Pneus Ltda&quot;, &quot;cid&quot;: &quot;RECIFE/PE&quot;, &quot;peso&quot;: 2803.74, &quot;prev&quot;: &quot;01/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51914&quot;, &quot;dest&quot;: &quot;BEIRADEIRO COMERCIO DE PNEUS PECAS E SERVICOS LTDA&quot;, &quot;cid&quot;: &quot;SALGUEIRO/PE&quot;, &quot;peso&quot;: 118.38, &quot;prev&quot;: &quot;03/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51908&quot;, &quot;dest&quot;: &quot;GNC SUECIA COMERCIO DE VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;SALVADOR/BA&quot;, &quot;peso&quot;: 43.88, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51909&quot;, &quot;dest&quot;: &quot;AUTO PARVI LTDA&quot;, &quot;cid&quot;: &quot;SALVADOR/BA&quot;, &quot;peso&quot;: 1562.129, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51821&quot;, &quot;dest&quot;: &quot;GRANDE RIO SL COMERCIO DE VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 90.406, &quot;prev&quot;: &quot;02/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51900&quot;, &quot;dest&quot;: &quot;SAGA NICE COMERCIO DE VEICULOS PECAS E SERVICOS LTDA&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 181.276, &quot;prev&quot;: &quot;05/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51754&quot;, &quot;dest&quot;: &quot;INDUSTRIA E COMERCIO DE RACOES GOLF  LTDA&quot;, &quot;cid&quot;: &quot;SOBRAL/CE&quot;, &quot;peso&quot;: 1114.184, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51822&quot;, &quot;dest&quot;: &quot;ISAR VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 61.576, &quot;prev&quot;: &quot;02/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;14/102682&quot;, &quot;dest&quot;: &quot;Cacique Pneus Industria E Comercio Ltda&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 7667.77, &quot;prev&quot;: &quot;02/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}]}" style="color:#1967d2;text-decoration:none;font-weight:600">1566 📋</a></td>
+          <td>BRINKS SEG E TRANSPORTE DE VALORES LTDA</td>
+          <td>RECIFE/<b>PE</b></td>
+          <td class="num">56</td>
+          <td class="center"><span class="st-tra">Em Transito</span></td>
+          <td class="center"><span style="background:#fef7e0;color:#856404;padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px">Em Manifesto</span><div style="font-size:10.5px;color:#555;margin-top:2px;font-family:monospace">NOD/REC-0000296 / CWB/NOD-0000155</div></td>
+          <td class="center">14/05/2026</td>
+          <td class="center">25/05/2026</td>
+          <td class="center">+3d</td>
+          <td>RBB2H55</td>
+          <td>Miradouro/<b>MG</b></td>
+          <td class="num">0</td>
+          <td class="center">2026-05-22 19:35:31.0000000</td>
+          <td class="num">2.131 km</td>
+          <td class="center"><span class="sn-at">ATRASA</span></td>
+          <td style="font-size:11px;color:#555">Precisa 6d pra 2131km mas só tem 3d até prazo</td>
+        </tr>
+        <tr>
+          <td class="center">CWB - PR</td>
+          <td class="num"><a href="#" onclick="abrirIrmaos(this); return false;" data-irmaos="{&quot;cte&quot;: &quot;18/1543&quot;, &quot;ficha&quot;: &quot;5-21455&quot;, &quot;doc&quot;: &quot;13491&quot;, &quot;tipo_op&quot;: &quot;Em Romaneio&quot;, &quot;irmaos&quot;: [{&quot;cte&quot;: &quot;1/51693&quot;, &quot;dest&quot;: &quot;UMUARAMA MOTORS COMERC E SERV LTDA&quot;, &quot;cid&quot;: &quot;BACABAL/MA&quot;, &quot;peso&quot;: 302.185, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1541&quot;, &quot;dest&quot;: &quot;Brinks Seg E Transporte De Valores Ltda&quot;, &quot;cid&quot;: &quot;FLORIANO/PI&quot;, &quot;peso&quot;: 55.7, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;14/101890&quot;, &quot;dest&quot;: &quot;Terra Facil Serv Terrapl Ltda&quot;, &quot;cid&quot;: &quot;JAGUARARI/BA&quot;, &quot;peso&quot;: 1016.48, &quot;prev&quot;: &quot;19/05/2026&quot;, &quot;entrega&quot;: &quot;22/05/2026&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14297&quot;, &quot;dest&quot;: &quot;Arizona Pneus Ltda&quot;, &quot;cid&quot;: &quot;PICOS/PI&quot;, &quot;peso&quot;: 2516.808, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14304&quot;, &quot;dest&quot;: &quot;Arizona Pneus Ltda&quot;, &quot;cid&quot;: &quot;PICOS/PI&quot;, &quot;peso&quot;: 13.938, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14294&quot;, &quot;dest&quot;: &quot;Ab De Carvalho Santa Inês Pneus&quot;, &quot;cid&quot;: &quot;SANTA INES/MA&quot;, &quot;peso&quot;: 4243.485, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14311&quot;, &quot;dest&quot;: &quot;Ab De Carvalho Santa Inês Pneus&quot;, &quot;cid&quot;: &quot;SANTA INES/MA&quot;, &quot;peso&quot;: 732.225, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51463&quot;, &quot;dest&quot;: &quot;TOYOLEX AUTOS LTDA&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 365.105, &quot;prev&quot;: &quot;26/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51466&quot;, &quot;dest&quot;: &quot;DUVEL DISTRIBUIDORA DE VEICULOS E PECAS&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 30.692, &quot;prev&quot;: &quot;26/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51560&quot;, &quot;dest&quot;: &quot;PAULO J P RODRIGUES EIRELI&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 983.124, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51579&quot;, &quot;dest&quot;: &quot;PAULO J P RODRIGUES EIRELI&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 61.286, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51694&quot;, &quot;dest&quot;: &quot;TOYOLEX AUTOS S.A&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 133.625, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51699&quot;, &quot;dest&quot;: &quot;EURO IMPORT COMERCIO E SERVICOS LTD&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 57.163, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1543&quot;, &quot;dest&quot;: &quot;Brink&#x27;s Seguranca E Transporte De Valores Ltda&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 111.4, &quot;prev&quot;: &quot;20/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: true}, {&quot;cte&quot;: &quot;5/14296&quot;, &quot;dest&quot;: &quot;I P DA SILVA SERVICOS E VENDA DE PE&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 841.87, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14305&quot;, &quot;dest&quot;: &quot;MUNDOSAM PNEUS LTDA MONACO PNEUS&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 70.477, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14310&quot;, &quot;dest&quot;: &quot;I P DA SILVA SERVICOS E VENDA DE PE&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 22.445, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51508&quot;, &quot;dest&quot;: &quot;NEWLAND VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 668.123, &quot;prev&quot;: &quot;27/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51566&quot;, &quot;dest&quot;: &quot;ISAR VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 70.641, &quot;prev&quot;: &quot;27/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51683&quot;, &quot;dest&quot;: &quot;NEWLAND VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 777.834, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}]}" style="color:#1967d2;text-decoration:none;font-weight:600">1543 📋</a></td>
+          <td>Brink's Seguranca E Transporte De Valores Ltda</td>
+          <td>TERESINA/<b>PI</b></td>
+          <td class="num">111</td>
+          <td class="center"><span class="st-atr">Em Atraso</span></td>
+          <td class="center"><span style="background:#e8f0fe;color:#1967d2;padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px">Em Romaneio</span><div style="font-size:10.5px;color:#555;margin-top:2px;font-family:monospace">13491</div></td>
+          <td class="center">12/05/2026</td>
+          <td class="center">20/05/2026</td>
+          <td class="center">-2d</td>
+          <td>QRK9D46</td>
+          <td>Ponto dos Volantes/<b>MG</b></td>
+          <td class="num">0</td>
+          <td class="center">2026-05-22 17:32:31.0000000</td>
+          <td class="num">1.695 km</td>
+          <td class="center"><span class="sn-at">ATRASA</span></td>
+          <td style="font-size:11px;color:#555">Prazo venceu há 2d, ainda a 1695km do destino</td>
+        </tr>
+        <tr>
+          <td class="center">CWB - PR</td>
+          <td class="num"><a href="#" onclick="abrirIrmaos(this); return false;" data-irmaos="{&quot;cte&quot;: &quot;18/1584&quot;, &quot;ficha&quot;: &quot;14-53102&quot;, &quot;doc&quot;: &quot;32626&quot;, &quot;tipo_op&quot;: &quot;Em Romaneio&quot;, &quot;irmaos&quot;: [{&quot;cte&quot;: &quot;18/1584&quot;, &quot;dest&quot;: &quot;Guerra Transporte E Logistica Barretos Ltda&quot;, &quot;cid&quot;: &quot;BARRETOS/SP&quot;, &quot;peso&quot;: 3053.0, &quot;prev&quot;: &quot;22/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: true}, {&quot;cte&quot;: &quot;14/102921&quot;, &quot;dest&quot;: &quot;ACUCAR E ALCOOL OSWALDO RIBEIRO DE MENDONCA LTDA&quot;, &quot;cid&quot;: &quot;GUAIRA/SP&quot;, &quot;peso&quot;: 1155.82, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}]}" style="color:#1967d2;text-decoration:none;font-weight:600">1584 📋</a></td>
+          <td>Guerra Transporte E Logistica Barretos Ltda</td>
+          <td>BARRETOS/<b>SP</b></td>
+          <td class="num">3.053</td>
+          <td class="center"><span class="st-atr">Em Atraso</span></td>
+          <td class="center"><span style="background:#e8f0fe;color:#1967d2;padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px">Em Romaneio</span><div style="font-size:10.5px;color:#555;margin-top:2px;font-family:monospace">32626</div></td>
+          <td class="center">19/05/2026</td>
+          <td class="center">22/05/2026</td>
+          <td class="center">+0d</td>
+          <td>ECT4G68</td>
+          <td>—/<b>SP</b></td>
+          <td class="num">0</td>
+          <td class="center">2026-05-22 20:17:17.0000000</td>
+          <td class="num">364 km</td>
+          <td class="center"><span class="sn-at">ATRASA</span></td>
+          <td style="font-size:11px;color:#555">Precisa 1d pra 364km mas só tem 0d até prazo</td>
+        </tr>
+        <tr>
+          <td class="center">CWB - PR</td>
+          <td class="num"><a href="#" onclick="abrirIrmaos(this); return false;" data-irmaos="{&quot;cte&quot;: &quot;18/1541&quot;, &quot;ficha&quot;: &quot;5-21455&quot;, &quot;doc&quot;: &quot;13491&quot;, &quot;tipo_op&quot;: &quot;Em Romaneio&quot;, &quot;irmaos&quot;: [{&quot;cte&quot;: &quot;1/51693&quot;, &quot;dest&quot;: &quot;UMUARAMA MOTORS COMERC E SERV LTDA&quot;, &quot;cid&quot;: &quot;BACABAL/MA&quot;, &quot;peso&quot;: 302.185, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1541&quot;, &quot;dest&quot;: &quot;Brinks Seg E Transporte De Valores Ltda&quot;, &quot;cid&quot;: &quot;FLORIANO/PI&quot;, &quot;peso&quot;: 55.7, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: true}, {&quot;cte&quot;: &quot;14/101890&quot;, &quot;dest&quot;: &quot;Terra Facil Serv Terrapl Ltda&quot;, &quot;cid&quot;: &quot;JAGUARARI/BA&quot;, &quot;peso&quot;: 1016.48, &quot;prev&quot;: &quot;19/05/2026&quot;, &quot;entrega&quot;: &quot;22/05/2026&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14297&quot;, &quot;dest&quot;: &quot;Arizona Pneus Ltda&quot;, &quot;cid&quot;: &quot;PICOS/PI&quot;, &quot;peso&quot;: 2516.808, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14304&quot;, &quot;dest&quot;: &quot;Arizona Pneus Ltda&quot;, &quot;cid&quot;: &quot;PICOS/PI&quot;, &quot;peso&quot;: 13.938, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14294&quot;, &quot;dest&quot;: &quot;Ab De Carvalho Santa Inês Pneus&quot;, &quot;cid&quot;: &quot;SANTA INES/MA&quot;, &quot;peso&quot;: 4243.485, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14311&quot;, &quot;dest&quot;: &quot;Ab De Carvalho Santa Inês Pneus&quot;, &quot;cid&quot;: &quot;SANTA INES/MA&quot;, &quot;peso&quot;: 732.225, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51463&quot;, &quot;dest&quot;: &quot;TOYOLEX AUTOS LTDA&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 365.105, &quot;prev&quot;: &quot;26/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51466&quot;, &quot;dest&quot;: &quot;DUVEL DISTRIBUIDORA DE VEICULOS E PECAS&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 30.692, &quot;prev&quot;: &quot;26/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51560&quot;, &quot;dest&quot;: &quot;PAULO J P RODRIGUES EIRELI&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 983.124, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51579&quot;, &quot;dest&quot;: &quot;PAULO J P RODRIGUES EIRELI&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 61.286, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51694&quot;, &quot;dest&quot;: &quot;TOYOLEX AUTOS S.A&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 133.625, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51699&quot;, &quot;dest&quot;: &quot;EURO IMPORT COMERCIO E SERVICOS LTD&quot;, &quot;cid&quot;: &quot;SAO LUIS/MA&quot;, &quot;peso&quot;: 57.163, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1543&quot;, &quot;dest&quot;: &quot;Brink&#x27;s Seguranca E Transporte De Valores Ltda&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 111.4, &quot;prev&quot;: &quot;20/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14296&quot;, &quot;dest&quot;: &quot;I P DA SILVA SERVICOS E VENDA DE PE&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 841.87, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14305&quot;, &quot;dest&quot;: &quot;MUNDOSAM PNEUS LTDA MONACO PNEUS&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 70.477, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;5/14310&quot;, &quot;dest&quot;: &quot;I P DA SILVA SERVICOS E VENDA DE PE&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 22.445, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51508&quot;, &quot;dest&quot;: &quot;NEWLAND VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 668.123, &quot;prev&quot;: &quot;27/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51566&quot;, &quot;dest&quot;: &quot;ISAR VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 70.641, &quot;prev&quot;: &quot;27/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;1/51683&quot;, &quot;dest&quot;: &quot;NEWLAND VEICULOS LTDA&quot;, &quot;cid&quot;: &quot;TERESINA/PI&quot;, &quot;peso&quot;: 777.834, &quot;prev&quot;: &quot;29/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}]}" style="color:#1967d2;text-decoration:none;font-weight:600">1541 📋</a></td>
+          <td>Brinks Seg E Transporte De Valores Ltda</td>
+          <td>FLORIANO/<b>PI</b></td>
+          <td class="num">56</td>
+          <td class="center"><span class="st-tra">Em Transito</span></td>
+          <td class="center"><span style="background:#e8f0fe;color:#1967d2;padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px">Em Romaneio</span><div style="font-size:10.5px;color:#555;margin-top:2px;font-family:monospace">13491</div></td>
+          <td class="center">12/05/2026</td>
+          <td class="center">28/05/2026</td>
+          <td class="center">+6d</td>
+          <td>QRK9D46</td>
+          <td>Ponto dos Volantes/<b>MG</b></td>
+          <td class="num">0</td>
+          <td class="center">2026-05-22 17:32:31.0000000</td>
+          <td class="num">1.458 km</td>
+          <td class="center"><span class="sn-ok">OK</span></td>
+          <td style="font-size:11px;color:#555">4d necessários × 6d restantes</td>
+        </tr>
+        <tr>
+          <td class="center">CWB - PR</td>
+          <td class="num"><a href="#" onclick="abrirIrmaos(this); return false;" data-irmaos="{&quot;cte&quot;: &quot;18/1587&quot;, &quot;ficha&quot;: &quot;18-479&quot;, &quot;doc&quot;: &quot;CWB/NOD-0000158&quot;, &quot;tipo_op&quot;: &quot;Em Manifesto&quot;, &quot;irmaos&quot;: [{&quot;cte&quot;: &quot;18/1587&quot;, &quot;dest&quot;: &quot;REGIONAL TELHAS INDUSTRIA E COM. DE PRODUTOS&quot;, &quot;cid&quot;: &quot;ASSIS/SP&quot;, &quot;peso&quot;: 1221.2, &quot;prev&quot;: &quot;26/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: true}, {&quot;cte&quot;: &quot;18/1584&quot;, &quot;dest&quot;: &quot;Guerra Transporte E Logistica Barretos Ltda&quot;, &quot;cid&quot;: &quot;BARRETOS/SP&quot;, &quot;peso&quot;: 3053.0, &quot;prev&quot;: &quot;22/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1586&quot;, &quot;dest&quot;: &quot;USINA BATATAIS S/A ACUCAR E ALCOOL&quot;, &quot;cid&quot;: &quot;BATATAIS/SP&quot;, &quot;peso&quot;: 7583.31, &quot;prev&quot;: &quot;19/05/2026&quot;, &quot;entrega&quot;: &quot;22/05/2026&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1588&quot;, &quot;dest&quot;: &quot;A P G TRANSP LOGIST E REPRES LTDA&quot;, &quot;cid&quot;: &quot;CABO DE SANTO AGOSTINHO/PE&quot;, &quot;peso&quot;: 1881.96, &quot;prev&quot;: &quot;04/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1582&quot;, &quot;dest&quot;: &quot;Transportes Cavalinho Ltda&quot;, &quot;cid&quot;: &quot;CAMACARI/BA&quot;, &quot;peso&quot;: 1953.92, &quot;prev&quot;: &quot;02/06/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1585&quot;, &quot;dest&quot;: &quot;Hm Transportes, Logistica E Locacoes Ltda&quot;, &quot;cid&quot;: &quot;ORLANDIA/SP&quot;, &quot;peso&quot;: 1856.88, &quot;prev&quot;: &quot;26/05/2026&quot;, &quot;entrega&quot;: &quot;22/05/2026&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1583&quot;, &quot;dest&quot;: &quot;Transportes Cavalinho Ltda&quot;, &quot;cid&quot;: &quot;PAULINIA/SP&quot;, &quot;peso&quot;: 1953.92, &quot;prev&quot;: &quot;19/05/2026&quot;, &quot;entrega&quot;: &quot;22/05/2026&quot;, &quot;self&quot;: false}]}" style="color:#1967d2;text-decoration:none;font-weight:600">1587 📋</a></td>
+          <td>REGIONAL TELHAS INDUSTRIA E COM. DE PRODUTOS</td>
+          <td>ASSIS/<b>SP</b></td>
+          <td class="num">1.221</td>
+          <td class="center"><span class="st-tra">Em Transito</span></td>
+          <td class="center"><span style="background:#fef7e0;color:#856404;padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px">Em Manifesto</span><div style="font-size:10.5px;color:#555;margin-top:2px;font-family:monospace">CWB/NOD-0000158</div></td>
+          <td class="center">19/05/2026</td>
+          <td class="center">26/05/2026</td>
+          <td class="center">+4d</td>
+          <td>TJK7J04</td>
+          <td>Nova Odessa/<b>SP</b></td>
+          <td class="num">0</td>
+          <td class="center">2026-05-21 20:20:28.0000000</td>
+          <td class="num">417 km</td>
+          <td class="center"><span class="sn-ok">OK</span></td>
+          <td style="font-size:11px;color:#555">2d necessários × 4d restantes</td>
+        </tr>
+        <tr>
+          <td class="center">CWB - PR</td>
+          <td class="num"><a href="#" onclick="abrirIrmaos(this); return false;" data-irmaos="{&quot;cte&quot;: &quot;18/1589&quot;, &quot;ficha&quot;: &quot;18-480&quot;, &quot;doc&quot;: &quot;CWB/BAR-0000298&quot;, &quot;tipo_op&quot;: &quot;Chegou em filial&quot;, &quot;irmaos&quot;: [{&quot;cte&quot;: &quot;18/1589&quot;, &quot;dest&quot;: &quot;Rm Comercio De Pneus Ltda&quot;, &quot;cid&quot;: &quot;SERRA/ES&quot;, &quot;peso&quot;: 16096.0, &quot;prev&quot;: &quot;25/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: true}]}" style="color:#1967d2;text-decoration:none;font-weight:600">1589 📋</a></td>
+          <td>Rm Comercio De Pneus Ltda</td>
+          <td>SERRA/<b>ES</b></td>
+          <td class="num">16.096</td>
+          <td class="center"><span class="st-tra">Em Transito</span></td>
+          <td class="center"><span style="background:#e6f4ea;color:#1e8e3e;padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px">Chegou em filial</span><div style="font-size:10.5px;color:#555;margin-top:2px;font-family:monospace">CWB/BAR-0000298</div></td>
+          <td class="center">20/05/2026</td>
+          <td class="center">25/05/2026</td>
+          <td class="center">—</td>
+          <td>—</td>
+          <td>Filial BAR/<b>?</b></td>
+          <td class="num">—</td>
+          <td class="center">—</td>
+          <td class="num">—</td>
+          <td class="center"><span class="sn-na">SEM_DADO</span></td>
+          <td style="font-size:11px;color:#555">Chegou em filial BAR — aguarda romaneio</td>
+        </tr>
+        <tr>
+          <td class="center">CWB - PR</td>
+          <td class="num"><a href="#" onclick="abrirIrmaos(this); return false;" data-irmaos="{&quot;cte&quot;: &quot;18/1591&quot;, &quot;ficha&quot;: &quot;18-483&quot;, &quot;doc&quot;: &quot;CWB/NOD-0000159&quot;, &quot;tipo_op&quot;: &quot;Chegou em filial&quot;, &quot;irmaos&quot;: [{&quot;cte&quot;: &quot;18/1595&quot;, &quot;dest&quot;: &quot;Sabo Agronegocios Ltda&quot;, &quot;cid&quot;: &quot;(SINOP)/MT&quot;, &quot;peso&quot;: 2004.08, &quot;prev&quot;: &quot;27/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1592&quot;, &quot;dest&quot;: &quot;Transport Simoes Bebedouro Ltda&quot;, &quot;cid&quot;: &quot;BEBEDOURO/SP&quot;, &quot;peso&quot;: 2019.9, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1591&quot;, &quot;dest&quot;: &quot;Transportadora Doiscorreguense Ltda&quot;, &quot;cid&quot;: &quot;DOIS CORREGOS/SP&quot;, &quot;peso&quot;: 2442.4, &quot;prev&quot;: &quot;25/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: true}, {&quot;cte&quot;: &quot;18/1594&quot;, &quot;dest&quot;: &quot;NIPAL TRANSPORTES LTDA&quot;, &quot;cid&quot;: &quot;FEIRA DE SANTANA/BA&quot;, &quot;peso&quot;: 1881.96, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1593&quot;, &quot;dest&quot;: &quot;TRANSPORTES IMEDIATO LTDA&quot;, &quot;cid&quot;: &quot;RIBEIRAO PRETO/SP&quot;, &quot;peso&quot;: 1681.32, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}]}" style="color:#1967d2;text-decoration:none;font-weight:600">1591 📋</a></td>
+          <td>Transportadora Doiscorreguense Ltda</td>
+          <td>DOIS CORREGOS/<b>SP</b></td>
+          <td class="num">2.442</td>
+          <td class="center"><span class="st-tra">Em Transito</span></td>
+          <td class="center"><span style="background:#e6f4ea;color:#1e8e3e;padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px">Chegou em filial</span><div style="font-size:10.5px;color:#555;margin-top:2px;font-family:monospace">CWB/NOD-0000159</div></td>
+          <td class="center">21/05/2026</td>
+          <td class="center">25/05/2026</td>
+          <td class="center">—</td>
+          <td>—</td>
+          <td>Filial NOD/<b>?</b></td>
+          <td class="num">—</td>
+          <td class="center">—</td>
+          <td class="num">—</td>
+          <td class="center"><span class="sn-na">SEM_DADO</span></td>
+          <td style="font-size:11px;color:#555">Chegou em filial NOD — aguarda romaneio</td>
+        </tr>
+        <tr>
+          <td class="center">CWB - PR</td>
+          <td class="num"><a href="#" onclick="abrirIrmaos(this); return false;" data-irmaos="{&quot;cte&quot;: &quot;18/1592&quot;, &quot;ficha&quot;: &quot;18-483&quot;, &quot;doc&quot;: &quot;CWB/NOD-0000159&quot;, &quot;tipo_op&quot;: &quot;Chegou em filial&quot;, &quot;irmaos&quot;: [{&quot;cte&quot;: &quot;18/1595&quot;, &quot;dest&quot;: &quot;Sabo Agronegocios Ltda&quot;, &quot;cid&quot;: &quot;(SINOP)/MT&quot;, &quot;peso&quot;: 2004.08, &quot;prev&quot;: &quot;27/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1592&quot;, &quot;dest&quot;: &quot;Transport Simoes Bebedouro Ltda&quot;, &quot;cid&quot;: &quot;BEBEDOURO/SP&quot;, &quot;peso&quot;: 2019.9, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: true}, {&quot;cte&quot;: &quot;18/1591&quot;, &quot;dest&quot;: &quot;Transportadora Doiscorreguense Ltda&quot;, &quot;cid&quot;: &quot;DOIS CORREGOS/SP&quot;, &quot;peso&quot;: 2442.4, &quot;prev&quot;: &quot;25/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1594&quot;, &quot;dest&quot;: &quot;NIPAL TRANSPORTES LTDA&quot;, &quot;cid&quot;: &quot;FEIRA DE SANTANA/BA&quot;, &quot;peso&quot;: 1881.96, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1593&quot;, &quot;dest&quot;: &quot;TRANSPORTES IMEDIATO LTDA&quot;, &quot;cid&quot;: &quot;RIBEIRAO PRETO/SP&quot;, &quot;peso&quot;: 1681.32, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}]}" style="color:#1967d2;text-decoration:none;font-weight:600">1592 📋</a></td>
+          <td>Transport Simoes Bebedouro Ltda</td>
+          <td>BEBEDOURO/<b>SP</b></td>
+          <td class="num">2.020</td>
+          <td class="center"><span class="st-tra">Em Transito</span></td>
+          <td class="center"><span style="background:#e6f4ea;color:#1e8e3e;padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px">Chegou em filial</span><div style="font-size:10.5px;color:#555;margin-top:2px;font-family:monospace">CWB/NOD-0000159</div></td>
+          <td class="center">21/05/2026</td>
+          <td class="center">28/05/2026</td>
+          <td class="center">—</td>
+          <td>—</td>
+          <td>Filial NOD/<b>?</b></td>
+          <td class="num">—</td>
+          <td class="center">—</td>
+          <td class="num">—</td>
+          <td class="center"><span class="sn-na">SEM_DADO</span></td>
+          <td style="font-size:11px;color:#555">Chegou em filial NOD — aguarda romaneio</td>
+        </tr>
+        <tr>
+          <td class="center">CWB - PR</td>
+          <td class="num"><a href="#" onclick="abrirIrmaos(this); return false;" data-irmaos="{&quot;cte&quot;: &quot;18/1593&quot;, &quot;ficha&quot;: &quot;18-483&quot;, &quot;doc&quot;: &quot;CWB/NOD-0000159&quot;, &quot;tipo_op&quot;: &quot;Chegou em filial&quot;, &quot;irmaos&quot;: [{&quot;cte&quot;: &quot;18/1595&quot;, &quot;dest&quot;: &quot;Sabo Agronegocios Ltda&quot;, &quot;cid&quot;: &quot;(SINOP)/MT&quot;, &quot;peso&quot;: 2004.08, &quot;prev&quot;: &quot;27/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1592&quot;, &quot;dest&quot;: &quot;Transport Simoes Bebedouro Ltda&quot;, &quot;cid&quot;: &quot;BEBEDOURO/SP&quot;, &quot;peso&quot;: 2019.9, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1591&quot;, &quot;dest&quot;: &quot;Transportadora Doiscorreguense Ltda&quot;, &quot;cid&quot;: &quot;DOIS CORREGOS/SP&quot;, &quot;peso&quot;: 2442.4, &quot;prev&quot;: &quot;25/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1594&quot;, &quot;dest&quot;: &quot;NIPAL TRANSPORTES LTDA&quot;, &quot;cid&quot;: &quot;FEIRA DE SANTANA/BA&quot;, &quot;peso&quot;: 1881.96, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1593&quot;, &quot;dest&quot;: &quot;TRANSPORTES IMEDIATO LTDA&quot;, &quot;cid&quot;: &quot;RIBEIRAO PRETO/SP&quot;, &quot;peso&quot;: 1681.32, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: true}]}" style="color:#1967d2;text-decoration:none;font-weight:600">1593 📋</a></td>
+          <td>TRANSPORTES IMEDIATO LTDA</td>
+          <td>RIBEIRAO PRETO/<b>SP</b></td>
+          <td class="num">1.681</td>
+          <td class="center"><span class="st-tra">Em Transito</span></td>
+          <td class="center"><span style="background:#e6f4ea;color:#1e8e3e;padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px">Chegou em filial</span><div style="font-size:10.5px;color:#555;margin-top:2px;font-family:monospace">CWB/NOD-0000159</div></td>
+          <td class="center">21/05/2026</td>
+          <td class="center">28/05/2026</td>
+          <td class="center">—</td>
+          <td>—</td>
+          <td>Filial NOD/<b>?</b></td>
+          <td class="num">—</td>
+          <td class="center">—</td>
+          <td class="num">—</td>
+          <td class="center"><span class="sn-na">SEM_DADO</span></td>
+          <td style="font-size:11px;color:#555">Chegou em filial NOD — aguarda romaneio</td>
+        </tr>
+        <tr>
+          <td class="center">CWB - PR</td>
+          <td class="num"><a href="#" onclick="abrirIrmaos(this); return false;" data-irmaos="{&quot;cte&quot;: &quot;18/1594&quot;, &quot;ficha&quot;: &quot;18-483&quot;, &quot;doc&quot;: &quot;CWB/NOD-0000159&quot;, &quot;tipo_op&quot;: &quot;Chegou em filial&quot;, &quot;irmaos&quot;: [{&quot;cte&quot;: &quot;18/1595&quot;, &quot;dest&quot;: &quot;Sabo Agronegocios Ltda&quot;, &quot;cid&quot;: &quot;(SINOP)/MT&quot;, &quot;peso&quot;: 2004.08, &quot;prev&quot;: &quot;27/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1592&quot;, &quot;dest&quot;: &quot;Transport Simoes Bebedouro Ltda&quot;, &quot;cid&quot;: &quot;BEBEDOURO/SP&quot;, &quot;peso&quot;: 2019.9, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1591&quot;, &quot;dest&quot;: &quot;Transportadora Doiscorreguense Ltda&quot;, &quot;cid&quot;: &quot;DOIS CORREGOS/SP&quot;, &quot;peso&quot;: 2442.4, &quot;prev&quot;: &quot;25/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}, {&quot;cte&quot;: &quot;18/1594&quot;, &quot;dest&quot;: &quot;NIPAL TRANSPORTES LTDA&quot;, &quot;cid&quot;: &quot;FEIRA DE SANTANA/BA&quot;, &quot;peso&quot;: 1881.96, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: true}, {&quot;cte&quot;: &quot;18/1593&quot;, &quot;dest&quot;: &quot;TRANSPORTES IMEDIATO LTDA&quot;, &quot;cid&quot;: &quot;RIBEIRAO PRETO/SP&quot;, &quot;peso&quot;: 1681.32, &quot;prev&quot;: &quot;28/05/2026&quot;, &quot;entrega&quot;: &quot;&quot;, &quot;self&quot;: false}]}" style="color:#1967d2;text-decoration:none;font-weight:600">1594 📋</a></td>
+          <td>NIPAL TRANSPORTES LTDA</td>
+          <td>FEIRA DE SANTANA/<b>BA</b></td>
+          <td class="num">1.882</td>
+          <td class="center"><span class="st-tra">Em Transito</span></td>
+          <td class="center"><span style="background:#e6f4ea;color:#1e8e3e;padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px">Chegou em filial</span><div style="font-size:10.5px;color:#555;margin-top:2px;font-family:monospace">CWB/NOD-0000159</div></td>
+          <td class="center">21/05/2026</td>
+          <td class="center">28/05/2026</td>
+          <td class="center">—</td>
+          <td>—</td>
+          <td>Filial NOD/<b>?</b></td>
+          <td class="num">—</td>
+          <td class="center">—</td>
+          <td class="num">—</td>
+          <td class="center"><span class="sn-na">SEM_DADO</span></td>
+          <td style="font-size:11px;color:#555">Chegou em filial NOD — aguarda romaneio</td>
+        </tr></tbody>
+      </table>
+      </div>
+      <p style="font-size:11px;color:#666;margin-top:6px">
+        <b>"Onde está":</b>
+        <span style="background:#e8f0fe;color:#1967d2;padding:1px 6px;border-radius:4px;font-size:10.5px">Em Romaneio</span> = saiu pra entrega ao cliente final ·
+        <span style="background:#e6f4ea;color:#1e8e3e;padding:1px 6px;border-radius:4px;font-size:10.5px">Chegou em filial</span> = manifesto fechado, aguarda romaneio ·
+        <span style="background:#fef7e0;color:#856404;padding:1px 6px;border-radius:4px;font-size:10.5px">Em Manifesto</span> = ainda em transferência entre filiais ·
+        — = sem ficha vinculada
+      </p>
+    </div>
+    
+  
+    <div class="card">
+      <h2>🚨 Em Atraso <small>9 CTEs · tem 226 (ATRASO TRANSLUTE) OU atraso temporal sem justificativa</small></h2>
+      <table>
+        <thead><tr>
+          <th class="center">Filial</th><th class="num">Nr. CTe</th><th>Destinatário</th>
+          <th class="center">UF</th><th class="center">Prazo</th><th class="center">Entrega</th>
+          <th class="center">Dias</th><th>Tipo</th><th>Posição Atual</th><th>Códigos atraso</th><th>NFs</th>
+        </tr></thead>
+        <tbody>
+        <tr><td class="center">CWB - PR</td>
+            <td class="num">1540</td>
+            <td>Comercial De Cereais E Transporte Fuga Ltda</td>
+            <td class="center">SP</td>
+            <td class="center">12/05/2026</td>
+            <td class="center">15/05/2026</td>
+            <td class="center"><b>3d</b></td>
+            <td>Fracionada</td>
+            <td style="font-size:11.5px"><span style='color:#888'>entregue</span></td>
+            <td style="font-size:11px;color:#555"></td>
+            <td>251954</td>
+        </tr>
+        <tr><td class="center">CWB - PR</td>
+            <td class="num">1576</td>
+            <td>Sercon Concreto Ltda</td>
+            <td class="center">SP</td>
+            <td class="center">19/05/2026</td>
+            <td class="center">22/05/2026</td>
+            <td class="center"><b>3d</b></td>
+            <td>Fracionada</td>
+            <td style="font-size:11.5px"><span style='color:#888'>entregue</span></td>
+            <td style="font-size:11px;color:#555"></td>
+            <td>252570</td>
+        </tr>
+        <tr><td class="center">CWB - PR</td>
+            <td class="num">1583</td>
+            <td>Transportes Cavalinho Ltda</td>
+            <td class="center">SP</td>
+            <td class="center">19/05/2026</td>
+            <td class="center">22/05/2026</td>
+            <td class="center"><b>3d</b></td>
+            <td>Fracionada</td>
+            <td style="font-size:11.5px"><span style='color:#888'>entregue</span></td>
+            <td style="font-size:11px;color:#555"></td>
+            <td>252612</td>
+        </tr>
+        <tr><td class="center">CWB - PR</td>
+            <td class="num">1586</td>
+            <td>USINA BATATAIS S/A ACUCAR E ALCOOL</td>
+            <td class="center">SP</td>
+            <td class="center">19/05/2026</td>
+            <td class="center">22/05/2026</td>
+            <td class="center"><b>3d</b></td>
+            <td>Fracionada</td>
+            <td style="font-size:11.5px"><span style='color:#888'>entregue</span></td>
+            <td style="font-size:11px;color:#555"></td>
+            <td>252615</td>
+        </tr>
+        <tr><td class="center">CWB - PR</td>
+            <td class="num">1532</td>
+            <td>Trans Carlotti Transportes Ltda</td>
+            <td class="center">SP</td>
+            <td class="center">05/05/2026</td>
+            <td class="center">07/05/2026</td>
+            <td class="center"><b>2d</b></td>
+            <td>Fracionada</td>
+            <td style="font-size:11.5px"><span style='color:#888'>entregue</span></td>
+            <td style="font-size:11px;color:#555"></td>
+            <td>251339</td>
+        </tr>
+        <tr><td class="center">CWB - PR</td>
+            <td class="num">1552</td>
+            <td>MANFRIM LOGISTICA LTDA</td>
+            <td class="center">SP</td>
+            <td class="center">12/05/2026</td>
+            <td class="center">14/05/2026</td>
+            <td class="center"><b>2d</b></td>
+            <td>Fracionada</td>
+            <td style="font-size:11.5px"><span style='color:#888'>entregue</span></td>
+            <td style="font-size:11px;color:#555"></td>
+            <td>251965</td>
+        </tr>
+        <tr><td class="center">CWB - PR</td>
+            <td class="num">1508</td>
+            <td>Brinks Seg E Transporte De Valores Ltda</td>
+            <td class="center">PI</td>
+            <td class="center">18/05/2026</td>
+            <td class="center">20/05/2026</td>
+            <td class="center"><b>2d</b></td>
+            <td>Fracionada</td>
+            <td style="font-size:11.5px"><span style='color:#888'>entregue</span></td>
+            <td style="font-size:11px;color:#555"></td>
+            <td>250955</td>
+        </tr>
+        <tr><td class="center">CWB - PR</td>
+            <td class="num">1543</td>
+            <td>Brink's Seguranca E Transporte De Valores Ltda</td>
+            <td class="center">PI</td>
+            <td class="center">20/05/2026</td>
+            <td class="center"></td>
+            <td class="center"><b>2d</b></td>
+            <td>Fracionada</td>
+            <td style="font-size:11.5px">Ponto dos Volantes/<b>MG</b><div style='font-size:10.5px;color:#555;margin-top:2px'>placa <b>QRK9D46</b></div></td>
+            <td style="font-size:11px;color:#555">226 ATRASO TRANSLUTE</td>
+            <td>251955/251956</td>
+        </tr>
+        <tr><td class="center">CWB - PR</td>
+            <td class="num">1584</td>
+            <td>Guerra Transporte E Logistica Barretos Ltda</td>
+            <td class="center">SP</td>
+            <td class="center">22/05/2026</td>
+            <td class="center"></td>
+            <td class="center"><b>0d</b></td>
+            <td>Fracionada</td>
+            <td style="font-size:11.5px">—<div style='font-size:10.5px;color:#555;margin-top:2px'>placa <b>ECT4G68</b></div></td>
+            <td style="font-size:11px;color:#555"></td>
+            <td>252613</td>
+        </tr></tbody>
+      </table>
+    </div>
+    
+  
+  
+    <div class="card" style="background:#f8f9fc">
+      <h2>🗺️ Jornada por Região <small>onde a carga fica parada · janela Mar/26 → Mai/26 · inferência via troca de fichas</small></h2>
+      <p style="font-size:11.5px;color:#555;margin-bottom:10px;line-height:1.55">
+        Decomposição do tempo total entre <b>emissão do CTE</b> e <b>entrega ao cliente</b>:<br>
+        • <b>Viagem entre filiais</b> = tempo entre emissão da 1ª ficha e emissão da última ficha (CTE passou por crosses intermediários)<br>
+        • <b>Rota local final</b> = tempo entre emissão da última ficha e entrega (CTE chegou na filial dest e roteirizou até o cliente)
+      </p>
+      <table style="margin-bottom:12px">
+        <thead><tr>
+          <th>Região</th><th class="num">N CTEs entregues</th><th class="num">Total md</th>
+          <th class="num">Viagem entre filiais</th><th class="num">Rota local</th>
+          <th class="num">Fichas md</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><b>Sudeste</b></td>
+            <td class="num">136</td>
+            <td class="num">3.7d</td>
+            <td class="num">2.7d</td>
+            <td class="num">1.1d</td>
+            <td class="num">2.0</td>
+          </tr>
+          <tr>
+            <td><b>Nordeste</b></td>
+            <td class="num">82</td>
+            <td class="num">10.9d</td>
+            <td class="num">5.9d</td>
+            <td class="num">5.3d</td>
+            <td class="num">2.2</td>
+          </tr></tbody>
+      </table>
+      
+            <h3 style="font-size:13px;margin:14px 0 6px 0">📍 Sudeste — top destinos</h3>
+            <div class="table-wrap" style="max-height:280px">
+            <table style="font-size:11.5px">
+              <thead><tr style="background:#fafbfc">
+                <th>Destino</th><th class="num">N</th><th class="num">Total</th>
+                <th class="num">Viagem entre filiais</th><th class="num">Rota local final</th>
+                <th class="num">Fichas md</th><th>Onde fica parada</th>
+              </tr></thead>
+              <tbody>
+                <tr>
+                  <td>TAUBATE/SP</td>
+                  <td class="num">14</td>
+                  <td class="num">2.8d</td>
+                  <td class="num">1.4d</td>
+                  <td class="num">1.7d</td>
+                  <td class="num">1.6</td>
+                  <td><span class="tag-eq">~ equilibrado</span></td>
+                </tr>
+                <tr>
+                  <td>SERRA/ES</td>
+                  <td class="num">13</td>
+                  <td class="num">7.2d</td>
+                  <td class="num">3.8d</td>
+                  <td class="num">3.4d</td>
+                  <td class="num">2.2</td>
+                  <td><span class="tag-eq">~ equilibrado</span></td>
+                </tr>
+                <tr>
+                  <td>SAO PAULO/SP</td>
+                  <td class="num">12</td>
+                  <td class="num">3.0d</td>
+                  <td class="num">1.5d</td>
+                  <td class="num">1.7d</td>
+                  <td class="num">2.0</td>
+                  <td><span class="tag-eq">~ equilibrado</span></td>
+                </tr>
+                <tr>
+                  <td>PRAIA GRANDE/SP</td>
+                  <td class="num">10</td>
+                  <td class="num">3.0d</td>
+                  <td class="num">1.9d</td>
+                  <td class="num">1.1d</td>
+                  <td class="num">2.0</td>
+                  <td><span class="tag-via">🚛 viagem entre filiais</span></td>
+                </tr>
+                <tr>
+                  <td>SAO BERNARDO DO CAMPO/SP</td>
+                  <td class="num">6</td>
+                  <td class="num">2.7d</td>
+                  <td class="num">1.7d</td>
+                  <td class="num">1.0d</td>
+                  <td class="num">2.0</td>
+                  <td><span class="tag-via">🚛 viagem entre filiais</span></td>
+                </tr>
+                <tr>
+                  <td>PATROCINIO PAULISTA/SP</td>
+                  <td class="num">6</td>
+                  <td class="num">3.7d</td>
+                  <td class="num">1.3d</td>
+                  <td class="num">2.0d</td>
+                  <td class="num">1.8</td>
+                  <td><span class="tag-rl">🏠 rota local (filial dest segura)</span></td>
+                </tr>
+                <tr>
+                  <td>OURINHOS/SP</td>
+                  <td class="num">5</td>
+                  <td class="num">3.6d</td>
+                  <td class="num">3.4d</td>
+                  <td class="num">0.4d</td>
+                  <td class="num">2.0</td>
+                  <td><span class="tag-via">🚛 viagem entre filiais</span></td>
+                </tr>
+                <tr>
+                  <td>RIBEIRAO PRETO/SP</td>
+                  <td class="num">5</td>
+                  <td class="num">5.0d</td>
+                  <td class="num">4.4d</td>
+                  <td class="num">0.6d</td>
+                  <td class="num">2.6</td>
+                  <td><span class="tag-via">🚛 viagem entre filiais</span></td>
+                </tr></tbody>
+            </table>
+            </div>
+            <h3 style="font-size:13px;margin:14px 0 6px 0">📍 Nordeste — top destinos</h3>
+            <div class="table-wrap" style="max-height:280px">
+            <table style="font-size:11.5px">
+              <thead><tr style="background:#fafbfc">
+                <th>Destino</th><th class="num">N</th><th class="num">Total</th>
+                <th class="num">Viagem entre filiais</th><th class="num">Rota local final</th>
+                <th class="num">Fichas md</th><th>Onde fica parada</th>
+              </tr></thead>
+              <tbody>
+                <tr>
+                  <td>VITORIA DA CONQUISTA/BA</td>
+                  <td class="num">9</td>
+                  <td class="num">8.0d</td>
+                  <td class="num">2.4d</td>
+                  <td class="num">6.2d</td>
+                  <td class="num">1.8</td>
+                  <td><span class="tag-rl">🏠 rota local (filial dest segura)</span></td>
+                </tr>
+                <tr>
+                  <td>PATOS/PB</td>
+                  <td class="num">8</td>
+                  <td class="num">9.2d</td>
+                  <td class="num">3.5d</td>
+                  <td class="num">5.9d</td>
+                  <td class="num">1.8</td>
+                  <td><span class="tag-rl">🏠 rota local (filial dest segura)</span></td>
+                </tr>
+                <tr>
+                  <td>TIANGUA/CE</td>
+                  <td class="num">5</td>
+                  <td class="num">9.8d</td>
+                  <td class="num">2.8d</td>
+                  <td class="num">7.6d</td>
+                  <td class="num">1.6</td>
+                  <td><span class="tag-rl">🏠 rota local (filial dest segura)</span></td>
+                </tr>
+                <tr>
+                  <td>TEIXEIRA DE FREITAS/BA</td>
+                  <td class="num">5</td>
+                  <td class="num">10.6d</td>
+                  <td class="num">6.0d</td>
+                  <td class="num">5.0d</td>
+                  <td class="num">2.2</td>
+                  <td><span class="tag-eq">~ equilibrado</span></td>
+                </tr>
+                <tr>
+                  <td>IMPERATRIZ/MA</td>
+                  <td class="num">5</td>
+                  <td class="num">7.8d</td>
+                  <td class="num">1.8d</td>
+                  <td class="num">6.8d</td>
+                  <td class="num">1.4</td>
+                  <td><span class="tag-rl">🏠 rota local (filial dest segura)</span></td>
+                </tr></tbody>
+            </table>
+            </div>
+      <p style="font-size:11px;color:#888;margin-top:10px">
+        Legenda: <span class="tag-via">🚛 viagem entre filiais</span> = problema no caminho (cross intermediário ou rota longa) ·
+        <span class="tag-rl">🏠 rota local</span> = chegou na filial dest mas demora pra entregar (capacidade local) ·
+        <span class="tag-eq">~ equilibrado</span> = problemas em ambas etapas.
+      </p>
+    </div>
+    
+  
+  
+  
+    <div class="card" style="background:#fafbfc">
+      <h2>🔍 Metodologia & Tabelas DW</h2>
+      <h3 style="font-size:13px;margin:6px 0">Universo (filtro SQL)</h3>
+      <pre style="font-size:11px;background:#fff;padding:10px;border-radius:6px;overflow-x:auto;margin:0 0 12px 0;border:1px solid #e8eaed">SELECT … FROM f_bronze_cte_v2 [DWGrupolc]
+WHERE Empresa_CTE IN (18, 1)              -- Sumitomo: 18=CWB - PR, 1=BAR - SP
+  AND DsTipoEmissao = 'Normal'
+  AND Tipo_Transporte IN ('Fracionada', 'Lotação', 'Lotação Carreta 122', 'LOTAÇÃO DUNLOP')
+  AND Remetente LIKE '%SUMITOMO%'
+  AND Previsao BETWEEN '2026-05-01' AND '2026-05-31'    -- 'Previsao' = SLA entregas no mes (calibrado Marcilene); 'Emissao' = volume CTEs novos do mes</pre>
+
+      <h3 style="font-size:13px;margin:6px 0">Regra de Status</h3>
+      <table style="font-size:12px;margin-bottom:12px">
+        <tr><th>Status</th><th>Regra</th></tr>
+        <tr><td><span class="st-tra">Em Trânsito</span></td><td><code>Entrega IS NULL</code></td></tr>
+        <tr><td><span class="st-atr">Em Atraso</span></td><td><code>Entrega &gt; Previsão</code> <b>OU</b> (<code>Entrega IS NULL</code> E <code>Previsão &lt; data_corte</code>) — regra puramente temporal.<br>Códigos de ocorrência (informativos, não decidem status): <b>226</b> ATRASO TRANSLUTE, <b>232</b> Entrega não realizada RMS, <b>216</b> FALTA DE TEMPO HABIL NA ENTREGA.</td></tr>
+        <tr><td><span class="st-prz">No Prazo</span></td><td>caso contrário (entregue sem 226 marcado)</td></tr>
+      </table>
+
+      <div style="background:#fff3cd;padding:10px 12px;border-radius:6px;font-size:11.5px;color:#856404;margin-bottom:12px;line-height:1.55">
+        <b>⚠️ Atenção:</b> a regra de "Em Atraso = HistoricoCod 226" foi calibrada pela <b>Marcilene em 15/05/2026</b> contra a base Michelin (reproduziu 5/6 atrasos da planilha dela).
+        Pra outros embarcadores, valide os números antes de assumir que "% No Prazo" é fiel — a operação pode marcar atrasos com <b>outros códigos</b> (ver tabela abaixo).
+      </div>
+
+      <h3 style="font-size:13px;margin:6px 0">Top 18 códigos de ocorrência em CTEs de Sumitomo no período</h3>
+      <p style="font-size:11px;color:#666;margin:0 0 8px 0">Códigos com palavras "ATRASO", "ALINHAMENTO", "MOROSIDADE", "FALTA TEMPO HÁBIL", "FORA JANELA", "DESCUMPRI" marcados com ⚠️. Linha do <b>226</b> destacada em amarelo.</p>
+      <div class="table-wrap" style="max-height:340px">
+      <table style="font-size:12px">
+        <thead><tr><th class="num">Cod</th><th>Histórico</th><th class="num">CTEs distintos no mês</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">101</td>
+            <td>EM TRANSFERENCIA ENTRE FILIAIS </td>
+            <td class="num">1.231</td>
+          </tr>
+          <tr>
+            <td class="num">212</td>
+            <td>Em Transito para Entrega </td>
+            <td class="num">1.217</td>
+          </tr>
+          <tr>
+            <td class="num">1</td>
+            <td>ENTREGA REALIZADA NORMALMENTE </td>
+            <td class="num">1.197</td>
+          </tr>
+          <tr>
+            <td class="num">153</td>
+            <td>DOCUMENTO EMITIDO PARA TRANSPORTE </td>
+            <td class="num">1.101</td>
+          </tr>
+          <tr>
+            <td class="num">91</td>
+            <td>ENTREGA PROGRAMADA </td>
+            <td class="num">192</td>
+          </tr>
+          <tr style="background:#fff3cd">
+            <td class="num">226</td>
+            <td>ATRASO TRANSLUTE ⚠️</td>
+            <td class="num">49</td>
+          </tr>
+          <tr>
+            <td class="num">232</td>
+            <td>Entrega não realizada RMS </td>
+            <td class="num">30</td>
+          </tr>
+          <tr>
+            <td class="num">243</td>
+            <td>OUTROS PROBLEMAS NAO IDENTIFICADO </td>
+            <td class="num">14</td>
+          </tr>
+          <tr>
+            <td class="num">218</td>
+            <td>CARREGAMENTO FORA JANELA CORTE/REGIÃO ⚠️</td>
+            <td class="num">14</td>
+          </tr>
+          <tr>
+            <td class="num">216</td>
+            <td>FALTA DE TEMPO HABIL NA ENTREGA ⚠️</td>
+            <td class="num">12</td>
+          </tr>
+          <tr>
+            <td class="num">43</td>
+            <td>FERIADO LOCAL/NACIONAL </td>
+            <td class="num">4</td>
+          </tr>
+          <tr>
+            <td class="num">58</td>
+            <td>QUEBRA DO VEICULO </td>
+            <td class="num">2</td>
+          </tr>
+          <tr>
+            <td class="num">261</td>
+            <td>MOROSIDADE BRIDGESTINE GNRE ⚠️</td>
+            <td class="num">2</td>
+          </tr>
+          <tr>
+            <td class="num">99</td>
+            <td>OUTRAS OCORRENCIAS NAO ESPECIFICADAS </td>
+            <td class="num">1</td>
+          </tr>
+          <tr>
+            <td class="num">26</td>
+            <td>Nota Fiscal Retida pela Fiscalização </td>
+            <td class="num">1</td>
+          </tr>
+          <tr>
+            <td class="num">228</td>
+            <td>DEVOLUÇÃO RECUSA TOTAL </td>
+            <td class="num">1</td>
+          </tr></tbody>
+      </table>
+      </div>
+
+      <h3 style="font-size:13px;margin:14px 0 6px 0">Tabelas DW usadas (cross-database)</h3>
+      <table style="font-size:11.5px">
+        <thead><tr><th>Tabela</th><th>Banco</th><th>Pra quê</th></tr></thead>
+        <tbody>
+          <tr><td><code>f_bronze_cte_v2</code></td><td>DWGrupolc</td><td>Universo: filiais + Remetente + Tipo + Previsão</td></tr>
+          <tr><td><code>f_hs_ocorrencias</code></td><td>DBStage</td><td>Histórico fresco D-0; flag 226 = Em Atraso</td></tr>
+          <tr><td><code>vw_CTE_BASE</code></td><td>DBStage</td><td>CNPJ destinatário (bronze não tem) cruzando por <code>DsApelidoEmitente</code></td></tr>
+          <tr><td><code>f_bronze_link</code></td><td>DWGrupolc</td><td>CTE → ficha de viagem (drill-down telemetria)</td></tr>
+          <tr><td><code>f_ficha_de_viagem</code></td><td>DWLCTech</td><td>Ficha → placa cavalo (<code>nr_placa</code>)</td></tr>
+          <tr><td><code>f_rastreamento_monitoramento_live</code></td><td>DWLCTech</td><td>Última posição da placa (Sascar + AutoTrac unificado)</td></tr>
+          <tr><td><code>tbl_stg_latlong_municipios</code></td><td>DBStage</td><td>Geocode destino (cidade/UF → lat/long) para Haversine</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-size:13px;margin:14px 0 6px 0">Drill-down "pode atrasar" (Em Trânsito)</h3>
+      <ol style="font-size:11.5px;color:#444;margin:0 0 4px 18px;line-height:1.6">
+        <li>Pra cada CTE Em Trânsito, busca a(s) ficha(s) em <code>f_bronze_link</code></li>
+        <li>Da ficha pega placa do cavalo em <code>f_ficha_de_viagem.nr_placa</code></li>
+        <li>Última posição da placa em <code>f_rastreamento_monitoramento_live</code> (Sascar ou AutoTrac)</li>
+        <li>Geocode do destino (Cidade/UF do CTE) via <code>tbl_stg_latlong_municipios</code></li>
+        <li>Distância em km = Haversine × <b>1.3</b> (fator de tortuosidade pra estimar rota real)</li>
+        <li>Sinal: <b>ATRASA</b> se <code>distância/400km-dia &gt; dias_até_prazo</code> (truck Brasil ~50km/h × 8h)</li>
+      </ol>
+    </div>
+    
+
+  <p style="text-align:center;color:#888;font-size:11px;margin-top:18px">
+    Gerado por <code>tools/sla_embarcador_report.py</code> (cliente: Sumitomo) ·
+    fonte: f_bronze_cte_v2 (DWGrupolc) + f_hs_ocorrencias (DBStage)
+  </p>
+
+  <dialog id="irmaos-dialog" style="border:1px solid #ddd;border-radius:8px;padding:0;max-width:90vw;max-height:85vh;overflow:hidden;font-family:'Segoe UI',Roboto,sans-serif">
+    <div style="background:#1967d2;color:#fff;padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <div style="font-size:12px;opacity:0.85">📋 Carga do veículo / sequência de entregas</div>
+        <div style="font-size:15px;font-weight:600" id="irmaos-title">—</div>
+      </div>
+      <button onclick="document.getElementById('irmaos-dialog').close()" style="background:transparent;color:#fff;border:1px solid #fff;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:13px">Fechar ✕</button>
+    </div>
+    <div id="irmaos-meta" style="background:#f0f3f8;padding:8px 14px;font-size:12px;color:#555;border-bottom:1px solid #ddd"></div>
+    <div id="irmaos-body" style="overflow:auto;max-height:60vh;padding:0"></div>
+  </dialog>
+
+  <script>
+    // Modal "Carga do veículo / sequência de entregas"
+    function abrirIrmaos(el) {
+      var data = JSON.parse(el.dataset.irmaos);
+      document.getElementById('irmaos-title').textContent =
+        'CTE ' + data.cte + ' — Ficha ' + data.ficha + ' · ' + data.tipo_op + (data.doc ? ' · ' + data.doc : '');
+      // Agrupa por cidade destino
+      var grupos = {};
+      data.irmaos.forEach(function(x) {
+        var k = x.cid || '—';
+        if (!grupos[k]) grupos[k] = [];
+        grupos[k].push(x);
+      });
+      var totPeso = data.irmaos.reduce(function(s, x) { return s + (x.peso || 0); }, 0);
+      var totCTEs = data.irmaos.length;
+      var entregues = data.irmaos.filter(function(x) { return x.entrega; }).length;
+      document.getElementById('irmaos-meta').innerHTML =
+        '<b>' + totCTEs + ' CTEs</b> · <b>' + totPeso.toLocaleString('pt-BR', {maximumFractionDigits: 0}) + ' kg</b> · '
+        + entregues + ' entregues · ' + (totCTEs - entregues) + ' pendentes · '
+        + Object.keys(grupos).length + ' destinos';
+      var html = '<table style="width:100%;font-size:12px;border-collapse:collapse">'
+        + '<thead style="position:sticky;top:0;background:#fafbfc"><tr>'
+        + '<th style="text-align:left;padding:6px 10px;border-bottom:1px solid #ddd">Destino</th>'
+        + '<th style="text-align:left;padding:6px 10px;border-bottom:1px solid #ddd">CTE</th>'
+        + '<th style="text-align:left;padding:6px 10px;border-bottom:1px solid #ddd">Destinatário</th>'
+        + '<th style="text-align:right;padding:6px 10px;border-bottom:1px solid #ddd">Peso (kg)</th>'
+        + '<th style="text-align:center;padding:6px 10px;border-bottom:1px solid #ddd">Prazo</th>'
+        + '<th style="text-align:center;padding:6px 10px;border-bottom:1px solid #ddd">Entrega</th>'
+        + '<th style="text-align:center;padding:6px 10px;border-bottom:1px solid #ddd">Status</th>'
+        + '</tr></thead><tbody>';
+      Object.keys(grupos).sort().forEach(function(cid) {
+        grupos[cid].forEach(function(x, idx) {
+          var rowBg = x.self ? 'background:#fff3cd' : '';
+          var statusHtml = x.entrega
+            ? '<span style="color:#155724;font-weight:600">Entregue</span>'
+            : '<span style="color:#856404;font-weight:600">Pendente</span>';
+          var destCell = idx === 0
+            ? '<td rowspan="' + grupos[cid].length + '" style="padding:6px 10px;border-bottom:1px solid #eee;font-weight:600;background:#f7f9fc;vertical-align:top">' + cid + '</td>'
+            : '';
+          html += '<tr style="' + rowBg + '">' + destCell
+            + '<td style="padding:6px 10px;border-bottom:1px solid #eee">' + x.cte + (x.self ? ' ⬅️ <b>esse</b>' : '') + '</td>'
+            + '<td style="padding:6px 10px;border-bottom:1px solid #eee">' + x.dest + '</td>'
+            + '<td style="padding:6px 10px;border-bottom:1px solid #eee;text-align:right">' + (x.peso ? x.peso.toLocaleString('pt-BR', {maximumFractionDigits: 1}) : '—') + '</td>'
+            + '<td style="padding:6px 10px;border-bottom:1px solid #eee;text-align:center">' + (x.prev || '—') + '</td>'
+            + '<td style="padding:6px 10px;border-bottom:1px solid #eee;text-align:center">' + (x.entrega || '—') + '</td>'
+            + '<td style="padding:6px 10px;border-bottom:1px solid #eee;text-align:center">' + statusHtml + '</td>'
+            + '</tr>';
+        });
+      });
+      html += '</tbody></table>';
+      document.getElementById('irmaos-body').innerHTML = html;
+      document.getElementById('irmaos-dialog').showModal();
+    }
+  </script>
+
+  <script>
+    // Sort interativo pras tabelas com classe "sortable"
+    // Cada <th> precisa de data-type="text" | "num" | "date"
+    (function() {
+      function parseVal(cell, type) {
+        var raw = (cell.innerText || cell.textContent || '').trim();
+        if (!raw || raw === '—' || raw === '-') return null;
+        if (type === 'num') {
+          // Tira separadores de milhar (".") e converte vírgula decimal
+          var n = parseFloat(raw.replace(/\./g, '').replace(',', '.').replace(/[^\d.\-]/g, ''));
+          return isNaN(n) ? null : n;
+        }
+        if (type === 'date') {
+          // Aceita DD/MM/YYYY ou DD/MM/YYYY HH:MM ou DD/MM HH:MM
+          var m = raw.match(/(\d{2})\/(\d{2})(?:\/(\d{4}))?(?:\s+(\d{2}):(\d{2}))?/);
+          if (!m) return null;
+          var dd = parseInt(m[1], 10), mm = parseInt(m[2], 10) - 1, yyyy = m[3] ? parseInt(m[3], 10) : 2026;
+          var hh = m[4] ? parseInt(m[4], 10) : 0, mi = m[5] ? parseInt(m[5], 10) : 0;
+          return new Date(yyyy, mm, dd, hh, mi).getTime();
+        }
+        return raw.toLowerCase();
+      }
+      function sortTable(tbl, colIdx, type, dir) {
+        var tbody = tbl.tBodies[0];
+        var rows = Array.from(tbody.rows);
+        rows.sort(function(a, b) {
+          var va = parseVal(a.cells[colIdx], type);
+          var vb = parseVal(b.cells[colIdx], type);
+          if (va === null && vb === null) return 0;
+          if (va === null) return 1;
+          if (vb === null) return -1;
+          if (va < vb) return dir === 'asc' ? -1 : 1;
+          if (va > vb) return dir === 'asc' ? 1 : -1;
+          return 0;
+        });
+        rows.forEach(function(r) { tbody.appendChild(r); });
+      }
+      document.querySelectorAll('table.sortable').forEach(function(tbl) {
+        var ths = tbl.tHead.querySelectorAll('th');
+        ths.forEach(function(th, idx) {
+          th.addEventListener('click', function() {
+            var type = th.getAttribute('data-type') || 'text';
+            var cur = th.classList.contains('sort-asc') ? 'asc' : (th.classList.contains('sort-desc') ? 'desc' : null);
+            var next = cur === 'asc' ? 'desc' : 'asc';
+            ths.forEach(function(t) { t.classList.remove('sort-asc', 'sort-desc'); });
+            th.classList.add('sort-' + next);
+            sortTable(tbl, idx, type, next);
+          });
+        });
+      });
+    })();
+  </script>
+</body></html>
