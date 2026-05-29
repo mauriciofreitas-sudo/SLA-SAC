@@ -1,0 +1,1847 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/20/2026 10:29:16 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="D2-WV47-DB01"
+  DTS:CreatorName="GRUPOLCLOG\MAURICIO.FREITAS"
+  DTS:DTSID="{A5E79216-AC59-44C2-A241-FAF64826620E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="71"
+  DTS:VersionGUID="{580379F5-200E-4621-8B67-4E4E51764E28}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{06E44F07-63EA-4C14-A881-7ABA77048644}"
+      DTS:ObjectName="10.100.86.89">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DBStage;Persist Security Info=True;Encrypt=False;TrustServerCertificate=True;Application Name=SSIS-Package2-{06E44F07-63EA-4C14-A881-7ABA77048644}10.100.86.89;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89 1]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{966719C2-9E39-4D0D-B232-38F123B011DE}"
+      DTS:ObjectName="10.100.86.89 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Persist Security Info=True;Encrypt=True;TrustServerCertificate=True;Application Name=&quot;SSIS-Package2-{966719C2-9E39-4D0D-B232-38F123B011DE}10.100.86.89 1&quot;;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.softran]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{0406F89C-7986-4F0D-87E3-5BB085A49FE0}"
+      DTS:ObjectName="169.57.181.231.SOFTRAN_TRANSLUTE.softran">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=169.57.181.231;User ID=softran;Initial Catalog=SOFTRAN_TRANSLUTE;Persist Security Info=True;Encrypt=True;TrustServerCertificate=True;Application Name=SSIS-Package2-{0406F89C-7986-4F0D-87E3-5BB085A49FE0}169.57.181.231.SOFTRAN_TRANSLUTE.softran;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DBStage]"
+      DTS:CreationName="ADO.NET:System.Data.Odbc.OdbcConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{FB5E5320-3C26-498E-B23F-74B909662BA6}"
+      DTS:ObjectName="DBStage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="uid=sqldba;Dsn=DBStage;">
+          <DTS:Password
+            DTS:Name="pwd"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{6C47B425-BFF0-4863-8B09-EC7F5513B385}"
+      DTS:ObjectName="ContInerDaSequNcia_DelayValidation">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Contêiner da Sequência"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contêiner da Sequência"
+      DTS:DTSID="{0E0A4910-FB76-4D22-BBC9-3F8E2D45461B}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Contêiner da Sequência">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="DelayValidation">@[$Package::ContInerDaSequNcia_DelayValidation]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Contêiner da Sequência\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{4AA21A1A-47B6-4742-866B-C2108836644C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Carrega dados em um banco de dados em conformidade com ADO.NET que usa uma tabela ou exibição de banco de dados. Carregue dados em uma tabela nova ou existente. por exemplo, use um provedor ADO.NET para ODBC para carregar dados em um destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;2"
+                  description="Carrega dados em um banco de dados em conformidade com ADO.NET que usa uma tabela ou exibição de banco de dados. Carregue dados em uma tabela nova ou existente. por exemplo, use um provedor ADO.NET para ODBC para carregar dados em um destino ODBC."
+                  name="Destino do ADO NET"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="O nome da tabela de banco de dados de Destino."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."VW_CONTROLADORIA_BASE_EMISSAO"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifique o número de linhas por lote. O padrão é 0, que usa o mesmo tamanho que o buffer interno SSIS. "
+                      expressionType="Notify"
+                      name="BatchSize">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="O número de segundos antes de o tempo limite de um comando ser alcançado. Um valor de 0 indica um tempo limite infinito. "
+                      expressionType="Notify"
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Especifica se a interface SqlBulkCopy deve ser usada para melhorar o desempenho de operações de inserção em massa. Somente determinados provedores oferecem suporte a essa interface."
+                      expressionType="Notify"
+                      name="UseBulkInsertWhenPossible">true</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[10.100.86.89]"
+                      connectionManagerRefId="Package.ConnectionManagers[10.100.86.89]"
+                      description="Gerenciador de conexões gerenciadas"
+                      name="IDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET]"
+                      errorRowDisposition="IgnoreFailure"
+                      hasSideEffects="true"
+                      name="Entrada de Destino ADO NET">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[ID]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="ID"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[ID]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[ID]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[DsEmpresa]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="DsEmpresa"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DsEmpresa]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsEmpresa]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[NrFicha]"
+                          cachedDataType="wstr"
+                          cachedLength="15"
+                          cachedName="NrFicha"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[NrFicha]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrFicha]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[DtEmissao]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="DtEmissao"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DtEmissao]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DtEmissao]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[DtSaida]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="DtSaida"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DtSaida]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DtSaida]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[DsCidadeOrigem]"
+                          cachedDataType="wstr"
+                          cachedLength="33"
+                          cachedName="DsCidadeOrigem"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DsCidadeOrigem]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsCidadeOrigem]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[DsDestino]"
+                          cachedDataType="wstr"
+                          cachedLength="33"
+                          cachedName="DsDestino"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DsDestino]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsDestino]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[DsCliente]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="DsCliente"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DsCliente]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsCliente]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[DsTipoTransporte]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="DsTipoTransporte"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DsTipoTransporte]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsTipoTransporte]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[VlMercadoria]"
+                          cachedDataType="numeric"
+                          cachedName="VlMercadoria"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[VlMercadoria]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlMercadoria]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[NrCTRB]"
+                          cachedDataType="i4"
+                          cachedName="NrCTRB"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[NrCTRB]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrCTRB]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[VlFreteCTRB]"
+                          cachedDataType="numeric"
+                          cachedName="VlFreteCTRB"
+                          cachedPrecision="38"
+                          cachedScale="13"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[VlFreteCTRB]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlFreteCTRB]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[VlAdiantamento]"
+                          cachedDataType="numeric"
+                          cachedName="VlAdiantamento"
+                          cachedPrecision="38"
+                          cachedScale="13"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[VlAdiantamento]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlAdiantamento]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[VlPedagioCTRB]"
+                          cachedDataType="numeric"
+                          cachedName="VlPedagioCTRB"
+                          cachedPrecision="38"
+                          cachedScale="13"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[VlPedagioCTRB]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlPedagioCTRB]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[SaldoCTRB]"
+                          cachedDataType="numeric"
+                          cachedName="SaldoCTRB"
+                          cachedPrecision="38"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[SaldoCTRB]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[SaldoCTRB]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[QtPeso]"
+                          cachedDataType="numeric"
+                          cachedName="QtPeso"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[QtPeso]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[QtPeso]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].Columns[VlLiquido]"
+                          cachedDataType="numeric"
+                          cachedName="VlLiquido"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[VlLiquido]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlLiquido]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[ID]"
+                          dataType="wstr"
+                          length="1"
+                          name="ID" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DsEmpresa]"
+                          dataType="wstr"
+                          length="10"
+                          name="DsEmpresa" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[NrFicha]"
+                          dataType="wstr"
+                          length="15"
+                          name="NrFicha" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DtEmissao]"
+                          dataType="wstr"
+                          length="10"
+                          name="DtEmissao" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DtSaida]"
+                          dataType="wstr"
+                          length="10"
+                          name="DtSaida" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DsCidadeOrigem]"
+                          dataType="wstr"
+                          length="33"
+                          name="DsCidadeOrigem" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DsDestino]"
+                          dataType="wstr"
+                          length="33"
+                          name="DsDestino" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DsCliente]"
+                          dataType="wstr"
+                          length="100"
+                          name="DsCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[DsTipoTransporte]"
+                          dataType="wstr"
+                          length="40"
+                          name="DsTipoTransporte" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[NrCTRB]"
+                          dataType="i4"
+                          name="NrCTRB" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[VlFreteCTRB]"
+                          dataType="numeric"
+                          name="VlFreteCTRB"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[VlAdiantamento]"
+                          dataType="numeric"
+                          name="VlAdiantamento"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[VlPedagioCTRB]"
+                          dataType="numeric"
+                          name="VlPedagioCTRB"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[SaldoCTRB]"
+                          dataType="numeric"
+                          name="SaldoCTRB"
+                          precision="38"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[VlMercadoria]"
+                          dataType="numeric"
+                          name="VlMercadoria"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[QtPeso]"
+                          dataType="numeric"
+                          name="QtPeso"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET].ExternalColumns[VlLiquido]"
+                          dataType="numeric"
+                          name="VlLiquido"
+                          precision="14"
+                          scale="4" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Outputs[Saída de Erro de Destino ADO NET]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino ADO NET"
+                      synchronousInputId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Outputs[Saída de Erro de Destino ADO NET].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Outputs[Saída de Erro de Destino ADO NET].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Outputs[Saída de Erro de Destino ADO NET].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Outputs[Saída de Erro de Destino ADO NET].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Consome dados do SQL Server, OLE DB, ODBC ou Oracle usando o provedor de dados .NET Framework correspondente. Use uma instrução Transact-SQL para definir o conjunto de resultados. Por exemplo, extraia dados do SQL Server com o provedor de dados .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Consome dados do SQL Server, OLE DB, ODBC ou Oracle usando o provedor de dados .NET Framework correspondente. Use uma instrução Transact-SQL para definir o conjunto de resultados. Por exemplo, extraia dados do SQL Server com o provedor de dados .NET Framework para SQL Server."
+                  name="Origem do ADO NET"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a instrução SQL usada pelo componente para extrair os dados."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica a permissão para que as colunas externas que não são de cadeias de caracteres sejam convertidas implicitamente em cadeias de caracteres nas colunas de saída."
+                      name="AllowImplicitStringConversion">true</property>
+                    <property
+                      dataType="System.String"
+                      description="O nome da tabela de banco de dados de Origem."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."VW_CONTROLADORIA_DE_FRETE"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifique o modo para recuperar informações da coluna externa"
+                      name="AccessMode"
+                      typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.softran]"
+                      connectionManagerRefId="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.softran]"
+                      description="Gerenciador de conexões gerenciadas"
+                      name="IDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET]"
+                      name="Saída do de Origem do ADO NET">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[ID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[ID]"
+                          length="1"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[ID]"
+                          name="ID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsEmpresa]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsEmpresa]"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsEmpresa]"
+                          name="DsEmpresa"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrFicha]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrFicha]"
+                          length="15"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrFicha]"
+                          name="NrFicha"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[QrKmRodado]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[QrKmRodado]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[QrKmRodado]"
+                          name="QrKmRodado"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DtInclusao]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DtInclusao]"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DtInclusao]"
+                          name="DtInclusao"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DtEmissao]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DtEmissao]"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DtEmissao]"
+                          name="DtEmissao"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DtSaida]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DtSaida]"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DtSaida]"
+                          name="DtSaida"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrPlaca]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrPlaca]"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrPlaca]"
+                          name="NrPlaca"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrPlacaReboque1]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrPlacaReboque1]"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrPlacaReboque1]"
+                          name="NrPlacaReboque1"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrPlacaReboque2]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrPlacaReboque2]"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrPlacaReboque2]"
+                          name="NrPlacaReboque2"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrPlacaReboque3]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrPlacaReboque3]"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrPlacaReboque3]"
+                          name="NrPlacaReboque3"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsMotorista]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsMotorista]"
+                          length="40"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsMotorista]"
+                          name="DsMotorista"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsProprietario]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsProprietario]"
+                          length="60"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsProprietario]"
+                          name="DsProprietario"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsTipoFornecedor]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsTipoFornecedor]"
+                          length="2"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsTipoFornecedor]"
+                          name="DsTipoFornecedor"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsLacre]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsLacre]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsLacre]"
+                          name="DsLacre"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsFilialDestManifesto]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsFilialDestManifesto]"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsFilialDestManifesto]"
+                          name="DsFilialDestManifesto"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsCidadeOrigem]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsCidadeOrigem]"
+                          length="33"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsCidadeOrigem]"
+                          name="DsCidadeOrigem"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsDestino]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsDestino]"
+                          length="33"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsDestino]"
+                          name="DsDestino"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsRota]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsRota]"
+                          length="255"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsRota]"
+                          name="DsRota"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[CdRota]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[CdRota]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[CdRota]"
+                          name="CdRota"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[CDTARIFA]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[CDTARIFA]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[CDTARIFA]"
+                          name="CDTARIFA"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[TARIFA]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[TARIFA]"
+                          length="255"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[TARIFA]"
+                          name="TARIFA"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsCliente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsCliente]"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsCliente]"
+                          name="DsCliente"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsMaiorCliente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsMaiorCliente]"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsMaiorCliente]"
+                          name="DsMaiorCliente"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsTipoTransporte]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsTipoTransporte]"
+                          length="40"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsTipoTransporte]"
+                          name="DsTipoTransporte"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsTipoTranspPred]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsTipoTranspPred]"
+                          length="40"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsTipoTranspPred]"
+                          name="DsTipoTranspPred"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsObservacaoCTRB]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsObservacaoCTRB]"
+                          length="1000"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsObservacaoCTRB]"
+                          name="DsObservacaoCTRB"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsEmissorCTRB]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsEmissorCTRB]"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsEmissorCTRB]"
+                          name="DsEmissorCTRB"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlMercadoria]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlMercadoria]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlMercadoria]"
+                          name="VlMercadoria"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrCTRB]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrCTRB]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrCTRB]"
+                          name="NrCTRB"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlFreteCTRB]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlFreteCTRB]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlFreteCTRB]"
+                          name="VlFreteCTRB"
+                          precision="38"
+                          scale="13"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlAdiantamento]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlAdiantamento]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlAdiantamento]"
+                          name="VlAdiantamento"
+                          precision="38"
+                          scale="13"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlPedagioCTRB]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlPedagioCTRB]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlPedagioCTRB]"
+                          name="VlPedagioCTRB"
+                          precision="38"
+                          scale="13"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[SaldoCTRB]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[SaldoCTRB]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[SaldoCTRB]"
+                          name="SaldoCTRB"
+                          precision="38"
+                          scale="4"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[TipoVinculo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[TipoVinculo]"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[TipoVinculo]"
+                          name="TipoVinculo"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrDoctoFiscal]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrDoctoFiscal]"
+                          length="25"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrDoctoFiscal]"
+                          name="NrDoctoFiscal"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrRomaneio]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrRomaneio]"
+                          length="25"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[NrRomaneio]"
+                          name="NrRomaneio"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[QtPeso]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[QtPeso]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[QtPeso]"
+                          name="QtPeso"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlLiquido]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlLiquido]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlLiquido]"
+                          name="VlLiquido"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[PesoTotalFicha]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[PesoTotalFicha]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[PesoTotalFicha]"
+                          name="PesoTotalFicha"
+                          precision="38"
+                          scale="4"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlCustoTransferencia]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlCustoTransferencia]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlCustoTransferencia]"
+                          name="VlCustoTransferencia"
+                          precision="38"
+                          scale="13"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlCustoEntrega]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlCustoEntrega]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlCustoEntrega]"
+                          name="VlCustoEntrega"
+                          precision="38"
+                          scale="13"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsTipoVeiculo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsTipoVeiculo]"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DsTipoVeiculo]"
+                          name="DsTipoVeiculo"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DtCTRB]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DtCTRB]"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DtCTRB]"
+                          name="DtCTRB"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[Qtde]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[Qtde]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[Qtde]"
+                          name="Qtde"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[QTVISITA]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[QTVISITA]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[QTVISITA]"
+                          name="QTVISITA"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlComissaoFV]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlComissaoFV]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlComissaoFV]"
+                          name="VlComissaoFV"
+                          precision="38"
+                          scale="11"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlAcrescimosFV]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlAcrescimosFV]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlAcrescimosFV]"
+                          name="VlAcrescimosFV"
+                          precision="38"
+                          scale="13"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlDescontosFV]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlDescontosFV]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlDescontosFV]"
+                          name="VlDescontosFV"
+                          precision="38"
+                          scale="13"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlIRRF]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlIRRF]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlIRRF]"
+                          name="VlIRRF"
+                          precision="38"
+                          scale="13"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlSESTSENAT]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlSESTSENAT]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlSESTSENAT]"
+                          name="VlSESTSENAT"
+                          precision="38"
+                          scale="13"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlINSS]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlINSS]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[VlINSS]"
+                          name="VlINSS"
+                          precision="38"
+                          scale="13"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[AcrescimosCTRB]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[AcrescimosCTRB]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[AcrescimosCTRB]"
+                          name="AcrescimosCTRB"
+                          precision="38"
+                          scale="4"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DescontosCTRB]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DescontosCTRB]"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[DescontosCTRB]"
+                          name="DescontosCTRB"
+                          precision="38"
+                          scale="4"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[ContratoRepom]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[ContratoRepom]"
+                          length="30"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].Columns[ContratoRepom]"
+                          name="ContratoRepom"
+                          truncationRowDisposition="IgnoreFailure" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[ID]"
+                          dataType="wstr"
+                          length="1"
+                          name="ID" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsEmpresa]"
+                          dataType="wstr"
+                          length="10"
+                          name="DsEmpresa" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrFicha]"
+                          dataType="wstr"
+                          length="15"
+                          name="NrFicha" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[QrKmRodado]"
+                          dataType="numeric"
+                          name="QrKmRodado"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DtInclusao]"
+                          dataType="wstr"
+                          length="10"
+                          name="DtInclusao" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DtEmissao]"
+                          dataType="wstr"
+                          length="10"
+                          name="DtEmissao" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DtSaida]"
+                          dataType="wstr"
+                          length="10"
+                          name="DtSaida" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrPlaca]"
+                          dataType="wstr"
+                          length="8"
+                          name="NrPlaca" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrPlacaReboque1]"
+                          dataType="wstr"
+                          length="8"
+                          name="NrPlacaReboque1" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrPlacaReboque2]"
+                          dataType="wstr"
+                          length="8"
+                          name="NrPlacaReboque2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrPlacaReboque3]"
+                          dataType="wstr"
+                          length="8"
+                          name="NrPlacaReboque3" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsMotorista]"
+                          dataType="wstr"
+                          length="40"
+                          name="DsMotorista" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsProprietario]"
+                          dataType="wstr"
+                          length="60"
+                          name="DsProprietario" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsTipoFornecedor]"
+                          dataType="wstr"
+                          length="2"
+                          name="DsTipoFornecedor" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsLacre]"
+                          dataType="i4"
+                          name="DsLacre" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsFilialDestManifesto]"
+                          dataType="wstr"
+                          length="10"
+                          name="DsFilialDestManifesto" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsCidadeOrigem]"
+                          dataType="wstr"
+                          length="33"
+                          name="DsCidadeOrigem" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsDestino]"
+                          dataType="wstr"
+                          length="33"
+                          name="DsDestino" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsRota]"
+                          dataType="wstr"
+                          length="255"
+                          name="DsRota" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[CdRota]"
+                          dataType="i4"
+                          name="CdRota" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[CDTARIFA]"
+                          dataType="i4"
+                          name="CDTARIFA" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[TARIFA]"
+                          dataType="wstr"
+                          length="255"
+                          name="TARIFA" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsCliente]"
+                          dataType="wstr"
+                          length="100"
+                          name="DsCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsMaiorCliente]"
+                          dataType="wstr"
+                          length="100"
+                          name="DsMaiorCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsTipoTransporte]"
+                          dataType="wstr"
+                          length="40"
+                          name="DsTipoTransporte" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsTipoTranspPred]"
+                          dataType="wstr"
+                          length="40"
+                          name="DsTipoTranspPred" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsObservacaoCTRB]"
+                          dataType="wstr"
+                          length="1000"
+                          name="DsObservacaoCTRB" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsEmissorCTRB]"
+                          dataType="wstr"
+                          length="10"
+                          name="DsEmissorCTRB" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlMercadoria]"
+                          dataType="numeric"
+                          name="VlMercadoria"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrCTRB]"
+                          dataType="i4"
+                          name="NrCTRB" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlFreteCTRB]"
+                          dataType="numeric"
+                          name="VlFreteCTRB"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlAdiantamento]"
+                          dataType="numeric"
+                          name="VlAdiantamento"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlPedagioCTRB]"
+                          dataType="numeric"
+                          name="VlPedagioCTRB"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[SaldoCTRB]"
+                          dataType="numeric"
+                          name="SaldoCTRB"
+                          precision="38"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[TipoVinculo]"
+                          dataType="wstr"
+                          length="8"
+                          name="TipoVinculo" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrDoctoFiscal]"
+                          dataType="wstr"
+                          length="25"
+                          name="NrDoctoFiscal" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[NrRomaneio]"
+                          dataType="wstr"
+                          length="25"
+                          name="NrRomaneio" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[QtPeso]"
+                          dataType="numeric"
+                          name="QtPeso"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlLiquido]"
+                          dataType="numeric"
+                          name="VlLiquido"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[PesoTotalFicha]"
+                          dataType="numeric"
+                          name="PesoTotalFicha"
+                          precision="38"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlCustoTransferencia]"
+                          dataType="numeric"
+                          name="VlCustoTransferencia"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlCustoEntrega]"
+                          dataType="numeric"
+                          name="VlCustoEntrega"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DsTipoVeiculo]"
+                          dataType="wstr"
+                          length="8"
+                          name="DsTipoVeiculo" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DtCTRB]"
+                          dataType="wstr"
+                          length="10"
+                          name="DtCTRB" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[Qtde]"
+                          dataType="i4"
+                          name="Qtde" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[QTVISITA]"
+                          dataType="i4"
+                          name="QTVISITA" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlComissaoFV]"
+                          dataType="numeric"
+                          name="VlComissaoFV"
+                          precision="38"
+                          scale="11" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlAcrescimosFV]"
+                          dataType="numeric"
+                          name="VlAcrescimosFV"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlDescontosFV]"
+                          dataType="numeric"
+                          name="VlDescontosFV"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlIRRF]"
+                          dataType="numeric"
+                          name="VlIRRF"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlSESTSENAT]"
+                          dataType="numeric"
+                          name="VlSESTSENAT"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[VlINSS]"
+                          dataType="numeric"
+                          name="VlINSS"
+                          precision="38"
+                          scale="13" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[AcrescimosCTRB]"
+                          dataType="numeric"
+                          name="AcrescimosCTRB"
+                          precision="38"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[DescontosCTRB]"
+                          dataType="numeric"
+                          name="DescontosCTRB"
+                          precision="38"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET].ExternalColumns[ContratoRepom]"
+                          dataType="wstr"
+                          length="30"
+                          name="ContratoRepom" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem do ADO NET">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[ID]"
+                          dataType="wstr"
+                          length="1"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[ID]"
+                          name="ID" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsEmpresa]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsEmpresa]"
+                          name="DsEmpresa" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrFicha]"
+                          dataType="wstr"
+                          length="15"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrFicha]"
+                          name="NrFicha" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[QrKmRodado]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[QrKmRodado]"
+                          name="QrKmRodado"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DtInclusao]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DtInclusao]"
+                          name="DtInclusao" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DtEmissao]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DtEmissao]"
+                          name="DtEmissao" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DtSaida]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DtSaida]"
+                          name="DtSaida" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrPlaca]"
+                          dataType="wstr"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrPlaca]"
+                          name="NrPlaca" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrPlacaReboque1]"
+                          dataType="wstr"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrPlacaReboque1]"
+                          name="NrPlacaReboque1" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrPlacaReboque2]"
+                          dataType="wstr"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrPlacaReboque2]"
+                          name="NrPlacaReboque2" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrPlacaReboque3]"
+                          dataType="wstr"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrPlacaReboque3]"
+                          name="NrPlacaReboque3" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsMotorista]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsMotorista]"
+                          name="DsMotorista" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsProprietario]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsProprietario]"
+                          name="DsProprietario" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsTipoFornecedor]"
+                          dataType="wstr"
+                          length="2"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsTipoFornecedor]"
+                          name="DsTipoFornecedor" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsLacre]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsLacre]"
+                          name="DsLacre" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsFilialDestManifesto]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsFilialDestManifesto]"
+                          name="DsFilialDestManifesto" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsCidadeOrigem]"
+                          dataType="wstr"
+                          length="33"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsCidadeOrigem]"
+                          name="DsCidadeOrigem" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsDestino]"
+                          dataType="wstr"
+                          length="33"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsDestino]"
+                          name="DsDestino" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsRota]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsRota]"
+                          name="DsRota" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[CdRota]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[CdRota]"
+                          name="CdRota" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[CDTARIFA]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[CDTARIFA]"
+                          name="CDTARIFA" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[TARIFA]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[TARIFA]"
+                          name="TARIFA" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsCliente]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsCliente]"
+                          name="DsCliente" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsMaiorCliente]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsMaiorCliente]"
+                          name="DsMaiorCliente" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsTipoTransporte]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsTipoTransporte]"
+                          name="DsTipoTransporte" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsTipoTranspPred]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsTipoTranspPred]"
+                          name="DsTipoTranspPred" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsObservacaoCTRB]"
+                          dataType="wstr"
+                          length="1000"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsObservacaoCTRB]"
+                          name="DsObservacaoCTRB" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsEmissorCTRB]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsEmissorCTRB]"
+                          name="DsEmissorCTRB" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlMercadoria]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlMercadoria]"
+                          name="VlMercadoria"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrCTRB]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrCTRB]"
+                          name="NrCTRB" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlFreteCTRB]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlFreteCTRB]"
+                          name="VlFreteCTRB"
+                          precision="38"
+                          scale="13" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlAdiantamento]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlAdiantamento]"
+                          name="VlAdiantamento"
+                          precision="38"
+                          scale="13" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlPedagioCTRB]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlPedagioCTRB]"
+                          name="VlPedagioCTRB"
+                          precision="38"
+                          scale="13" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[SaldoCTRB]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[SaldoCTRB]"
+                          name="SaldoCTRB"
+                          precision="38"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[TipoVinculo]"
+                          dataType="wstr"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[TipoVinculo]"
+                          name="TipoVinculo" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrDoctoFiscal]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrDoctoFiscal]"
+                          name="NrDoctoFiscal" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrRomaneio]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[NrRomaneio]"
+                          name="NrRomaneio" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[QtPeso]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[QtPeso]"
+                          name="QtPeso"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlLiquido]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlLiquido]"
+                          name="VlLiquido"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[PesoTotalFicha]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[PesoTotalFicha]"
+                          name="PesoTotalFicha"
+                          precision="38"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlCustoTransferencia]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlCustoTransferencia]"
+                          name="VlCustoTransferencia"
+                          precision="38"
+                          scale="13" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlCustoEntrega]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlCustoEntrega]"
+                          name="VlCustoEntrega"
+                          precision="38"
+                          scale="13" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsTipoVeiculo]"
+                          dataType="wstr"
+                          length="8"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DsTipoVeiculo]"
+                          name="DsTipoVeiculo" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DtCTRB]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DtCTRB]"
+                          name="DtCTRB" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[Qtde]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[Qtde]"
+                          name="Qtde" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[QTVISITA]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[QTVISITA]"
+                          name="QTVISITA" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlComissaoFV]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlComissaoFV]"
+                          name="VlComissaoFV"
+                          precision="38"
+                          scale="11" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlAcrescimosFV]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlAcrescimosFV]"
+                          name="VlAcrescimosFV"
+                          precision="38"
+                          scale="13" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlDescontosFV]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlDescontosFV]"
+                          name="VlDescontosFV"
+                          precision="38"
+                          scale="13" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlIRRF]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlIRRF]"
+                          name="VlIRRF"
+                          precision="38"
+                          scale="13" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlSESTSENAT]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlSESTSENAT]"
+                          name="VlSESTSENAT"
+                          precision="38"
+                          scale="13" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlINSS]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[VlINSS]"
+                          name="VlINSS"
+                          precision="38"
+                          scale="13" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[AcrescimosCTRB]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[AcrescimosCTRB]"
+                          name="AcrescimosCTRB"
+                          precision="38"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DescontosCTRB]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[DescontosCTRB]"
+                          name="DescontosCTRB"
+                          precision="38"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[ContratoRepom]"
+                          dataType="wstr"
+                          length="30"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[ContratoRepom]"
+                          name="ContratoRepom" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída de Erro de Origem do ADO NET].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contêiner da Sequência\Data Flow Task.Paths[Saída do de Origem do ADO NET]"
+                  endId="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET.Inputs[Entrada de Destino ADO NET]"
+                  name="Saída do de Origem do ADO NET"
+                  startId="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET.Outputs[Saída do de Origem do ADO NET]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contêiner da Sequência\Limpar Tabela fControladoria"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarefa Executar SQL"
+          DTS:DTSID="{A1942D03-788E-4A2A-ADCF-5123865E63F4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpar Tabela fControladoria"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{966719C2-9E39-4D0D-B232-38F123B011DE}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DELETE FROM [DBStage].[dbo].[fControladoria]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contêiner da Sequência.PrecedenceConstraints[Restrição]"
+          DTS:CreationName=""
+          DTS:DTSID="{CDA21139-6124-4881-BC29-A43C5E3300EC}"
+          DTS:From="Package\Contêiner da Sequência\Limpar Tabela fControladoria"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restrição"
+          DTS:To="Package\Contêiner da Sequência\Data Flow Task" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Contêiner da Sequência\Data Flow Task"
+          TopLeft="111,184" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\Contêiner da Sequência\Limpar Tabela fControladoria"
+          TopLeft="73,39" />
+        <EdgeLayout
+          Id="Package\Contêiner da Sequência.PrecedenceConstraints[Restrição]"
+          TopLeft="186,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,103"
+              Start="0,0"
+              End="0,95.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,95.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="327,281"
+          Size="327,324"
+          Id="Package\Contêiner da Sequência"
+          TopLeft="30,50" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Contêiner da Sequência\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET"
+          TopLeft="47.5,9.5" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET"
+          TopLeft="124.5,143.5" />
+        <EdgeLayout
+          Id="Package\Contêiner da Sequência\Data Flow Task.Paths[Saída do de Origem do ADO NET]"
+          TopLeft="138.5,51.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77.5,92"
+              Start="0,0"
+              End="77.5,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42"
+                    Point2="0,46"
+                    Point3="4,46" />
+                  <mssgle:LineSegment
+                    End="73.5,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="73.5,46"
+                    Point2="77.5,46"
+                    Point3="77.5,50" />
+                  <mssgle:LineSegment
+                    End="77.5,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contêiner da Sequência\Data Flow Task\Destino do ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contêiner da Sequência\Data Flow Task\Origem do ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

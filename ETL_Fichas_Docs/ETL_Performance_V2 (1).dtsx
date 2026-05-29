@@ -1,0 +1,1887 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/28/2025 2:15:09 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="D2-WV47-DB01"
+  DTS:CreatorName="GRUPOLCLOG\luiz.costa"
+  DTS:DTSID="{F5979936-9A58-4610-9079-3BA020F8F4C4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="ETL_Performance"
+  DTS:PackageType="5"
+  DTS:VersionBuild="106"
+  DTS:VersionGUID="{18CB645A-2ADE-444E-95F8-7FD3F2F3C1F5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89.DBStage.sqldba]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{30FB49F8-3EC0-4AC3-A800-7A94FF1C6991}"
+      DTS:ObjectName="10.100.86.89.DBStage.sqldba">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DBStage;Application Name=SSIS-ETL_Performance-{30FB49F8-3EC0-4AC3-A800-7A94FF1C6991}10.100.86.89.DBStage.sqldba;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA22ODHxMT/kOwPuvzVzHJLQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABSNT9gRBrEDHKoruA/s6/FAAAAAASAAACgAAAAEAAAANyBddseeC9+ByCns3rT/gQYAAAANYcL/rREfcPNF0I3fkSKHZVwh4cSSscoFAAAAJSKtZiPdrt4Fq/HH/DgXDz0mE8t</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89.DBStage.sqldba 1]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{49F989AE-5891-4691-93AF-C6ADC52DCCCC}"
+      DTS:ObjectName="10.100.86.89.DBStage.sqldba 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DBStage;Application Name=&quot;SSIS-ETL_Performance-{49F989AE-5891-4691-93AF-C6ADC52DCCCC}10.100.86.89.DBStage.sqldba 1&quot;;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA22ODHxMT/kOwPuvzVzHJLQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABTeVN4zufi97z8Iv0OTMAFAAAAAASAAACgAAAAEAAAAMpqpwdpdBl1TsMbUeCw4XUYAAAAW3O7MIoz2gT6vBqL+/8LqPGpZdZXG/9DFAAAAP1bQTnqDHi4jSP0X/QUHBWFO5+1</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89.DBStage.sqldba1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5969DF77-413E-4176-B96E-4B4BB7F008A0}"
+      DTS:ObjectName="10.100.86.89.DBStage.sqldba1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DBStage;Provider=MSOLEDBSQL;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-ETL_Performance-{5969DF77-413E-4176-B96E-4B4BB7F008A0}10.100.86.89.DBStage.sqldba1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89.DWGrupolc.datalc]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{E5003A8E-9E0E-4E75-8EB3-9407433D17C2}"
+      DTS:ObjectName="10.100.86.89.DWGrupolc.datalc">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DWGrupolc;Persist Security Info=True;TrustServerCertificate=True;Application Name=SSIS-Package-{E5003A8E-9E0E-4E75-8EB3-9407433D17C2}10.100.86.89.DWGrupolc.sqldba;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA22ODHxMT/kOwPuvzVzHJLQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABfVmpZmJpOfu8wOuWKkQdbAAAAAASAAACgAAAAEAAAAFrEoUWaDTccd1sbdjwj18AYAAAAcVGB9pOila78l4rIJ59Yw1Ev6OMF7LsSFAAAAFM/Juol/X024LhPd5s9M8PfhW8v</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89.DWGrupolc.sqldba1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C2149265-BB88-4DC6-86F0-E7C21D80D288}"
+      DTS:ObjectName="10.100.86.89.DWGrupolc.sqldba1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DWGrupolc;Provider=MSOLEDBSQL;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{C2149265-BB88-4DC6-86F0-E7C21D80D288}10.100.86.89.DWGrupolc.sqldba1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{2D7451DF-3D47-480A-A452-B29054E0EC03}"
+      DTS:ObjectName="169.57.181.231.SOFTRAN_TRANSLUTE.datalc">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=169.57.181.231;User ID=softran;Initial Catalog=SOFTRAN_TRANSLUTE;Persist Security Info=True;TrustServerCertificate=True;Application Name=SSIS-Package-{2D7451DF-3D47-480A-A452-B29054E0EC03}169.57.181.231.SOFTRAN_TRANSLUTE.datalc;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA22ODHxMT/kOwPuvzVzHJLQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC93wwRr2drP5BjHFKMhCUWAAAAAASAAACgAAAAEAAAAGoMlUAfywwpiSpea5yQbLsQAAAASsQzoYtmrDgFLpIlr11GMRQAAABCTfPZa5vBctHeBOWKTHs3jXzmSg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.softran]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6C95D76F-E3CD-4943-84BB-663746A969E0}"
+      DTS:ObjectName="169.57.181.231.SOFTRAN_TRANSLUTE.softran">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=169.57.181.231;User ID=softran;Initial Catalog=SOFTRAN_TRANSLUTE;Provider=MSOLEDBSQL;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-ETL_Performance-{6C95D76F-E3CD-4943-84BB-663746A969E0}169.57.181.231.SOFTRAN_TRANSLUTE.softran;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EE1535CD-9DAB-47AC-9137-456B8FBEDA63}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="StartDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/2025</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{EDA31A7D-D4F7-414A-ABE4-CA1090F6A5E3}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\GetDate 1M"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{2844E3FA-3CCF-443A-B2F2-24FD49455270}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="GetDate 1M"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{30FB49F8-3EC0-4AC3-A800-7A94FF1C6991}"
+              SQLTask:SqlStatementSource="SELECT DATEADD(month, DATEDIFF(month, 0, GETDATE()) - 1, 0) AS StartDate&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::StartDate" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Load fPerf"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{DD1745C8-A974-4146-83DD-922E2068EE10}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load fPerf"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Load fPerf\ADO NET Destination"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+                  name="ADO NET Destination"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The Destination database table name."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"fPerformance"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                      expressionType="Notify"
+                      name="BatchSize">50000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                      expressionType="Notify"
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                      expressionType="Notify"
+                      name="UseBulkInsertWhenPossible">true</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[10.100.86.89.DBStage.sqldba 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[10.100.86.89.DBStage.sqldba 1]"
+                      description="Managed connection manager"
+                      name="IDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ADO NET Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NrDiasAtraso]"
+                          cachedDataType="i4"
+                          cachedName="NrDiasAtraso"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrDiasAtraso]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrDiasAtraso]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Status]"
+                          cachedDataType="wstr"
+                          cachedLength="14"
+                          cachedName="Status"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Status]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DtPrevisaoEntregaCTeNova]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DtPrevisaoEntregaCTeNova"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtPrevisaoEntregaCTeNova]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtPrevisaoEntregaCTeNova]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[FichaViagem]"
+                          cachedDataType="wstr"
+                          cachedLength="32"
+                          cachedName="FichaViagem"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FichaViagem]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[FichaViagem]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Hora]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Hora"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Hora]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[Hora]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IDCTEPERF]"
+                          cachedDataType="wstr"
+                          cachedLength="42"
+                          cachedName="IDCTEPERF"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IDCTEPERF]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[IDCTEPERF]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CNPJRemetente]"
+                          cachedDataType="wstr"
+                          cachedLength="14"
+                          cachedName="CNPJRemetente"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJRemetente]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJRemetente]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NomeRemetente]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="NomeRemetente"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NomeRemetente]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NomeRemetente]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NFSerie]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="NFSerie"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFSerie]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFSerie]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NFNr]"
+                          cachedDataType="i4"
+                          cachedName="NFNr"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFNr]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFNr]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NFVlr]"
+                          cachedDataType="numeric"
+                          cachedName="NFVlr"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFVlr]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFVlr]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NFDtEmissao]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="NFDtEmissao"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFDtEmissao]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFDtEmissao]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CTeEmpresa]"
+                          cachedDataType="i4"
+                          cachedName="CTeEmpresa"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeEmpresa]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeEmpresa]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CTeNr]"
+                          cachedDataType="i4"
+                          cachedName="CTeNr"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeNr]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeNr]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CTeDtEmissao]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="CTeDtEmissao"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeDtEmissao]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeDtEmissao]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TipoDoctoFiscal]"
+                          cachedDataType="i4"
+                          cachedName="TipoDoctoFiscal"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TipoDoctoFiscal]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoDoctoFiscal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DtPrevisaoEntregaCTe]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DtPrevisaoEntregaCTe"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtPrevisaoEntregaCTe]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtPrevisaoEntregaCTe]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DtAgendamentoEntregaCTe]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DtAgendamentoEntregaCTe"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtAgendamentoEntregaCTe]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtAgendamentoEntregaCTe]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CTeDtEntrega]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="CTeDtEntrega"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeDtEntrega]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeDtEntrega]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CNPJDestinatario]"
+                          cachedDataType="wstr"
+                          cachedLength="14"
+                          cachedName="CNPJDestinatario"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJDestinatario]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJDestinatario]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NomeDestinatario]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="NomeDestinatario"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NomeDestinatario]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NomeDestinatario]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CidadeDestino]"
+                          cachedDataType="wstr"
+                          cachedLength="30"
+                          cachedName="CidadeDestino"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CidadeDestino]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CidadeDestino]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[UFDestino]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="UFDestino"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[UFDestino]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[UFDestino]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CNPJPagador]"
+                          cachedDataType="wstr"
+                          cachedLength="14"
+                          cachedName="CNPJPagador"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJPagador]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJPagador]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NomePagador]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="NomePagador"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NomePagador]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NomePagador]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NrSeqControle]"
+                          cachedDataType="i4"
+                          cachedName="NrSeqControle"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrSeqControle]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrSeqControle]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NaturezaCod]"
+                          cachedDataType="i4"
+                          cachedName="NaturezaCod"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NaturezaCod]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NaturezaCod]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NaturezaNome]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="NaturezaNome"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NaturezaNome]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NaturezaNome]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TipoTransporte]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="TipoTransporte"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TipoTransporte]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoTransporte]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Volumes]"
+                          cachedDataType="numeric"
+                          cachedName="Volumes"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Volumes]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[Volumes]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[QtPesoCubado]"
+                          cachedDataType="numeric"
+                          cachedName="QtPesoCubado"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[QtPesoCubado]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[QtPesoCubado]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[HistEntregaCod]"
+                          cachedDataType="i4"
+                          cachedName="HistEntregaCod"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[HistEntregaCod]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[HistEntregaCod]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[HistEntregaNome]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="HistEntregaNome"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[HistEntregaNome]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[HistEntregaNome]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[FichaVUltManifesto]"
+                          cachedDataType="wstr"
+                          cachedLength="21"
+                          cachedName="FichaVUltManifesto"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FichaVUltManifesto]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[FichaVUltManifesto]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[FichaVUltRom]"
+                          cachedDataType="wstr"
+                          cachedLength="32"
+                          cachedName="FichaVUltRom"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FichaVUltRom]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[FichaVUltRom]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DtRomaneio]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DtRomaneio"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtRomaneio]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtRomaneio]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DtManifesto]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DtManifesto"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtManifesto]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtManifesto]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TipoEmissao]"
+                          cachedDataType="wstr"
+                          cachedLength="16"
+                          cachedName="TipoEmissao"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TipoEmissao]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoEmissao]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsGrupoCliente]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="DsGrupoCliente"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsGrupoCliente]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsGrupoCliente]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CdGrupoCliente]"
+                          cachedDataType="i4"
+                          cachedName="CdGrupoCliente"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdGrupoCliente]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdGrupoCliente]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsRedespacho]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="DsRedespacho"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsRedespacho]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsRedespacho]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CdRedespacho]"
+                          cachedDataType="wstr"
+                          cachedLength="14"
+                          cachedName="CdRedespacho"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdRedespacho]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRedespacho]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NrRegistros]"
+                          cachedDataType="i4"
+                          cachedName="NrRegistros"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrRegistros]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrRegistros]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrDiasAtraso]"
+                          dataType="i4"
+                          name="NrDiasAtraso" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Status]"
+                          dataType="wstr"
+                          length="14"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtPrevisaoEntregaCTeNova]"
+                          dataType="dbTimeStamp"
+                          name="DtPrevisaoEntregaCTeNova" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FichaViagem]"
+                          dataType="wstr"
+                          length="32"
+                          name="FichaViagem" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Hora]"
+                          dataType="dbTimeStamp"
+                          name="Hora" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IDCTEPERF]"
+                          dataType="wstr"
+                          length="42"
+                          name="IDCTEPERF" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJRemetente]"
+                          dataType="wstr"
+                          length="14"
+                          name="CNPJRemetente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NomeRemetente]"
+                          dataType="wstr"
+                          length="100"
+                          name="NomeRemetente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFSerie]"
+                          dataType="wstr"
+                          length="3"
+                          name="NFSerie" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFNr]"
+                          dataType="i4"
+                          name="NFNr" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFVlr]"
+                          dataType="numeric"
+                          name="NFVlr"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFDtEmissao]"
+                          dataType="dbTimeStamp"
+                          name="NFDtEmissao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeEmpresa]"
+                          dataType="i4"
+                          name="CTeEmpresa" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeNr]"
+                          dataType="i4"
+                          name="CTeNr" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeDtEmissao]"
+                          dataType="dbTimeStamp"
+                          name="CTeDtEmissao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TipoDoctoFiscal]"
+                          dataType="i4"
+                          name="TipoDoctoFiscal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtPrevisaoEntregaCTe]"
+                          dataType="dbTimeStamp"
+                          name="DtPrevisaoEntregaCTe" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtAgendamentoEntregaCTe]"
+                          dataType="dbTimeStamp"
+                          name="DtAgendamentoEntregaCTe" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeDtEntrega]"
+                          dataType="dbTimeStamp"
+                          name="CTeDtEntrega" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJDestinatario]"
+                          dataType="wstr"
+                          length="14"
+                          name="CNPJDestinatario" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NomeDestinatario]"
+                          dataType="wstr"
+                          length="100"
+                          name="NomeDestinatario" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CidadeDestino]"
+                          dataType="wstr"
+                          length="30"
+                          name="CidadeDestino" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[UFDestino]"
+                          dataType="wstr"
+                          length="2"
+                          name="UFDestino" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJPagador]"
+                          dataType="wstr"
+                          length="14"
+                          name="CNPJPagador" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NomePagador]"
+                          dataType="wstr"
+                          length="100"
+                          name="NomePagador" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrSeqControle]"
+                          dataType="i4"
+                          name="NrSeqControle" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NaturezaCod]"
+                          dataType="i4"
+                          name="NaturezaCod" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NaturezaNome]"
+                          dataType="wstr"
+                          length="40"
+                          name="NaturezaNome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TipoTransporte]"
+                          dataType="wstr"
+                          length="40"
+                          name="TipoTransporte" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Volumes]"
+                          dataType="numeric"
+                          name="Volumes"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[QtPesoCubado]"
+                          dataType="numeric"
+                          name="QtPesoCubado"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[HistEntregaCod]"
+                          dataType="i4"
+                          name="HistEntregaCod" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[HistEntregaNome]"
+                          dataType="wstr"
+                          length="50"
+                          name="HistEntregaNome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FichaVUltManifesto]"
+                          dataType="wstr"
+                          length="21"
+                          name="FichaVUltManifesto" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FichaVUltRom]"
+                          dataType="wstr"
+                          length="32"
+                          name="FichaVUltRom" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtRomaneio]"
+                          dataType="dbTimeStamp"
+                          name="DtRomaneio" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtManifesto]"
+                          dataType="dbTimeStamp"
+                          name="DtManifesto" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TipoEmissao]"
+                          dataType="wstr"
+                          length="16"
+                          name="TipoEmissao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsGrupoCliente]"
+                          dataType="wstr"
+                          length="100"
+                          name="DsGrupoCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdGrupoCliente]"
+                          dataType="i4"
+                          name="CdGrupoCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsRedespacho]"
+                          dataType="wstr"
+                          length="40"
+                          name="DsRedespacho" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdRedespacho]"
+                          dataType="wstr"
+                          length="14"
+                          name="CdRedespacho" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrRegistros]"
+                          dataType="i4"
+                          name="NrRegistros" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ADO NET Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Load fPerf\ADO NET Source"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+                  name="ADO NET Source"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement used by the component to extract data."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                      name="AllowImplicitStringConversion">true</property>
+                    <property
+                      dataType="System.String"
+                      description="The Source database table name."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."vw_fPerformance"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the mode to retrieve external column information"
+                      name="AccessMode"
+                      typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Load fPerf\ADO NET Source.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+                      connectionManagerRefId="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+                      description="Managed connection manager"
+                      name="IDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output]"
+                      name="ADO NET Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrDiasAtraso]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrDiasAtraso]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrDiasAtraso]"
+                          name="NrDiasAtraso"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Status]"
+                          length="14"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status]"
+                          name="Status"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtPrevisaoEntregaCTeNova]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtPrevisaoEntregaCTeNova]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtPrevisaoEntregaCTeNova]"
+                          name="DtPrevisaoEntregaCTeNova"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[FichaViagem]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FichaViagem]"
+                          length="32"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[FichaViagem]"
+                          name="FichaViagem"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[Hora]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Hora]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[Hora]"
+                          name="Hora"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[IDCTEPERF]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IDCTEPERF]"
+                          length="42"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[IDCTEPERF]"
+                          name="IDCTEPERF"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJRemetente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CNPJRemetente]"
+                          length="14"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJRemetente]"
+                          name="CNPJRemetente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NomeRemetente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NomeRemetente]"
+                          length="100"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NomeRemetente]"
+                          name="NomeRemetente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFSerie]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NFSerie]"
+                          length="3"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFSerie]"
+                          name="NFSerie"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFNr]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NFNr]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFNr]"
+                          name="NFNr"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFVlr]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NFVlr]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFVlr]"
+                          name="NFVlr"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFDtEmissao]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NFDtEmissao]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NFDtEmissao]"
+                          name="NFDtEmissao"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeEmpresa]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CTeEmpresa]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeEmpresa]"
+                          name="CTeEmpresa"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeNr]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CTeNr]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeNr]"
+                          name="CTeNr"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeDtEmissao]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CTeDtEmissao]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeDtEmissao]"
+                          name="CTeDtEmissao"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoDoctoFiscal]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[TipoDoctoFiscal]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoDoctoFiscal]"
+                          name="TipoDoctoFiscal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtPrevisaoEntregaCTe]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtPrevisaoEntregaCTe]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtPrevisaoEntregaCTe]"
+                          name="DtPrevisaoEntregaCTe"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtAgendamentoEntregaCTe]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtAgendamentoEntregaCTe]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtAgendamentoEntregaCTe]"
+                          name="DtAgendamentoEntregaCTe"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeDtEntrega]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CTeDtEntrega]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTeDtEntrega]"
+                          name="CTeDtEntrega"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJDestinatario]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CNPJDestinatario]"
+                          length="14"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJDestinatario]"
+                          name="CNPJDestinatario"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NomeDestinatario]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NomeDestinatario]"
+                          length="100"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NomeDestinatario]"
+                          name="NomeDestinatario"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CidadeDestino]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CidadeDestino]"
+                          length="30"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CidadeDestino]"
+                          name="CidadeDestino"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[UFDestino]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[UFDestino]"
+                          length="2"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[UFDestino]"
+                          name="UFDestino"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJPagador]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CNPJPagador]"
+                          length="14"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJPagador]"
+                          name="CNPJPagador"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NomePagador]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NomePagador]"
+                          length="100"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NomePagador]"
+                          name="NomePagador"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrSeqControle]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrSeqControle]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrSeqControle]"
+                          name="NrSeqControle"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NaturezaCod]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NaturezaCod]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NaturezaCod]"
+                          name="NaturezaCod"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NaturezaNome]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NaturezaNome]"
+                          length="40"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NaturezaNome]"
+                          name="NaturezaNome"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoTransporte]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[TipoTransporte]"
+                          length="40"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoTransporte]"
+                          name="TipoTransporte"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[Volumes]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Volumes]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[Volumes]"
+                          name="Volumes"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[QtPesoCubado]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[QtPesoCubado]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[QtPesoCubado]"
+                          name="QtPesoCubado"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[HistEntregaCod]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[HistEntregaCod]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[HistEntregaCod]"
+                          name="HistEntregaCod"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[HistEntregaNome]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[HistEntregaNome]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[HistEntregaNome]"
+                          name="HistEntregaNome"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[FichaVUltManifesto]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FichaVUltManifesto]"
+                          length="21"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[FichaVUltManifesto]"
+                          name="FichaVUltManifesto"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[FichaVUltRom]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FichaVUltRom]"
+                          length="32"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[FichaVUltRom]"
+                          name="FichaVUltRom"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtRomaneio]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtRomaneio]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtRomaneio]"
+                          name="DtRomaneio"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtManifesto]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtManifesto]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtManifesto]"
+                          name="DtManifesto"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoEmissao]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[TipoEmissao]"
+                          length="16"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoEmissao]"
+                          name="TipoEmissao"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsGrupoCliente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsGrupoCliente]"
+                          length="100"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsGrupoCliente]"
+                          name="DsGrupoCliente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdGrupoCliente]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdGrupoCliente]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdGrupoCliente]"
+                          name="CdGrupoCliente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsRedespacho]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsRedespacho]"
+                          length="40"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsRedespacho]"
+                          name="DsRedespacho"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRedespacho]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdRedespacho]"
+                          length="14"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRedespacho]"
+                          name="CdRedespacho"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrRegistros]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrRegistros]"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrRegistros]"
+                          name="NrRegistros"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrDiasAtraso]"
+                          dataType="i4"
+                          name="NrDiasAtraso" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Status]"
+                          dataType="wstr"
+                          length="14"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtPrevisaoEntregaCTeNova]"
+                          dataType="dbTimeStamp"
+                          name="DtPrevisaoEntregaCTeNova" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FichaViagem]"
+                          dataType="wstr"
+                          length="32"
+                          name="FichaViagem" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Hora]"
+                          dataType="dbTimeStamp"
+                          name="Hora" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IDCTEPERF]"
+                          dataType="wstr"
+                          length="42"
+                          name="IDCTEPERF" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CNPJRemetente]"
+                          dataType="wstr"
+                          length="14"
+                          name="CNPJRemetente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NomeRemetente]"
+                          dataType="wstr"
+                          length="100"
+                          name="NomeRemetente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NFSerie]"
+                          dataType="wstr"
+                          length="3"
+                          name="NFSerie" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NFNr]"
+                          dataType="i4"
+                          name="NFNr" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NFVlr]"
+                          dataType="numeric"
+                          name="NFVlr"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NFDtEmissao]"
+                          dataType="dbTimeStamp"
+                          name="NFDtEmissao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CTeEmpresa]"
+                          dataType="i4"
+                          name="CTeEmpresa" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CTeNr]"
+                          dataType="i4"
+                          name="CTeNr" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CTeDtEmissao]"
+                          dataType="dbTimeStamp"
+                          name="CTeDtEmissao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[TipoDoctoFiscal]"
+                          dataType="i4"
+                          name="TipoDoctoFiscal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtPrevisaoEntregaCTe]"
+                          dataType="dbTimeStamp"
+                          name="DtPrevisaoEntregaCTe" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtAgendamentoEntregaCTe]"
+                          dataType="dbTimeStamp"
+                          name="DtAgendamentoEntregaCTe" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CTeDtEntrega]"
+                          dataType="dbTimeStamp"
+                          name="CTeDtEntrega" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CNPJDestinatario]"
+                          dataType="wstr"
+                          length="14"
+                          name="CNPJDestinatario" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NomeDestinatario]"
+                          dataType="wstr"
+                          length="100"
+                          name="NomeDestinatario" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CidadeDestino]"
+                          dataType="wstr"
+                          length="30"
+                          name="CidadeDestino" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[UFDestino]"
+                          dataType="wstr"
+                          length="2"
+                          name="UFDestino" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CNPJPagador]"
+                          dataType="wstr"
+                          length="14"
+                          name="CNPJPagador" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NomePagador]"
+                          dataType="wstr"
+                          length="100"
+                          name="NomePagador" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrSeqControle]"
+                          dataType="i4"
+                          name="NrSeqControle" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NaturezaCod]"
+                          dataType="i4"
+                          name="NaturezaCod" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NaturezaNome]"
+                          dataType="wstr"
+                          length="40"
+                          name="NaturezaNome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[TipoTransporte]"
+                          dataType="wstr"
+                          length="40"
+                          name="TipoTransporte" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Volumes]"
+                          dataType="numeric"
+                          name="Volumes"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[QtPesoCubado]"
+                          dataType="numeric"
+                          name="QtPesoCubado"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[HistEntregaCod]"
+                          dataType="i4"
+                          name="HistEntregaCod" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[HistEntregaNome]"
+                          dataType="wstr"
+                          length="50"
+                          name="HistEntregaNome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FichaVUltManifesto]"
+                          dataType="wstr"
+                          length="21"
+                          name="FichaVUltManifesto" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FichaVUltRom]"
+                          dataType="wstr"
+                          length="32"
+                          name="FichaVUltRom" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtRomaneio]"
+                          dataType="dbTimeStamp"
+                          name="DtRomaneio" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtManifesto]"
+                          dataType="dbTimeStamp"
+                          name="DtManifesto" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[TipoEmissao]"
+                          dataType="wstr"
+                          length="16"
+                          name="TipoEmissao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsGrupoCliente]"
+                          dataType="wstr"
+                          length="100"
+                          name="DsGrupoCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdGrupoCliente]"
+                          dataType="i4"
+                          name="CdGrupoCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsRedespacho]"
+                          dataType="wstr"
+                          length="40"
+                          name="DsRedespacho" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdRedespacho]"
+                          dataType="wstr"
+                          length="14"
+                          name="CdRedespacho" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrRegistros]"
+                          dataType="i4"
+                          name="NrRegistros" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                      isErrorOut="true"
+                      name="ADO NET Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrDiasAtraso]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrDiasAtraso]"
+                          name="NrDiasAtraso" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Status]"
+                          dataType="wstr"
+                          length="14"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Status]"
+                          name="Status" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtPrevisaoEntregaCTeNova]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtPrevisaoEntregaCTeNova]"
+                          name="DtPrevisaoEntregaCTeNova" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FichaViagem]"
+                          dataType="wstr"
+                          length="32"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FichaViagem]"
+                          name="FichaViagem" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Hora]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Hora]"
+                          name="Hora" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IDCTEPERF]"
+                          dataType="wstr"
+                          length="42"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IDCTEPERF]"
+                          name="IDCTEPERF" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CNPJRemetente]"
+                          dataType="wstr"
+                          length="14"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CNPJRemetente]"
+                          name="CNPJRemetente" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NomeRemetente]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NomeRemetente]"
+                          name="NomeRemetente" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NFSerie]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NFSerie]"
+                          name="NFSerie" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NFNr]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NFNr]"
+                          name="NFNr" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NFVlr]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NFVlr]"
+                          name="NFVlr"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NFDtEmissao]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NFDtEmissao]"
+                          name="NFDtEmissao" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CTeEmpresa]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CTeEmpresa]"
+                          name="CTeEmpresa" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CTeNr]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CTeNr]"
+                          name="CTeNr" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CTeDtEmissao]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CTeDtEmissao]"
+                          name="CTeDtEmissao" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[TipoDoctoFiscal]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[TipoDoctoFiscal]"
+                          name="TipoDoctoFiscal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtPrevisaoEntregaCTe]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtPrevisaoEntregaCTe]"
+                          name="DtPrevisaoEntregaCTe" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtAgendamentoEntregaCTe]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtAgendamentoEntregaCTe]"
+                          name="DtAgendamentoEntregaCTe" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CTeDtEntrega]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CTeDtEntrega]"
+                          name="CTeDtEntrega" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CNPJDestinatario]"
+                          dataType="wstr"
+                          length="14"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CNPJDestinatario]"
+                          name="CNPJDestinatario" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NomeDestinatario]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NomeDestinatario]"
+                          name="NomeDestinatario" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CidadeDestino]"
+                          dataType="wstr"
+                          length="30"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CidadeDestino]"
+                          name="CidadeDestino" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[UFDestino]"
+                          dataType="wstr"
+                          length="2"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[UFDestino]"
+                          name="UFDestino" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CNPJPagador]"
+                          dataType="wstr"
+                          length="14"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CNPJPagador]"
+                          name="CNPJPagador" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NomePagador]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NomePagador]"
+                          name="NomePagador" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrSeqControle]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrSeqControle]"
+                          name="NrSeqControle" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NaturezaCod]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NaturezaCod]"
+                          name="NaturezaCod" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NaturezaNome]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NaturezaNome]"
+                          name="NaturezaNome" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[TipoTransporte]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[TipoTransporte]"
+                          name="TipoTransporte" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Volumes]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Volumes]"
+                          name="Volumes"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[QtPesoCubado]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[QtPesoCubado]"
+                          name="QtPesoCubado"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[HistEntregaCod]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[HistEntregaCod]"
+                          name="HistEntregaCod" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[HistEntregaNome]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[HistEntregaNome]"
+                          name="HistEntregaNome" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FichaVUltManifesto]"
+                          dataType="wstr"
+                          length="21"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FichaVUltManifesto]"
+                          name="FichaVUltManifesto" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FichaVUltRom]"
+                          dataType="wstr"
+                          length="32"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FichaVUltRom]"
+                          name="FichaVUltRom" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtRomaneio]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtRomaneio]"
+                          name="DtRomaneio" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtManifesto]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtManifesto]"
+                          name="DtManifesto" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[TipoEmissao]"
+                          dataType="wstr"
+                          length="16"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[TipoEmissao]"
+                          name="TipoEmissao" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsGrupoCliente]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsGrupoCliente]"
+                          name="DsGrupoCliente" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdGrupoCliente]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdGrupoCliente]"
+                          name="CdGrupoCliente" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsRedespacho]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsRedespacho]"
+                          name="DsRedespacho" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdRedespacho]"
+                          dataType="wstr"
+                          length="14"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdRedespacho]"
+                          name="CdRedespacho" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrRegistros]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrRegistros]"
+                          name="NrRegistros" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Load fPerf.Paths[ADO NET Source Output]"
+                  endId="Package\Sequence Container\Load fPerf\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  name="ADO NET Source Output"
+                  startId="Package\Sequence Container\Load fPerf\ADO NET Source.Outputs[ADO NET Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Truncate fPerf"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DA528C58-BDCF-4487-A2C6-AD3BA2B01208}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate fPerf"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{30FB49F8-3EC0-4AC3-A800-7A94FF1C6991}"
+              SQLTask:SqlStatementSource="WHILE 1 = 1&#xA;BEGIN&#xA;    DELETE &#xA;    FROM dbo.fPerformance&#xA;    WHERE NFDTEmissao &gt;= DATEADD(MONTH, -1, GETDATE());&#xA;&#xA;    IF @@ROWCOUNT = 0&#xA;        BREAK;&#xA;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::StartDate"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="6"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{B8199254-47AA-4C13-B493-EFE31AB45FC6}"
+          DTS:From="Package\Sequence Container\Truncate fPerf"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\Load fPerf" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{44C823A7-19B0-4EFF-A93A-6D247E09642D}"
+          DTS:From="Package\Sequence Container\GetDate 1M"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\Truncate fPerf" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Sequence Container\GetDate 1M"
+          TopLeft="61.0000009561578,70.3777776592528" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Sequence Container\Load fPerf"
+          TopLeft="63.6666675772931,180.777777677333" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Sequence Container\Truncate fPerf"
+          TopLeft="255.925926785961,70.1203702489995" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="330.325926785961,111.720370249">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-203.459259208668,69.0574074283331"
+              Start="0,0"
+              End="-203.459259208668,61.5574074283331">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5287037141666" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5287037141666"
+                    Point2="0,34.5287037141666"
+                    Point3="-4,34.5287037141666" />
+                  <mssgle:LineSegment
+                    End="-199.459259208668,34.5287037141666" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-199.459259208668,34.5287037141666"
+                    Point2="-203.459259208668,34.5287037141666"
+                    Point3="-203.459259208668,38.5287037141666" />
+                  <mssgle:LineSegment
+                    End="-203.459259208668,61.5574074283331" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="198.600000956158,91.0490739541262">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57.3259258298036,0"
+              Start="0,0"
+              End="49.8259258298036,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.8259258298036,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="456,312"
+          Size="456,355"
+          Id="Package\Sequence Container"
+          TopLeft="125.171314699804,87.4629624590645" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Load fPerf">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Sequence Container\Load fPerf\ADO NET Destination"
+          TopLeft="453,184" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Sequence Container\Load fPerf\ADO NET Source"
+          TopLeft="205.833322087096,207.999998553594" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Load fPerf.Paths[ADO NET Source Output]"
+          TopLeft="365.833322087096,228.799998553594">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.1666779129039,-23.999998553594"
+              Start="0,0"
+              End="79.6666779129039,-23.999998553594">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="39.583338956452,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.583338956452,0"
+                    Point2="43.583338956452,0"
+                    Point3="43.583338956452,-4" />
+                  <mssgle:LineSegment
+                    End="43.583338956452,-19.999998553594" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.583338956452,-19.999998553594"
+                    Point2="43.583338956452,-23.999998553594"
+                    Point3="47.583338956452,-23.999998553594" />
+                  <mssgle:LineSegment
+                    End="79.6666779129039,-23.999998553594" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Load fPerf\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Load fPerf\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

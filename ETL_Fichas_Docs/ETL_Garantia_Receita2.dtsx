@@ -1,0 +1,2199 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/28/2025 2:15:09 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="D2-WV47-DB01"
+  DTS:CreatorName="GRUPOLCLOG\luiz.costa"
+  DTS:DTSID="{57AA9AE0-3938-4A97-BEEE-74BFB8EA83AB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="ETL_Garantia_Receita2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="77"
+  DTS:VersionGUID="{3EB44796-23F6-44A4-9E01-0B7F8DE204B1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89.DBStage.sqldba]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{56FD123B-7EBC-4D07-AB78-7B16904F795A}"
+      DTS:ObjectName="10.100.86.89.DBStage.sqldba">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DBStage;Persist Security Info=True;Encrypt=True;TrustServerCertificate=True;Application Name=SSIS-ETL_Garantia_Receita2-{56FD123B-7EBC-4D07-AB78-7B16904F795A}10.100.86.89.DBStage.sqldba1;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA22ODHxMT/kOwPuvzVzHJLQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACazvuJ7IJ04ZVznpwKF/blAAAAAASAAACgAAAAEAAAALmmRWnMsw3dZG9Kx4t1wjEYAAAAnIfiN0yPTd5Cy/tEa/7XqUoLW5YArLa2FAAAAEtOsA533703vcP2vOntsv7aG+3w</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89.DBStage.sqldba 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9F825A17-B59E-4FAC-B649-7BB24BB94A28}"
+      DTS:ObjectName="10.100.86.89.DBStage.sqldba 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DBStage;Provider=MSOLEDBSQL;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-ETL_Garantia_Receita2-{9F825A17-B59E-4FAC-B649-7BB24BB94A28}10.100.86.89.DBStage.sqldba 1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{6938A6C3-033A-497F-B338-0690CB196B86}"
+      DTS:ObjectName="169.57.181.231.SOFTRAN_TRANSLUTE.datalc">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=169.57.181.231;User ID=softran;Initial Catalog=SOFTRAN_TRANSLUTE;Persist Security Info=True;Encrypt=False;TrustServerCertificate=True;Application Name=SSIS-Package-{6938A6C3-033A-497F-B338-0690CB196B86}169.57.181.231.SOFTRAN_TRANSLUTE.datalc;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA22ODHxMT/kOwPuvzVzHJLQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAcfa7KvyWyDcvbX0DiFjhmAAAAAASAAACgAAAAEAAAAF56PhGbyjo8u+qsT4CcvvUQAAAA53iua+IkIaPXj6ABLd9MMBQAAAAuQnJli2c85N0HYZPCXRNoJy2mMw</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Contêiner da Sequência"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contêiner da Sequência"
+      DTS:DTSID="{C983BFF3-AF44-4BC0-8F68-E7FC5F428B73}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Contêiner da Sequência">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Contêiner da Sequência\Load fCTE"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{6848C9FD-0EE4-49F6-8E20-D9BCD4B46AE0}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load fCTE"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+                  name="ADO NET Destination"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The Destination database table name."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."GARANTIA_RECEITA"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                      expressionType="Notify"
+                      name="BatchSize">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                      expressionType="Notify"
+                      name="CommandTimeout">600</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                      expressionType="Notify"
+                      name="UseBulkInsertWhenPossible">true</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[10.100.86.89.DBStage.sqldba]"
+                      connectionManagerRefId="Package.ConnectionManagers[10.100.86.89.DBStage.sqldba]"
+                      description="Managed connection manager"
+                      name="IDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ADO NET Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Pto Operação]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Pto Operação"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Pto Operação]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Pto Operação]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Cte]"
+                          cachedDataType="i4"
+                          cachedName="Cte"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Cte]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cte]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Tipo de Documento]"
+                          cachedDataType="i4"
+                          cachedName="Tipo de Documento"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Tipo de Documento]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo de Documento]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Emissão]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Emissão"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Emissão]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Emissão]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Cliente]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Cliente"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Cliente]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cliente]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Total Prestação]"
+                          cachedDataType="numeric"
+                          cachedName="Total Prestação"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Total Prestação]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Prestação]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Total Frete]"
+                          cachedDataType="numeric"
+                          cachedName="Total Frete"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Total Frete]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Frete]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Situação]"
+                          cachedDataType="wstr"
+                          cachedLength="29"
+                          cachedName="Situação"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Situação]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Situação]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Empresa Fatura]"
+                          cachedDataType="i4"
+                          cachedName="Empresa Fatura"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Empresa Fatura]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Empresa Fatura]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Fatura]"
+                          cachedDataType="i4"
+                          cachedName="Fatura"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Fatura]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fatura]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Dt Emissão Fatura]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Dt Emissão Fatura"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Dt Emissão Fatura]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Emissão Fatura]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Dt Vencimento]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Dt Vencimento"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Dt Vencimento]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Vencimento]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Valor Total da Fatura]"
+                          cachedDataType="numeric"
+                          cachedName="Valor Total da Fatura"
+                          cachedPrecision="38"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Valor Total da Fatura]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valor Total da Fatura]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Dt Pagamento]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Dt Pagamento"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Dt Pagamento]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Pagamento]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Valor Pago]"
+                          cachedDataType="numeric"
+                          cachedName="Valor Pago"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Valor Pago]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valor Pago]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Acréscimos]"
+                          cachedDataType="numeric"
+                          cachedName="Acréscimos"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Acréscimos]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Acréscimos]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Saldo]"
+                          cachedDataType="numeric"
+                          cachedName="Saldo"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Saldo]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Saldo]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Deduções]"
+                          cachedDataType="numeric"
+                          cachedName="Deduções"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Deduções]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Deduções]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Status]"
+                          cachedDataType="wstr"
+                          cachedLength="17"
+                          cachedName="Status"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Status]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Remetente]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Remetente"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Remetente]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Remetente]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Destinatário]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Destinatário"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Destinatário]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Destinatário]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Tipo de Transporte]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Tipo de Transporte"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Tipo de Transporte]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo de Transporte]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Natureza de Carga]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Natureza de Carga"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Natureza de Carga]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Natureza de Carga]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Conteúdo (CFOP)]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Conteúdo (CFOP)"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Conteúdo (CFOP)]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Conteúdo (CFOP)]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Nota Fiscal]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Nota Fiscal"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Nota Fiscal]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Nota Fiscal]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Vl Total Notas]"
+                          cachedDataType="numeric"
+                          cachedName="Vl Total Notas"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Vl Total Notas]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Vl Total Notas]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Cidade Origem]"
+                          cachedDataType="wstr"
+                          cachedLength="30"
+                          cachedName="Cidade Origem"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Cidade Origem]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cidade Origem]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Cidade Destino]"
+                          cachedDataType="wstr"
+                          cachedLength="30"
+                          cachedName="Cidade Destino"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Cidade Destino]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cidade Destino]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Peso Cub.]"
+                          cachedDataType="numeric"
+                          cachedName="Peso Cub."
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Peso Cub.]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Peso Cub.]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Frete Peso]"
+                          cachedDataType="numeric"
+                          cachedName="Frete Peso"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Frete Peso]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Frete Peso]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Frete Valor]"
+                          cachedDataType="numeric"
+                          cachedName="Frete Valor"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Frete Valor]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Frete Valor]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[GRIS]"
+                          cachedDataType="numeric"
+                          cachedName="GRIS"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[GRIS]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[GRIS]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Pedágio]"
+                          cachedDataType="numeric"
+                          cachedName="Pedágio"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Pedágio]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Pedágio]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Recebedor]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Recebedor"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Recebedor]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Recebedor]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Tipo Emissão]"
+                          cachedDataType="wstr"
+                          cachedLength="16"
+                          cachedName="Tipo Emissão"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Tipo Emissão]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo Emissão]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CNPJ Cliente]"
+                          cachedDataType="wstr"
+                          cachedLength="14"
+                          cachedName="CNPJ Cliente"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJ Cliente]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJ Cliente]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CNPJ Destinatário]"
+                          cachedDataType="wstr"
+                          cachedLength="14"
+                          cachedName="CNPJ Destinatário"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJ Destinatário]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJ Destinatário]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Origem UF]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="Origem UF"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Origem UF]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Origem UF]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Destino UF]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="Destino UF"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Destino UF]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Destino UF]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Arquivo CONEMB]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Arquivo CONEMB"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Arquivo CONEMB]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Arquivo CONEMB]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Arquivo DOCCOB]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Arquivo DOCCOB"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Arquivo DOCCOB]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Arquivo DOCCOB]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CTe Substituido]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="CTe Substituido"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTe Substituido]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTe Substituido]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Dt Entrega]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Dt Entrega"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Dt Entrega]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Entrega]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Status Pré Protocolo]"
+                          cachedDataType="wstr"
+                          cachedLength="12"
+                          cachedName="Status Pré Protocolo"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Status Pré Protocolo]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status Pré Protocolo]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Vendor]"
+                          cachedDataType="wstr"
+                          cachedLength="13"
+                          cachedName="Vendor"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Vendor]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Vendor]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Evento]"
+                          cachedDataType="wstr"
+                          cachedLength="30"
+                          cachedName="Evento"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Evento]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Evento]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Status Entrega]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Status Entrega"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Status Entrega]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status Entrega]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Pto Operação]"
+                          dataType="wstr"
+                          length="10"
+                          name="Pto Operação" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Cte]"
+                          dataType="i4"
+                          name="Cte" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Tipo de Documento]"
+                          dataType="wstr"
+                          length="40"
+                          name="Tipo de Documento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Emissão]"
+                          dataType="dbTimeStamp"
+                          name="Emissão" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Cliente]"
+                          dataType="wstr"
+                          length="100"
+                          name="Cliente" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Total Prestação]"
+                          dataType="numeric"
+                          name="Total Prestação"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Total Frete]"
+                          dataType="numeric"
+                          name="Total Frete"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Situação]"
+                          dataType="wstr"
+                          length="29"
+                          name="Situação" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Empresa Fatura]"
+                          dataType="i4"
+                          name="Empresa Fatura" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Fatura]"
+                          dataType="i4"
+                          name="Fatura" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Dt Emissão Fatura]"
+                          dataType="dbTimeStamp"
+                          name="Dt Emissão Fatura" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Dt Vencimento]"
+                          dataType="dbTimeStamp"
+                          name="Dt Vencimento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Valor Total da Fatura]"
+                          dataType="numeric"
+                          name="Valor Total da Fatura"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Dt Pagamento]"
+                          dataType="dbTimeStamp"
+                          name="Dt Pagamento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Valor Pago]"
+                          dataType="numeric"
+                          name="Valor Pago"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Acréscimos]"
+                          dataType="numeric"
+                          name="Acréscimos"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Deduções]"
+                          dataType="numeric"
+                          name="Deduções"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Saldo]"
+                          dataType="numeric"
+                          name="Saldo"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Status]"
+                          dataType="wstr"
+                          length="17"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Remetente]"
+                          dataType="wstr"
+                          length="100"
+                          name="Remetente" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Destinatário]"
+                          dataType="wstr"
+                          length="100"
+                          name="Destinatário" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Tipo de Transporte]"
+                          dataType="wstr"
+                          length="40"
+                          name="Tipo de Transporte" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Natureza de Carga]"
+                          dataType="wstr"
+                          length="40"
+                          name="Natureza de Carga" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Conteúdo (CFOP)]"
+                          dataType="wstr"
+                          length="10"
+                          name="Conteúdo (CFOP)" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Nota Fiscal]"
+                          dataType="wstr"
+                          length="255"
+                          name="Nota Fiscal" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Vl Total Notas]"
+                          dataType="numeric"
+                          name="Vl Total Notas"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Cidade Origem]"
+                          dataType="wstr"
+                          length="30"
+                          name="Cidade Origem" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Cidade Destino]"
+                          dataType="wstr"
+                          length="30"
+                          name="Cidade Destino" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Peso Cub.]"
+                          dataType="numeric"
+                          name="Peso Cub."
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Frete Peso]"
+                          dataType="numeric"
+                          name="Frete Peso"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Frete Valor]"
+                          dataType="numeric"
+                          name="Frete Valor"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[GRIS]"
+                          dataType="numeric"
+                          name="GRIS"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Pedágio]"
+                          dataType="numeric"
+                          name="Pedágio"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Recebedor]"
+                          dataType="wstr"
+                          length="100"
+                          name="Recebedor" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Tipo Emissão]"
+                          dataType="wstr"
+                          length="16"
+                          name="Tipo Emissão" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJ Cliente]"
+                          dataType="wstr"
+                          length="14"
+                          name="CNPJ Cliente" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJ Destinatário]"
+                          dataType="wstr"
+                          length="14"
+                          name="CNPJ Destinatário" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Origem UF]"
+                          dataType="wstr"
+                          length="3"
+                          name="Origem UF" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Destino UF]"
+                          dataType="wstr"
+                          length="3"
+                          name="Destino UF" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Arquivo CONEMB]"
+                          dataType="wstr"
+                          length="255"
+                          name="Arquivo CONEMB" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Arquivo DOCCOB]"
+                          dataType="wstr"
+                          length="255"
+                          name="Arquivo DOCCOB" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTe Substituido]"
+                          dataType="wstr"
+                          length="5"
+                          name="CTe Substituido" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Dt Entrega]"
+                          dataType="dbTimeStamp"
+                          name="Dt Entrega" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Status Pré Protocolo]"
+                          dataType="wstr"
+                          length="12"
+                          name="Status Pré Protocolo" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Vendor]"
+                          dataType="wstr"
+                          length="13"
+                          name="Vendor" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Evento]"
+                          dataType="wstr"
+                          length="30"
+                          name="Evento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Status Entrega]"
+                          dataType="wstr"
+                          length="50"
+                          name="Status Entrega" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ADO NET Destination Error Output"
+                      synchronousInputId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+                  name="ADO NET Source"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement used by the component to extract data."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    CONVERT(VARCHAR(50), CONCAT(a.CdEmpresa, a.NrSeqControle, a.NrDoctoFiscal)) AS cdempresa,
+    SUBSTRING(g.DsApelido, 1, 3) AS DsApelidoEmitente,
+    a.NrCepColeta AS CEPColeta,
+    a.NrCepCalcAte AS CEPDestino,
+    a.dsplacaveiculo,
+    a.NrPlacaReboque1,
+    q.dsnome AS DsMotorista,
+    CONVERT(MONEY, a.VlFretePeso) AS VlFretePeso,
+    CONVERT(MONEY, a.VlFreteValor) AS VlFreteValor,
+    CONVERT(MONEY, a.VlPedagio) AS VlPedagio,
+    CONVERT(MONEY, a.VlGRIS) AS VlGRIS,
+    CONVERT(MONEY, a.VlTotalPrestacao) AS VlTotalPrestacao,
+    a.nrdoctofiscal,
+    a.CdTpDoctoFiscal,
+    f.dsapelido,
+    CONVERT(VARCHAR, a.DtEmissao, 103) AS DtEmissao,
+    CASE WHEN ISNULL(a.inConhecimento, 0) = 0 THEN 'Normal' ELSE 'Cancelado' END AS DsSituacao,
+    CASE WHEN ISNULL(a.inTipoFrete, 0) = 0 THEN 'F' ELSE 'C' END AS DsTpFrete,
+    CASE WHEN ISNULL(a.intipoemissao, 0) = 0 THEN 'Normal'
+         WHEN ISNULL(a.intipoemissao, 0) = 1 THEN 'Dev Total'
+         WHEN ISNULL(a.intipoemissao, 0) = 2 THEN 'Reentrega'
+         WHEN ISNULL(a.intipoemissao, 0) = 3 THEN 'Dev Parcial'
+         WHEN ISNULL(a.intipoemissao, 0) = 4 THEN 'Complementar'
+         WHEN ISNULL(a.intipoemissao, 0) = 5 THEN 'Cotação de Frete'
+         WHEN ISNULL(a.intipoemissao, 0) = 6 THEN 'Armazenagem'
+         WHEN ISNULL(a.intipoemissao, 0) = 7 THEN 'Paletizacao'
+         WHEN ISNULL(a.intipoemissao, 0) = 8 THEN 'Diaria'
+         WHEN ISNULL(a.intipoemissao, 0) = 9 THEN 'Redespacho Prop'
+         WHEN ISNULL(a.intipoemissao, 0) = 10 THEN 'Agendamento'
+         WHEN ISNULL(a.intipoemissao, 0) = 11 THEN 'Redepacho'
+         WHEN ISNULL(a.intipoemissao, 0) = 12 THEN 'SubContrato'
+         WHEN ISNULL(a.intipoemissao, 0) = 13 THEN 'Refaturamento'
+         WHEN ISNULL(a.intipoemissao, 0) = 14 THEN 'Substituição'
+         WHEN ISNULL(a.intipoemissao, 0) = 15 THEN 'Anulação'
+    END AS DsTipoEmissao,
+    i.dsUF AS DsUFOrigem,
+    j.DsUF AS DsUFDestino,
+    CONVERT(VARCHAR, a.dtentrega, 103) AS dtentrega,
+    CONVERT(VARCHAR, l.dtemissao, 103) AS DtEmissaoFatura,
+    CONVERT(VARCHAR, m.dtvencimento, 103) AS dtvencimento,
+    CONVERT(MONEY, a.QtPeso) AS QtPeso,
+    CONVERT(MONEY, a.QtMetrosCubicos) AS QtMetrosCubicos,
+    CONVERT(MONEY, a.VlMercadoria) AS VlMercadoria,
+    CONVERT(MONEY, a.VlLiquido) AS VlLiquido,
+    CONVERT(MONEY, a.VlICMS) AS VlICMS,
+    CONVERT(MONEY, a.QtVolume) AS QtVolume,
+    a.CdRemetente,
+    b.dsentidade AS DsRemetente,
+    a.CdDestinatario,
+    c.dsentidade AS dsDestinatario,
+    a.CdConsignatario,
+    d.dsentidade AS dsConsignatario,
+    a.CdInscricao,
+    e.dsentidade AS dsPagador,
+    a.CdEmpresaDestino,
+    h.DsApelido AS DsEmpDest,
+    i.dslocal AS CidadeColeta,
+    j.dslocal AS CidadeEntrega,
+    l.cdfatura,
+    CASE WHEN ISNULL(c.InLocaldificilent, 0) = 0 THEN 'Nao' ELSE 'Sim' END AS InTDE,
+    docto.NrConheOpLog AS DoctoOrigem,
+    -- OTIMIZADO: A chamada da função foi substituída pela coluna do OUTER APPLY abaixo.
+    notas.NrNotaFiscalConcatenada AS NrNotaFiscal,
+    situacao_arq.DsSituacaoArq,
+    n.VlLiquido AS VlFreteOrigem,
+    n.VlICMS AS VlICMSOrigem,
+    o.dsnatureza,
+    p.dstransporte,
+    ocorrencia.DsUltimaOcorrencia,
+    ocorrencia.DtUltimaOcorrencia,
+    ocorrencia.DsUsuario,
+    romaneio.NomeMotorista,
+    romaneio.NrRomaneio,
+    romaneio.NrPlacaRomaneio,
+    manif.PlacaManifInterior,
+    manif.DtSaidaParceiro,
+    manif.DsItinerario,
+    conemb.ArquivoConemb,
+    conemb.DtEnvioConemb,
+    ocoren.ArquivoOcoren,
+    ocoren.DtEnvioOcoren,
+    doccob.ArquivoDocCob,
+    doccob.DtEnvioDocCob,
+    pedido.Pedido,
+    conteudo.ConteudoNF AS Conteudo,
+    -- MODIFICADO: Busca da tabela pré-calculada, em vez de chamar a função lenta.
+    CONVERT(VARCHAR, previsao.DtPrevisaoCalculada, 103) AS [Previsão de Entrega],
+    CONVERT(VARCHAR, r.DtDigitacao, 103) + ' ' + CONVERT(VARCHAR, r.DtDigitacao, 108) AS [Dt Inclusao Ocorrência],
+    CONVERT(VARCHAR, r.DtMovimento, 103) + ' ' + CONVERT(VARCHAR, r.HrMovimento, 108) AS [Dt Ocorrencia],
+    r.DsHistoricoEntrega AS [Descrição Ult Ocorrencia],
+    r.DsUsuario AS [Usuário Ocorrencia],
+    a.dsusuario AS [UsuarioEmissao]
+FROM gtcconhe AS a WITH (NOLOCK)
+LEFT JOIN siscli AS b WITH (NOLOCK) ON b.cdinscricao = a.cdremetente
+LEFT JOIN siscli AS c WITH (NOLOCK) ON c.cdinscricao = a.cddestinatario
+LEFT JOIN siscli AS d WITH (NOLOCK) ON d.cdinscricao = a.cdconsignatario
+LEFT JOIN siscli AS e WITH (NOLOCK) ON e.cdinscricao = a.cdinscricao
+LEFT JOIN sisclifa AS ee WITH (NOLOCK) ON ee.cdinscricao = e.cdinscricao
+LEFT JOIN sistdf AS f WITH (NOLOCK) ON f.cdtpdoctofiscal = a.cdtpdoctofiscal
+LEFT JOIN sisempre AS g WITH (NOLOCK) ON g.cdempresa = a.cdempresa
+LEFT JOIN sisempre AS h WITH (NOLOCK) ON h.cdempresa = a.cdempresadestino
+LEFT JOIN siscep AS i WITH (NOLOCK) ON i.nrcep = a.nrcepcoleta
+LEFT JOIN siscep AS j WITH (NOLOCK) ON j.nrcep = a.nrcepentrega
+LEFT JOIN gtcfatit AS k WITH (NOLOCK) ON k.cdempresaconhec = a.cdempresa AND k.nrseqcontrole = a.nrseqcontrole AND ISNULL(k.insituacao, 0) = 0
+LEFT JOIN gtcfat AS l WITH (NOLOCK) ON l.cdempresa = k.cdempresa AND l.cdfatura = k.cdfatura AND l.cdparcela = k.cdparcela
+LEFT JOIN gfatitu AS m WITH (NOLOCK) ON m.inpagarreceber = 1 AND m.cdfilial = l.cdempresa AND m.nrfatura = l.cdfatura AND m.cdparcela = l.cdparcela
+LEFT JOIN gtcconhe AS n WITH (NOLOCK) ON n.cdempresa = a.cdempresaref AND n.nrseqcontrole = a.nrseqcontroleREF
+LEFT JOIN gtcnatur AS o WITH (NOLOCK) ON o.cdnatureza = a.cdnatureza
+LEFT JOIN gtctrans AS p WITH (NOLOCK) ON p.cdtransporte = a.cdtransporte
+LEFT JOIN gtcfundp AS q WITH (NOLOCK) ON q.nrcpf = a.cdmotorista
+LEFT JOIN dbo.ResultadosPrevisaoEntrega AS previsao WITH (NOLOCK) ON a.CdEmpresa = previsao.CdEmpresa AND a.NrSeqControle = previsao.NrSeqControle
+OUTER APPLY (
+    SELECT TOP 1 tb1.DsUsuario, tb1.DtDigitacao, tb1.DtMovimento, tb1.HrMovimento, tb2.DsHistoricoEntrega
+    FROM GTCMOVEN AS tb1 WITH (NOLOCK)
+    INNER JOIN GTCHisEn AS tb2 WITH (NOLOCK) ON tb1.CdOcorrencia = tb2.CdHistoricoEntrega
+    WHERE a.NrSeqControle = tb1.NrSeqControle AND a.CdEmpresa = tb1.CdEmpresa
+    ORDER BY tb1.DtDigitacao DESC
+) AS r
+-- OTIMIZADO: Adicionado este bloco para substituir a função dbo.sp_RetornaNotasFiscais
+OUTER APPLY (
+    SELECT STUFF(
+        (
+            SELECT '/' + LTRIM(RTRIM(CAST(nf.NrNotaFiscal AS VARCHAR(100))))
+            FROM dbo.GTCNfCon AS nf WITH (NOLOCK)
+            WHERE nf.CdEmpresa = a.CdEmpresa
+              AND nf.NrSeqControle = a.NrSeqControle
+            ORDER BY nf.NrNotaFiscal
+            FOR XML PATH('')
+        ), 1, 1, ''
+    ) AS NrNotaFiscalConcatenada
+) AS notas
+OUTER APPLY (
+    SELECT TOP 1 yy.NrConheOpLog
+    FROM gtcnfcon AS xx
+    LEFT JOIN gtcnf AS yy ON yy.cdremetente = xx.cdinscricao AND yy.nrserie = xx.nrserie AND yy.NrNotaFiscal = xx.NrNotaFiscal
+    WHERE xx.cdempresa = a.cdempresa AND xx.nrseqcontrole = a.nrseqcontrole
+) AS docto
+OUTER APPLY (
+    SELECT
+        DsSituacaoArq = CASE
+            WHEN NOT EXISTS (SELECT 1 FROM ccecceit AS situacao WHERE situacao.cdempresaconhec = a.cdempresa AND situacao.nrseqcontrole = a.nrseqcontrole) THEN 'Sem Protocolo'
+            WHEN EXISTS (SELECT 1 FROM ccecceit AS situacao WHERE situacao.cdempresaconhec = a.cdempresa AND situacao.nrseqcontrole = a.nrseqcontrole AND ISNULL(situacao.insituacao, 99) = 1) THEN 'Arquivado'
+            WHEN EXISTS (SELECT 1 FROM ccecceit AS situacao WHERE situacao.cdempresaconhec = a.cdempresa AND situacao.nrseqcontrole = a.nrseqcontrole AND ISNULL(situacao.insituacao, 99) = 0) THEN 'Em Transito'
+        END
+) AS situacao_arq
+OUTER APPLY (
+    SELECT TOP 1
+        DsUltimaOcorrencia = yy.dshistoricoentrega,
+        DtUltimaOcorrencia = CONVERT(VARCHAR, xx.Dtmovimento, 103),
+        DsUsuario = xx.DsUsuario
+    FROM gtcmoven AS xx
+    LEFT JOIN gtchisen AS yy ON yy.cdhistoricoentrega = xx.cdocorrencia
+    WHERE xx.cdempresa = a.cdempresa AND xx.nrseqcontrole = a.nrseqcontrole
+    ORDER BY xx.cdsequencia DESC
+) AS ocorrencia
+OUTER APPLY (
+    SELECT TOP 1
+        NomeMotorista = mm.DsNome,
+        NrRomaneio = CAST(xx.CdEmpresa AS VARCHAR(3)) + '-' + CAST(xx.CdRota AS VARCHAR(5)) + '-' + CAST(xx.CdRomaneio AS VARCHAR(6)),
+        NrPlacaRomaneio = xx.nrplaca
+    FROM cceroman AS xx
+    LEFT JOIN cceromit AS yy ON yy.cdempresa = xx.cdempresa AND yy.cdrota = xx.cdrota AND yy.cdromaneio = xx.cdromaneio AND ISNULL(yy.insituacao, 0) &lt;&gt; 9
+    LEFT JOIN gtcfundp AS mm ON xx.NrCPFMotorista = mm.NrCPF
+    WHERE ISNULL(xx.insituacao, 0) = 0 AND yy.cdempresacoletaentrega = a.cdempresa AND yy.nrseqcontrole = a.nrseqcontrole
+    ORDER BY xx.dtromaneio DESC
+) AS romaneio
+OUTER APPLY (
+    SELECT TOP 1
+        PlacaManifInterior = yy.nrplaca,
+        DtSaidaParceiro = yy.dtsaida,
+        DsItinerario = SUBSTRING(yy.nrmanifesto, 1, 7)
+    FROM gtcmancn AS xx
+    LEFT JOIN gtcman AS yy ON yy.nrmanifesto = xx.nrmanifesto
+    LEFT JOIN gtcitine AS zz ON zz.cditinerario = SUBSTRING(yy.nrmanifesto, 1, 7)
+    LEFT JOIN sisempre AS zzz ON zzz.cdempresa = zz.cdempresadestino
+    WHERE ISNULL(xx.insituacao, 0) = 0 AND ISNULL(yy.insituacao, 0) = 0
+      AND xx.cdempresa = a.cdempresa AND xx.nrseqcontrole = a.nrseqcontrole
+      AND zzz.cdempresa &gt;= 500 AND zzz.cdempresa &lt;= 999
+) AS manif
+OUTER APPLY (
+    SELECT TOP 1 DsNomeArquivo AS ArquivoConemb, DtEnvio AS DtEnvioConemb
+    FROM EDIENVLG WHERE ISNULL(CdTpLayout, 0) = 0 AND CdEmpresa = a.CdEmpresa AND NrSeqControle = a.NrSeqControle
+    ORDER BY DtEnvio DESC
+) AS conemb
+OUTER APPLY (
+    SELECT TOP 1 DsNomeArquivo AS ArquivoOcoren, DtEnvio AS DtEnvioOcoren
+    FROM EDIENVLG WHERE ISNULL(CdTpLayout, 0) = 1 AND CdEmpresa = a.CdEmpresa AND NrSeqControle = a.NrSeqControle
+    ORDER BY DtEnvio DESC
+) AS ocoren
+OUTER APPLY (
+    SELECT TOP 1 DsNomeArquivo AS ArquivoDocCob, DtEnvio AS DtEnvioDocCob
+    FROM EDIENVLG WHERE ISNULL(CdTpLayout, 0) = 2 AND CdEmpresaFat = l.CdEmpresa AND CdFatura = l.CdFatura
+    ORDER BY DtEnvio DESC
+) AS doccob
+OUTER APPLY (
+    SELECT TOP 1 NrPedidoColeta AS Pedido
+    FROM CCECOLET WHERE CdEmpresa = a.CdEmpresaColeta AND NrColeta = a.NrColeta
+) AS pedido
+OUTER APPLY (
+    SELECT TOP 1 (NF.NrCFOP + '-' + ISNULL(NN.DsNaturezaOperacao, '-')) AS ConteudoNF
+    FROM GTCNFCON AS YY
+    LEFT JOIN GTCNF AS NF ON NF.CdRemetente = YY.CdInscricao AND NF.NrSerie = YY.NrSerie AND YY.NrNotaFiscal = NF.NrNotaFiscal
+    LEFT JOIN SISNATOP AS NN ON NN.NrCFOP = NF.NrCFOP
+    WHERE YY.CdEmpresa = a.CdEmpresa AND YY.NrSeqControle = a.NrSeqControle AND ISNULL(NF.NrCFOP, '') &lt;&gt; ''
+) AS conteudo
+WHERE a.DtCancelamento IS NULL
+  AND a.cdremetente IS NOT NULL
+  AND a.dtemissao &gt;= '20240101';
+
+GO</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">600</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                      name="AllowImplicitStringConversion">true</property>
+                    <property
+                      dataType="System.String"
+                      description="The Source database table name."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."vw_GARANTIA_RECEITA_V2"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the mode to retrieve external column information"
+                      name="AccessMode"
+                      typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+                      connectionManagerRefId="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+                      description="Managed connection manager"
+                      name="IDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output]"
+                      name="ADO NET Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Pto Operação]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Pto Operação]"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Pto Operação]"
+                          name="Pto Operação"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cte]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Cte]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cte]"
+                          name="Cte"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo de Documento]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Tipo de Documento]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo de Documento]"
+                          name="Tipo de Documento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Emissão]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Emissão]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Emissão]"
+                          name="Emissão"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cliente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Cliente]"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cliente]"
+                          name="Cliente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Prestação]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Total Prestação]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Prestação]"
+                          name="Total Prestação"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Frete]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Total Frete]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Frete]"
+                          name="Total Frete"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Situação]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Situação]"
+                          length="29"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Situação]"
+                          name="Situação"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Empresa Fatura]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Empresa Fatura]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Empresa Fatura]"
+                          name="Empresa Fatura"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdTitulo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdTitulo]"
+                          length="15"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdTitulo]"
+                          name="CdTitulo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fatura]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fatura]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fatura]"
+                          name="Fatura"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Emissão Fatura]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Dt Emissão Fatura]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Emissão Fatura]"
+                          name="Dt Emissão Fatura"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Vencimento]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Dt Vencimento]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Vencimento]"
+                          name="Dt Vencimento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valor Total da Fatura]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valor Total da Fatura]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valor Total da Fatura]"
+                          name="Valor Total da Fatura"
+                          precision="38"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Pagamento]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Dt Pagamento]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Pagamento]"
+                          name="Dt Pagamento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valor Pago]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valor Pago]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valor Pago]"
+                          name="Valor Pago"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Acréscimos]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Acréscimos]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Acréscimos]"
+                          name="Acréscimos"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Saldo]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Saldo]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Saldo]"
+                          name="Saldo"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Deduções]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Deduções]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Deduções]"
+                          name="Deduções"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Status]"
+                          length="17"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status]"
+                          name="Status"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Remetente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Remetente]"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Remetente]"
+                          name="Remetente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Destinatário]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Destinatário]"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Destinatário]"
+                          name="Destinatário"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo de Transporte]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Tipo de Transporte]"
+                          length="40"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo de Transporte]"
+                          name="Tipo de Transporte"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Natureza de Carga]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Natureza de Carga]"
+                          length="40"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Natureza de Carga]"
+                          name="Natureza de Carga"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Conteúdo (CFOP)]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Conteúdo (CFOP)]"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Conteúdo (CFOP)]"
+                          name="Conteúdo (CFOP)"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Nota Fiscal]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Nota Fiscal]"
+                          length="255"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Nota Fiscal]"
+                          name="Nota Fiscal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Vl Total Notas]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Vl Total Notas]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Vl Total Notas]"
+                          name="Vl Total Notas"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cidade Origem]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Cidade Origem]"
+                          length="30"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cidade Origem]"
+                          name="Cidade Origem"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cidade Destino]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Cidade Destino]"
+                          length="30"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cidade Destino]"
+                          name="Cidade Destino"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Peso Cub.]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Peso Cub.]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Peso Cub.]"
+                          name="Peso Cub."
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Frete Peso]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Frete Peso]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Frete Peso]"
+                          name="Frete Peso"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Frete Valor]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Frete Valor]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Frete Valor]"
+                          name="Frete Valor"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[GRIS]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[GRIS]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[GRIS]"
+                          name="GRIS"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Pedágio]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Pedágio]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Pedágio]"
+                          name="Pedágio"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Recebedor]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Recebedor]"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Recebedor]"
+                          name="Recebedor"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo Emissão]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Tipo Emissão]"
+                          length="16"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo Emissão]"
+                          name="Tipo Emissão"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJ Cliente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CNPJ Cliente]"
+                          length="14"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJ Cliente]"
+                          name="CNPJ Cliente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJ Destinatário]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CNPJ Destinatário]"
+                          length="14"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[CNPJ Destinatário]"
+                          name="CNPJ Destinatário"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Origem UF]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Origem UF]"
+                          length="2"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Origem UF]"
+                          name="Origem UF"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Destino UF]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Destino UF]"
+                          length="2"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Destino UF]"
+                          name="Destino UF"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Arquivo CONEMB]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Arquivo CONEMB]"
+                          length="255"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Arquivo CONEMB]"
+                          name="Arquivo CONEMB"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Arquivo DOCCOB]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Arquivo DOCCOB]"
+                          length="255"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Arquivo DOCCOB]"
+                          name="Arquivo DOCCOB"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTe Substituido]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CTe Substituido]"
+                          length="3"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[CTe Substituido]"
+                          name="CTe Substituido"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Entrega]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Dt Entrega]"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Dt Entrega]"
+                          name="Dt Entrega"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status Pré Protocolo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Status Pré Protocolo]"
+                          length="12"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status Pré Protocolo]"
+                          name="Status Pré Protocolo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Vendor]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Vendor]"
+                          length="13"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Vendor]"
+                          name="Vendor"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Evento]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Evento]"
+                          length="30"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Evento]"
+                          name="Evento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status Entrega]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Status Entrega]"
+                          length="50"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].Columns[Status Entrega]"
+                          name="Status Entrega"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Pto Operação]"
+                          dataType="wstr"
+                          length="10"
+                          name="Pto Operação" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Cte]"
+                          dataType="i4"
+                          name="Cte" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Tipo de Documento]"
+                          dataType="i4"
+                          name="Tipo de Documento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Emissão]"
+                          dataType="dbTimeStamp"
+                          name="Emissão" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Cliente]"
+                          dataType="wstr"
+                          length="100"
+                          name="Cliente" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Total Prestação]"
+                          dataType="numeric"
+                          name="Total Prestação"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Total Frete]"
+                          dataType="numeric"
+                          name="Total Frete"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Situação]"
+                          dataType="wstr"
+                          length="29"
+                          name="Situação" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Empresa Fatura]"
+                          dataType="i4"
+                          name="Empresa Fatura" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdTitulo]"
+                          dataType="wstr"
+                          length="15"
+                          name="CdTitulo" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fatura]"
+                          dataType="i4"
+                          name="Fatura" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Dt Emissão Fatura]"
+                          dataType="dbTimeStamp"
+                          name="Dt Emissão Fatura" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Dt Vencimento]"
+                          dataType="dbTimeStamp"
+                          name="Dt Vencimento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valor Total da Fatura]"
+                          dataType="numeric"
+                          name="Valor Total da Fatura"
+                          precision="38"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Dt Pagamento]"
+                          dataType="dbTimeStamp"
+                          name="Dt Pagamento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valor Pago]"
+                          dataType="numeric"
+                          name="Valor Pago"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Acréscimos]"
+                          dataType="numeric"
+                          name="Acréscimos"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Saldo]"
+                          dataType="numeric"
+                          name="Saldo"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Deduções]"
+                          dataType="numeric"
+                          name="Deduções"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Status]"
+                          dataType="wstr"
+                          length="17"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Remetente]"
+                          dataType="wstr"
+                          length="100"
+                          name="Remetente" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Destinatário]"
+                          dataType="wstr"
+                          length="100"
+                          name="Destinatário" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Tipo de Transporte]"
+                          dataType="wstr"
+                          length="40"
+                          name="Tipo de Transporte" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Natureza de Carga]"
+                          dataType="wstr"
+                          length="40"
+                          name="Natureza de Carga" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Conteúdo (CFOP)]"
+                          dataType="wstr"
+                          length="10"
+                          name="Conteúdo (CFOP)" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Nota Fiscal]"
+                          dataType="wstr"
+                          length="255"
+                          name="Nota Fiscal" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Vl Total Notas]"
+                          dataType="numeric"
+                          name="Vl Total Notas"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Cidade Origem]"
+                          dataType="wstr"
+                          length="30"
+                          name="Cidade Origem" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Cidade Destino]"
+                          dataType="wstr"
+                          length="30"
+                          name="Cidade Destino" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Peso Cub.]"
+                          dataType="numeric"
+                          name="Peso Cub."
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Frete Peso]"
+                          dataType="numeric"
+                          name="Frete Peso"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Frete Valor]"
+                          dataType="numeric"
+                          name="Frete Valor"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[GRIS]"
+                          dataType="numeric"
+                          name="GRIS"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Pedágio]"
+                          dataType="numeric"
+                          name="Pedágio"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Recebedor]"
+                          dataType="wstr"
+                          length="100"
+                          name="Recebedor" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Tipo Emissão]"
+                          dataType="wstr"
+                          length="16"
+                          name="Tipo Emissão" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CNPJ Cliente]"
+                          dataType="wstr"
+                          length="14"
+                          name="CNPJ Cliente" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CNPJ Destinatário]"
+                          dataType="wstr"
+                          length="14"
+                          name="CNPJ Destinatário" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Origem UF]"
+                          dataType="wstr"
+                          length="2"
+                          name="Origem UF" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Destino UF]"
+                          dataType="wstr"
+                          length="2"
+                          name="Destino UF" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Arquivo CONEMB]"
+                          dataType="wstr"
+                          length="255"
+                          name="Arquivo CONEMB" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Arquivo DOCCOB]"
+                          dataType="wstr"
+                          length="255"
+                          name="Arquivo DOCCOB" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CTe Substituido]"
+                          dataType="wstr"
+                          length="3"
+                          name="CTe Substituido" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Dt Entrega]"
+                          dataType="dbTimeStamp"
+                          name="Dt Entrega" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Status Pré Protocolo]"
+                          dataType="wstr"
+                          length="12"
+                          name="Status Pré Protocolo" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Vendor]"
+                          dataType="wstr"
+                          length="13"
+                          name="Vendor" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Evento]"
+                          dataType="wstr"
+                          length="30"
+                          name="Evento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Status Entrega]"
+                          dataType="wstr"
+                          length="50"
+                          name="Status Entrega" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                      isErrorOut="true"
+                      name="ADO NET Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Pto Operação]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Pto Operação]"
+                          name="Pto Operação" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Cte]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Cte]"
+                          name="Cte" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Tipo de Documento]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Tipo de Documento]"
+                          name="Tipo de Documento" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Emissão]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Emissão]"
+                          name="Emissão" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Cliente]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Cliente]"
+                          name="Cliente" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Total Prestação]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Total Prestação]"
+                          name="Total Prestação"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Total Frete]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Total Frete]"
+                          name="Total Frete"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Situação]"
+                          dataType="wstr"
+                          length="29"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Situação]"
+                          name="Situação" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Empresa Fatura]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Empresa Fatura]"
+                          name="Empresa Fatura" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdTitulo]"
+                          dataType="wstr"
+                          length="15"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdTitulo]"
+                          name="CdTitulo" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fatura]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fatura]"
+                          name="Fatura" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Dt Emissão Fatura]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Dt Emissão Fatura]"
+                          name="Dt Emissão Fatura" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Dt Vencimento]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Dt Vencimento]"
+                          name="Dt Vencimento" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valor Total da Fatura]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valor Total da Fatura]"
+                          name="Valor Total da Fatura"
+                          precision="38"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Dt Pagamento]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Dt Pagamento]"
+                          name="Dt Pagamento" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valor Pago]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valor Pago]"
+                          name="Valor Pago"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Acréscimos]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Acréscimos]"
+                          name="Acréscimos"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Saldo]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Saldo]"
+                          name="Saldo"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Deduções]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Deduções]"
+                          name="Deduções"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Status]"
+                          dataType="wstr"
+                          length="17"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Status]"
+                          name="Status" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Remetente]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Remetente]"
+                          name="Remetente" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Destinatário]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Destinatário]"
+                          name="Destinatário" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Tipo de Transporte]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Tipo de Transporte]"
+                          name="Tipo de Transporte" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Natureza de Carga]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Natureza de Carga]"
+                          name="Natureza de Carga" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Conteúdo (CFOP)]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Conteúdo (CFOP)]"
+                          name="Conteúdo (CFOP)" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Nota Fiscal]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Nota Fiscal]"
+                          name="Nota Fiscal" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Vl Total Notas]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Vl Total Notas]"
+                          name="Vl Total Notas"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Cidade Origem]"
+                          dataType="wstr"
+                          length="30"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Cidade Origem]"
+                          name="Cidade Origem" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Cidade Destino]"
+                          dataType="wstr"
+                          length="30"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Cidade Destino]"
+                          name="Cidade Destino" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Peso Cub.]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Peso Cub.]"
+                          name="Peso Cub."
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Frete Peso]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Frete Peso]"
+                          name="Frete Peso"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Frete Valor]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Frete Valor]"
+                          name="Frete Valor"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[GRIS]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[GRIS]"
+                          name="GRIS"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Pedágio]"
+                          dataType="numeric"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Pedágio]"
+                          name="Pedágio"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Recebedor]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Recebedor]"
+                          name="Recebedor" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Tipo Emissão]"
+                          dataType="wstr"
+                          length="16"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Tipo Emissão]"
+                          name="Tipo Emissão" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CNPJ Cliente]"
+                          dataType="wstr"
+                          length="14"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CNPJ Cliente]"
+                          name="CNPJ Cliente" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CNPJ Destinatário]"
+                          dataType="wstr"
+                          length="14"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CNPJ Destinatário]"
+                          name="CNPJ Destinatário" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Origem UF]"
+                          dataType="wstr"
+                          length="2"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Origem UF]"
+                          name="Origem UF" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Destino UF]"
+                          dataType="wstr"
+                          length="2"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Destino UF]"
+                          name="Destino UF" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Arquivo CONEMB]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Arquivo CONEMB]"
+                          name="Arquivo CONEMB" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Arquivo DOCCOB]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Arquivo DOCCOB]"
+                          name="Arquivo DOCCOB" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CTe Substituido]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CTe Substituido]"
+                          name="CTe Substituido" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Dt Entrega]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Dt Entrega]"
+                          name="Dt Entrega" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Status Pré Protocolo]"
+                          dataType="wstr"
+                          length="12"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Status Pré Protocolo]"
+                          name="Status Pré Protocolo" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Vendor]"
+                          dataType="wstr"
+                          length="13"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Vendor]"
+                          name="Vendor" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Evento]"
+                          dataType="wstr"
+                          length="30"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Evento]"
+                          name="Evento" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Status Entrega]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Status Entrega]"
+                          name="Status Entrega" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contêiner da Sequência\Load fCTE.Paths[ADO NET Source Output]"
+                  endId="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  name="ADO NET Source Output"
+                  startId="Package\Contêiner da Sequência\Load fCTE\ADO NET Source.Outputs[ADO NET Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contêiner da Sequência\Truncate fGarantia_Receita"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7C877974-32D9-4DDD-B010-AE5F22E406D6}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate fGarantia_Receita"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{9F825A17-B59E-4FAC-B649-7BB24BB94A28}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE &quot;GARANTIA_RECEITA&quot;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contêiner da Sequência.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9D15DE55-E820-47EA-A7C2-1A4DB0CD4417}"
+          DTS:From="Package\Contêiner da Sequência\Truncate fGarantia_Receita"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Contêiner da Sequência\Load fCTE" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Contêiner da Sequência\Load fCTE"
+          TopLeft="249.5,38" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Contêiner da Sequência\Truncate fGarantia_Receita"
+          TopLeft="5.5,38" />
+        <EdgeLayout
+          Id="Package\Contêiner da Sequência.PrecedenceConstraints[Constraint]"
+          TopLeft="219.5,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="30,0"
+              Start="0,0"
+              End="22.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="22.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="454,205"
+          Size="454,248"
+          Id="Package\Contêiner da Sequência"
+          TopLeft="97,84" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Contêiner da Sequência\Load fCTE">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Contêiner da Sequência\Load fCTE\ADO NET Source"
+          TopLeft="79,179" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination"
+          TopLeft="329,180" />
+        <EdgeLayout
+          Id="Package\Contêiner da Sequência\Load fCTE.Paths[ADO NET Source Output]"
+          TopLeft="245,200.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="84,0"
+              Start="0,0"
+              End="76.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="76.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contêiner da Sequência\Load fCTE\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contêiner da Sequência\Load fCTE\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

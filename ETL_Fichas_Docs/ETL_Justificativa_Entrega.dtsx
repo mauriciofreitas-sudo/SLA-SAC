@@ -1,0 +1,729 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/12/2024 8:26:02 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TLBARDIR21"
+  DTS:CreatorName="GRUPOLCLOG\lucas.vilaca"
+  DTS:DTSID="{13496376-A560-4255-829D-18C21778113E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="SSIS_stg_JustificativaEntrega"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{FE45E99E-68FA-450B-9483-39769E52C51A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DBSTACE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3DD4E469-81EC-4368-B552-B8B4A729E300}"
+      DTS:ObjectName="DBSTACE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DBStage;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-SSIS_stg_PerfomanceGeral-{3DD4E469-81EC-4368-B552-B8B4A729E300}DBStage;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SOFTRA - TRANSLUTE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{37C9277C-B78A-4BD6-9310-2688FF4BF6F8}"
+      DTS:ObjectName="SOFTRA - TRANSLUTE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=169.57.181.231;User ID=softran;Initial Catalog=softran_translute;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-SSIS_stg_PerfomanceGeral-{37C9277C-B78A-4BD6-9310-2688FF4BF6F8}SOFTRANCONSULTA;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Contêiner da Sequência"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contêiner da Sequência"
+      DTS:DTSID="{5D89BBAC-CB0E-467B-806E-6D46FAE5BF20}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Contêiner da Sequência">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Contêiner da Sequência\Tarefa Executar SQL"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarefa Executar SQL"
+          DTS:DTSID="{0C7B5EBF-9D4E-4662-AA4B-506EA8BF8CB6}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarefa Executar SQL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{3DD4E469-81EC-4368-B552-B8B4A729E300}"
+              SQLTask:SqlStatementSource="delete from [dbo].[stg_Justificativa_Entrega]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{B47486A0-F292-4030-A98B-AE2EE60BCEFA}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarefa Fluxo de Dados">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="Justificativa_Entrega"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[stg_Justificativa_Entrega]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DBSTACE]"
+                      connectionManagerRefId="Package.ConnectionManagers[DBSTACE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].Columns[IDDOCUMENTO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="42"
+                          cachedName="IDDOCUMENTO"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDDOCUMENTO]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[IDDOCUMENTO]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].Columns[CdHistoricoEntrega]"
+                          cachedDataType="i4"
+                          cachedName="CdHistoricoEntrega"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdHistoricoEntrega]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[CdHistoricoEntrega]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].Columns[DsHistoricoEntrega]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DsHistoricoEntrega"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[DsHistoricoEntrega]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[DsHistoricoEntrega]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].Columns[dsusuario]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="dsusuario"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[dsusuario]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[dsusuario]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].Columns[CdSequencia]"
+                          cachedDataType="i4"
+                          cachedName="CdSequencia"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdSequencia]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[CdSequencia]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].Columns[HrMovimento]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="HrMovimento"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[HrMovimento]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[HrMovimento]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].Columns[DtMovimento]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DtMovimento"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[DtMovimento]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[DtMovimento]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].Columns[dtdigitacao]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="dtdigitacao"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[dtdigitacao]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[dtdigitacao]" />
+                        <inputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].Columns[dsorigemmovto]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="dsorigemmovto"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[dsorigemmovto]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[dsorigemmovto]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDDOCUMENTO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="70"
+                          name="IDDOCUMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdHistoricoEntrega]"
+                          dataType="i4"
+                          name="CdHistoricoEntrega" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[DsHistoricoEntrega]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DsHistoricoEntrega" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[dsusuario]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="dsusuario" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[CdSequencia]"
+                          dataType="i4"
+                          name="CdSequencia" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[HrMovimento]"
+                          dataType="dbTimeStamp"
+                          name="HrMovimento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[DtMovimento]"
+                          dataType="dbTimeStamp"
+                          name="DtMovimento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[dtdigitacao]"
+                          dataType="dbTimeStamp"
+                          name="dtdigitacao" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB].ExternalColumns[dsorigemmovto]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="dsorigemmovto" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="Origem Just_Entrega"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[stg_Justificativa_Entrega]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Justificativa_Entrega] with (nolock)</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[SOFTRA - TRANSLUTE]"
+                      connectionManagerRefId="Package.ConnectionManagers[SOFTRA - TRANSLUTE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[IDDOCUMENTO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[IDDOCUMENTO]"
+                          length="42"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[IDDOCUMENTO]"
+                          name="IDDOCUMENTO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[CdHistoricoEntrega]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[CdHistoricoEntrega]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[CdHistoricoEntrega]"
+                          name="CdHistoricoEntrega"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[DsHistoricoEntrega]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[DsHistoricoEntrega]"
+                          length="50"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[DsHistoricoEntrega]"
+                          name="DsHistoricoEntrega"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[dsusuario]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[dsusuario]"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[dsusuario]"
+                          name="dsusuario"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[CdSequencia]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[CdSequencia]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[CdSequencia]"
+                          name="CdSequencia"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[HrMovimento]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[HrMovimento]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[HrMovimento]"
+                          name="HrMovimento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[DtMovimento]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[DtMovimento]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[DtMovimento]"
+                          name="DtMovimento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[dtdigitacao]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[dtdigitacao]"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[dtdigitacao]"
+                          name="dtdigitacao"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[dsorigemmovto]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[dsorigemmovto]"
+                          length="30"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].Columns[dsorigemmovto]"
+                          name="dsorigemmovto"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[IDDOCUMENTO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="42"
+                          name="IDDOCUMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[CdHistoricoEntrega]"
+                          dataType="i4"
+                          name="CdHistoricoEntrega" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[DsHistoricoEntrega]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DsHistoricoEntrega" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[dsusuario]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="dsusuario" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[CdSequencia]"
+                          dataType="i4"
+                          name="CdSequencia" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[HrMovimento]"
+                          dataType="dbTimeStamp"
+                          name="HrMovimento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[DtMovimento]"
+                          dataType="dbTimeStamp"
+                          name="DtMovimento" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[dtdigitacao]"
+                          dataType="dbTimeStamp"
+                          name="dtdigitacao" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB].ExternalColumns[dsorigemmovto]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="dsorigemmovto" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[IDDOCUMENTO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="42"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[IDDOCUMENTO]"
+                          name="IDDOCUMENTO" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[CdHistoricoEntrega]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[CdHistoricoEntrega]"
+                          name="CdHistoricoEntrega" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[DsHistoricoEntrega]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[DsHistoricoEntrega]"
+                          name="DsHistoricoEntrega" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[dsusuario]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[dsusuario]"
+                          name="dsusuario" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[CdSequencia]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[CdSequencia]"
+                          name="CdSequencia" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[HrMovimento]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[HrMovimento]"
+                          name="HrMovimento" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[DtMovimento]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[DtMovimento]"
+                          name="DtMovimento" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[dtdigitacao]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[dtdigitacao]"
+                          name="dtdigitacao" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[dsorigemmovto]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[dsorigemmovto]"
+                          name="dsorigemmovto" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+                  endId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contêiner da Sequência.PrecedenceConstraints[Restrição]"
+          DTS:CreationName=""
+          DTS:DTSID="{B62A03DD-043A-44C0-AC01-359DAEDBAA90}"
+          DTS:From="Package\Contêiner da Sequência\Tarefa Executar SQL"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restrição"
+          DTS:To="Package\Contêiner da Sequência\Tarefa Fluxo de Dados" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Contêiner da Sequência\Tarefa Executar SQL"
+          TopLeft="14.5,17.5" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Contêiner da Sequência\Tarefa Fluxo de Dados"
+          TopLeft="25.5,149.5" />
+        <EdgeLayout
+          Id="Package\Contêiner da Sequência.PrecedenceConstraints[Restrição]"
+          TopLeft="102.5,59.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.5,90"
+              Start="0,0"
+              End="15.5,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41"
+                    Point2="0,45"
+                    Point3="4,45" />
+                  <mssgle:LineSegment
+                    End="11.5,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.5,45"
+                    Point2="15.5,45"
+                    Point3="15.5,49" />
+                  <mssgle:LineSegment
+                    End="15.5,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="216,247"
+          Size="216,290"
+          Id="Package\Contêiner da Sequência"
+          TopLeft="211,77" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Contêiner da Sequência\Tarefa Fluxo de Dados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega"
+          TopLeft="60,60" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega"
+          TopLeft="158,180" />
+        <EdgeLayout
+          Id="Package\Contêiner da Sequência\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+          TopLeft="149,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97,78"
+              Start="0,0"
+              End="97,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35"
+                    Point2="0,39"
+                    Point3="4,39" />
+                  <mssgle:LineSegment
+                    End="93,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="93,39"
+                    Point2="97,39"
+                    Point3="97,43" />
+                  <mssgle:LineSegment
+                    End="97,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Justificativa_Entrega">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contêiner da Sequência\Tarefa Fluxo de Dados\Origem Just_Entrega">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

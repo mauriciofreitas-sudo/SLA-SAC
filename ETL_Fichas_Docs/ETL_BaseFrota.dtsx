@@ -1,0 +1,1223 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/26/2025 12:03:47 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="D2-WV47-DB01"
+  DTS:CreatorName="GRUPOLCLOG\luiz.costa"
+  DTS:DTSID="{C4310683-9A77-476C-A1BB-B2C5C5AE5324}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="ETL_BaseFrota"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{A256E419-1E9A-4D84-B013-010CED4052F2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89.DWGrupolc.sqldba]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{A8490AA7-3B13-49E8-AE70-489991F708FD}"
+      DTS:ObjectName="10.100.86.89.DWGrupolc.sqldba">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DWGrupolc;Persist Security Info=True;TrustServerCertificate=True;Application Name=SSIS-Package1-{A8490AA7-3B13-49E8-AE70-489991F708FD}10.100.86.89.DWGrupolc.sqldba;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsy31lhbTokera2CHb2rPGQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABKvpdi2tu98C96D0uc99JvAAAAAASAAACgAAAAEAAAAKedFYwCE3duLiAhqbbu5tEYAAAA1/h12Uq0xNDH2ZSopWlEPsz5J4CnHXlLFAAAAGNK4QSD4/Orwv2yHStDsG5V4Zgn</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89.DWGrupolc.sqldba1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2F749F32-F393-4266-9AA3-35229A2D5C19}"
+      DTS:ObjectName="10.100.86.89.DWGrupolc.sqldba1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DWGrupolc;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-Package1-{2F749F32-F393-4266-9AA3-35229A2D5C19}10.100.86.89.DWGrupolc.sqldba1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsy31lhbTokera2CHb2rPGQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAu2XOxwrfpd7UU7j2bZIquAAAAAASAAACgAAAAEAAAAAJDNBUGLIfv0VjSa2HYhzQYAAAAc8/LpcAmUZdvDnkdIn2/aaEumtcnjDQUFAAAAOIls36D82bbEcE9VXGEeuiCOR1M</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{826AD966-F138-4F09-A854-32218049C212}"
+      DTS:ObjectName="169.57.181.231.SOFTRAN_TRANSLUTE.datalc">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=169.57.181.231;User ID=softran;Initial Catalog=SOFTRAN_TRANSLUTE;Persist Security Info=True;TrustServerCertificate=True;Application Name=SSIS-Package1-{826AD966-F138-4F09-A854-32218049C212}169.57.181.231.SOFTRAN_TRANSLUTE.datalc;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsy31lhbTokera2CHb2rPGQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADyCc4wlwOWnluHUwfkFpGeAAAAAASAAACgAAAAEAAAANMrHYezelz4q9LnmS6atswQAAAABe0QaFK2Fz+PEGPuxCJwXhQAAAA36yHXTOZoACo5sPVK1ECPOQsUjQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load fBaseFrota"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2242c542-6efa-4f30-9e29-643792db03b9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load fBaseFrota"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load fBaseFrota\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"fBaseFrota"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load fBaseFrota\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.100.86.89.DWGrupolc.sqldba]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.100.86.89.DWGrupolc.sqldba]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NrPlaca]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="NrPlaca"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrPlaca]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrPlaca]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CdFabricRastreador]"
+                      cachedDataType="i4"
+                      cachedName="CdFabricRastreador"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdFabricRastreador]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdFabricRastreador]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsFabricante]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="DsFabricante"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsFabricante]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsFabricante]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NumeroRastreador]"
+                      cachedDataType="i4"
+                      cachedName="NumeroRastreador"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NumeroRastreador]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NumeroRastreador]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NrAnoFabricacao]"
+                      cachedDataType="i4"
+                      cachedName="NrAnoFabricacao"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrAnoFabricacao]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrAnoFabricacao]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsCores]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="DsCores"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsCores]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsCores]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NrChassis]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="NrChassis"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrChassis]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrChassis]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DtCadastro]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DtCadastro"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtCadastro]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtCadastro]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsUsuarioInc]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DsUsuarioInc"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsUsuarioInc]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUsuarioInc]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DtAtualizacao]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DtAtualizacao"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtAtualizacao]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtAtualizacao]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsUsuAlteracao]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DsUsuAlteracao"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsUsuAlteracao]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUsuAlteracao]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NrRenavan]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="NrRenavan"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrRenavan]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrRenavan]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsObservacao]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="DsObservacao"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsObservacao]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsObservacao]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Tipo]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Tipo"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Tipo]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Proprietario]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Proprietario"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Proprietario]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[Proprietario]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsTpVeiculo]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="DsTpVeiculo"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsTpVeiculo]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsTpVeiculo]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CdEmpresa]"
+                      cachedDataType="i4"
+                      cachedName="CdEmpresa"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdEmpresa]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdEmpresa]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Situacao]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="Situacao"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Situacao]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[Situacao]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[VeicAnterior]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="VeicAnterior"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VeicAnterior]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[VeicAnterior]" />
+                    <inputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CdANTT]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="CdANTT"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdANTT]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdANTT]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrPlaca]"
+                      dataType="wstr"
+                      length="8"
+                      name="NrPlaca" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdFabricRastreador]"
+                      dataType="i4"
+                      name="CdFabricRastreador" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsFabricante]"
+                      dataType="wstr"
+                      length="40"
+                      name="DsFabricante" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NumeroRastreador]"
+                      dataType="i4"
+                      name="NumeroRastreador" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrAnoFabricacao]"
+                      dataType="i4"
+                      name="NrAnoFabricacao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsCores]"
+                      dataType="wstr"
+                      length="40"
+                      name="DsCores" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrChassis]"
+                      dataType="wstr"
+                      length="25"
+                      name="NrChassis" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtCadastro]"
+                      dataType="dbTimeStamp"
+                      name="DtCadastro" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsUsuarioInc]"
+                      dataType="wstr"
+                      length="10"
+                      name="DsUsuarioInc" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtAtualizacao]"
+                      dataType="dbTimeStamp"
+                      name="DtAtualizacao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsUsuAlteracao]"
+                      dataType="wstr"
+                      length="10"
+                      name="DsUsuAlteracao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrRenavan]"
+                      dataType="wstr"
+                      length="15"
+                      name="NrRenavan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsObservacao]"
+                      dataType="wstr"
+                      length="500"
+                      name="DsObservacao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Tipo]"
+                      dataType="wstr"
+                      length="8"
+                      name="Tipo" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Proprietario]"
+                      dataType="wstr"
+                      length="60"
+                      name="Proprietario" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsTpVeiculo]"
+                      dataType="wstr"
+                      length="40"
+                      name="DsTpVeiculo" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdEmpresa]"
+                      dataType="i4"
+                      name="CdEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Situacao]"
+                      dataType="wstr"
+                      length="7"
+                      name="Situacao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VeicAnterior]"
+                      dataType="wstr"
+                      length="8"
+                      name="VeicAnterior" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdANTT]"
+                      dataType="wstr"
+                      length="20"
+                      name="CdANTT" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load fBaseFrota\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load fBaseFrota\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load fBaseFrota\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load fBaseFrota\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    CONVERT(VARCHAR(50), CONCAT(a.CdEmpresa, a.NrSeqControle, a.NrDoctoFiscal)) AS cdempresa,
+    SUBSTRING(g.DsApelido, 1, 3) AS DsApelidoEmitente,
+    a.NrCepColeta AS CEPColeta,
+    a.NrCepCalcAte AS CEPDestino,
+    a.dsplacaveiculo,
+    a.NrPlacaReboque1,
+    q.dsnome AS DsMotorista,
+    CONVERT(MONEY, a.VlFretePeso) AS VlFretePeso,
+    CONVERT(MONEY, a.VlFreteValor) AS VlFreteValor,
+    CONVERT(MONEY, a.VlPedagio) AS VlPedagio,
+    CONVERT(MONEY, a.VlGRIS) AS VlGRIS,
+    CONVERT(MONEY, a.VlTotalPrestacao) AS VlTotalPrestacao,
+    a.nrdoctofiscal,
+    a.CdTpDoctoFiscal,
+    f.dsapelido,
+    CONVERT(VARCHAR, a.DtEmissao, 103) AS DtEmissao,
+    CASE WHEN ISNULL(a.inConhecimento, 0) = 0 THEN 'Normal' ELSE 'Cancelado' END AS DsSituacao,
+    CASE WHEN ISNULL(a.inTipoFrete, 0) = 0 THEN 'F' ELSE 'C' END AS DsTpFrete,
+    CASE WHEN ISNULL(a.intipoemissao, 0) = 0 THEN 'Normal'
+         WHEN ISNULL(a.intipoemissao, 0) = 1 THEN 'Dev Total'
+         WHEN ISNULL(a.intipoemissao, 0) = 2 THEN 'Reentrega'
+         WHEN ISNULL(a.intipoemissao, 0) = 3 THEN 'Dev Parcial'
+         WHEN ISNULL(a.intipoemissao, 0) = 4 THEN 'Complementar'
+         WHEN ISNULL(a.intipoemissao, 0) = 5 THEN 'Cotação de Frete'
+         WHEN ISNULL(a.intipoemissao, 0) = 6 THEN 'Armazenagem'
+         WHEN ISNULL(a.intipoemissao, 0) = 7 THEN 'Paletizacao'
+         WHEN ISNULL(a.intipoemissao, 0) = 8 THEN 'Diaria'
+         WHEN ISNULL(a.intipoemissao, 0) = 9 THEN 'Redespacho Prop'
+         WHEN ISNULL(a.intipoemissao, 0) = 10 THEN 'Agendamento'
+         WHEN ISNULL(a.intipoemissao, 0) = 11 THEN 'Redepacho'
+         WHEN ISNULL(a.intipoemissao, 0) = 12 THEN 'SubContrato'
+         WHEN ISNULL(a.intipoemissao, 0) = 13 THEN 'Refaturamento'
+         WHEN ISNULL(a.intipoemissao, 0) = 14 THEN 'Substituição'
+         WHEN ISNULL(a.intipoemissao, 0) = 15 THEN 'Anulação'
+    END AS DsTipoEmissao,
+    i.dsUF AS DsUFOrigem,
+    j.DsUF AS DsUFDestino,
+    CONVERT(VARCHAR, a.dtentrega, 103) AS dtentrega,
+    CONVERT(VARCHAR, l.dtemissao, 103) AS DtEmissaoFatura,
+    CONVERT(VARCHAR, m.dtvencimento, 103) AS dtvencimento,
+    CONVERT(MONEY, a.QtPeso) AS QtPeso,
+    CONVERT(MONEY, a.QtMetrosCubicos) AS QtMetrosCubicos,
+    CONVERT(MONEY, a.VlMercadoria) AS VlMercadoria,
+    CONVERT(MONEY, a.VlLiquido) AS VlLiquido,
+    CONVERT(MONEY, a.VlICMS) AS VlICMS,
+    CONVERT(MONEY, a.QtVolume) AS QtVolume,
+    a.CdRemetente,
+    b.dsentidade AS DsRemetente,
+    a.CdDestinatario,
+    c.dsentidade AS dsDestinatario,
+    a.CdConsignatario,
+    d.dsentidade AS dsConsignatario,
+    a.CdInscricao,
+    e.dsentidade AS dsPagador,
+    a.CdEmpresaDestino,
+    h.DsApelido AS DsEmpDest,
+    i.dslocal AS CidadeColeta,
+    j.dslocal AS CidadeEntrega,
+    l.cdfatura,
+    CASE WHEN ISNULL(c.InLocaldificilent, 0) = 0 THEN 'Nao' ELSE 'Sim' END AS InTDE,
+    docto.NrConheOpLog AS DoctoOrigem,
+    -- OTIMIZADO: A chamada da função foi substituída pela coluna do OUTER APPLY abaixo.
+    notas.NrNotaFiscalConcatenada AS NrNotaFiscal,
+    situacao_arq.DsSituacaoArq,
+    n.VlLiquido AS VlFreteOrigem,
+    n.VlICMS AS VlICMSOrigem,
+    o.dsnatureza,
+    p.dstransporte,
+    ocorrencia.DsUltimaOcorrencia,
+    ocorrencia.DtUltimaOcorrencia,
+    ocorrencia.DsUsuario,
+    romaneio.NomeMotorista,
+    romaneio.NrRomaneio,
+    romaneio.NrPlacaRomaneio,
+    manif.PlacaManifInterior,
+    manif.DtSaidaParceiro,
+    manif.DsItinerario,
+    conemb.ArquivoConemb,
+    conemb.DtEnvioConemb,
+    ocoren.ArquivoOcoren,
+    ocoren.DtEnvioOcoren,
+    doccob.ArquivoDocCob,
+    doccob.DtEnvioDocCob,
+    pedido.Pedido,
+    conteudo.ConteudoNF AS Conteudo,
+    -- MODIFICADO: Busca da tabela pré-calculada, em vez de chamar a função lenta.
+    CONVERT(VARCHAR, previsao.DtPrevisaoCalculada, 103) AS [Previsão de Entrega],
+    CONVERT(VARCHAR, r.DtDigitacao, 103) + ' ' + CONVERT(VARCHAR, r.DtDigitacao, 108) AS [Dt Inclusao Ocorrência],
+    CONVERT(VARCHAR, r.DtMovimento, 103) + ' ' + CONVERT(VARCHAR, r.HrMovimento, 108) AS [Dt Ocorrencia],
+    r.DsHistoricoEntrega AS [Descrição Ult Ocorrencia],
+    r.DsUsuario AS [Usuário Ocorrencia],
+    a.dsusuario AS [UsuarioEmissao]
+FROM gtcconhe AS a WITH (NOLOCK)
+LEFT JOIN siscli AS b WITH (NOLOCK) ON b.cdinscricao = a.cdremetente
+LEFT JOIN siscli AS c WITH (NOLOCK) ON c.cdinscricao = a.cddestinatario
+LEFT JOIN siscli AS d WITH (NOLOCK) ON d.cdinscricao = a.cdconsignatario
+LEFT JOIN siscli AS e WITH (NOLOCK) ON e.cdinscricao = a.cdinscricao
+LEFT JOIN sisclifa AS ee WITH (NOLOCK) ON ee.cdinscricao = e.cdinscricao
+LEFT JOIN sistdf AS f WITH (NOLOCK) ON f.cdtpdoctofiscal = a.cdtpdoctofiscal
+LEFT JOIN sisempre AS g WITH (NOLOCK) ON g.cdempresa = a.cdempresa
+LEFT JOIN sisempre AS h WITH (NOLOCK) ON h.cdempresa = a.cdempresadestino
+LEFT JOIN siscep AS i WITH (NOLOCK) ON i.nrcep = a.nrcepcoleta
+LEFT JOIN siscep AS j WITH (NOLOCK) ON j.nrcep = a.nrcepentrega
+LEFT JOIN gtcfatit AS k WITH (NOLOCK) ON k.cdempresaconhec = a.cdempresa AND k.nrseqcontrole = a.nrseqcontrole AND ISNULL(k.insituacao, 0) = 0
+LEFT JOIN gtcfat AS l WITH (NOLOCK) ON l.cdempresa = k.cdempresa AND l.cdfatura = k.cdfatura AND l.cdparcela = k.cdparcela
+LEFT JOIN gfatitu AS m WITH (NOLOCK) ON m.inpagarreceber = 1 AND m.cdfilial = l.cdempresa AND m.nrfatura = l.cdfatura AND m.cdparcela = l.cdparcela
+LEFT JOIN gtcconhe AS n WITH (NOLOCK) ON n.cdempresa = a.cdempresaref AND n.nrseqcontrole = a.nrseqcontroleREF
+LEFT JOIN gtcnatur AS o WITH (NOLOCK) ON o.cdnatureza = a.cdnatureza
+LEFT JOIN gtctrans AS p WITH (NOLOCK) ON p.cdtransporte = a.cdtransporte
+LEFT JOIN gtcfundp AS q WITH (NOLOCK) ON q.nrcpf = a.cdmotorista
+LEFT JOIN dbo.ResultadosPrevisaoEntrega AS previsao WITH (NOLOCK) ON a.CdEmpresa = previsao.CdEmpresa AND a.NrSeqControle = previsao.NrSeqControle
+OUTER APPLY (
+    SELECT TOP 1 tb1.DsUsuario, tb1.DtDigitacao, tb1.DtMovimento, tb1.HrMovimento, tb2.DsHistoricoEntrega
+    FROM GTCMOVEN AS tb1 WITH (NOLOCK)
+    INNER JOIN GTCHisEn AS tb2 WITH (NOLOCK) ON tb1.CdOcorrencia = tb2.CdHistoricoEntrega
+    WHERE a.NrSeqControle = tb1.NrSeqControle AND a.CdEmpresa = tb1.CdEmpresa
+    ORDER BY tb1.DtDigitacao DESC
+) AS r
+-- OTIMIZADO: Adicionado este bloco para substituir a função dbo.sp_RetornaNotasFiscais
+OUTER APPLY (
+    SELECT STUFF(
+        (
+            SELECT '/' + LTRIM(RTRIM(CAST(nf.NrNotaFiscal AS VARCHAR(100))))
+            FROM dbo.GTCNfCon AS nf WITH (NOLOCK)
+            WHERE nf.CdEmpresa = a.CdEmpresa
+              AND nf.NrSeqControle = a.NrSeqControle
+            ORDER BY nf.NrNotaFiscal
+            FOR XML PATH('')
+        ), 1, 1, ''
+    ) AS NrNotaFiscalConcatenada
+) AS notas
+OUTER APPLY (
+    SELECT TOP 1 yy.NrConheOpLog
+    FROM gtcnfcon AS xx
+    LEFT JOIN gtcnf AS yy ON yy.cdremetente = xx.cdinscricao AND yy.nrserie = xx.nrserie AND yy.NrNotaFiscal = xx.NrNotaFiscal
+    WHERE xx.cdempresa = a.cdempresa AND xx.nrseqcontrole = a.nrseqcontrole
+) AS docto
+OUTER APPLY (
+    SELECT
+        DsSituacaoArq = CASE
+            WHEN NOT EXISTS (SELECT 1 FROM ccecceit AS situacao WHERE situacao.cdempresaconhec = a.cdempresa AND situacao.nrseqcontrole = a.nrseqcontrole) THEN 'Sem Protocolo'
+            WHEN EXISTS (SELECT 1 FROM ccecceit AS situacao WHERE situacao.cdempresaconhec = a.cdempresa AND situacao.nrseqcontrole = a.nrseqcontrole AND ISNULL(situacao.insituacao, 99) = 1) THEN 'Arquivado'
+            WHEN EXISTS (SELECT 1 FROM ccecceit AS situacao WHERE situacao.cdempresaconhec = a.cdempresa AND situacao.nrseqcontrole = a.nrseqcontrole AND ISNULL(situacao.insituacao, 99) = 0) THEN 'Em Transito'
+        END
+) AS situacao_arq
+OUTER APPLY (
+    SELECT TOP 1
+        DsUltimaOcorrencia = yy.dshistoricoentrega,
+        DtUltimaOcorrencia = CONVERT(VARCHAR, xx.Dtmovimento, 103),
+        DsUsuario = xx.DsUsuario
+    FROM gtcmoven AS xx
+    LEFT JOIN gtchisen AS yy ON yy.cdhistoricoentrega = xx.cdocorrencia
+    WHERE xx.cdempresa = a.cdempresa AND xx.nrseqcontrole = a.nrseqcontrole
+    ORDER BY xx.cdsequencia DESC
+) AS ocorrencia
+OUTER APPLY (
+    SELECT TOP 1
+        NomeMotorista = mm.DsNome,
+        NrRomaneio = CAST(xx.CdEmpresa AS VARCHAR(3)) + '-' + CAST(xx.CdRota AS VARCHAR(5)) + '-' + CAST(xx.CdRomaneio AS VARCHAR(6)),
+        NrPlacaRomaneio = xx.nrplaca
+    FROM cceroman AS xx
+    LEFT JOIN cceromit AS yy ON yy.cdempresa = xx.cdempresa AND yy.cdrota = xx.cdrota AND yy.cdromaneio = xx.cdromaneio AND ISNULL(yy.insituacao, 0) &lt;&gt; 9
+    LEFT JOIN gtcfundp AS mm ON xx.NrCPFMotorista = mm.NrCPF
+    WHERE ISNULL(xx.insituacao, 0) = 0 AND yy.cdempresacoletaentrega = a.cdempresa AND yy.nrseqcontrole = a.nrseqcontrole
+    ORDER BY xx.dtromaneio DESC
+) AS romaneio
+OUTER APPLY (
+    SELECT TOP 1
+        PlacaManifInterior = yy.nrplaca,
+        DtSaidaParceiro = yy.dtsaida,
+        DsItinerario = SUBSTRING(yy.nrmanifesto, 1, 7)
+    FROM gtcmancn AS xx
+    LEFT JOIN gtcman AS yy ON yy.nrmanifesto = xx.nrmanifesto
+    LEFT JOIN gtcitine AS zz ON zz.cditinerario = SUBSTRING(yy.nrmanifesto, 1, 7)
+    LEFT JOIN sisempre AS zzz ON zzz.cdempresa = zz.cdempresadestino
+    WHERE ISNULL(xx.insituacao, 0) = 0 AND ISNULL(yy.insituacao, 0) = 0
+      AND xx.cdempresa = a.cdempresa AND xx.nrseqcontrole = a.nrseqcontrole
+      AND zzz.cdempresa &gt;= 500 AND zzz.cdempresa &lt;= 999
+) AS manif
+OUTER APPLY (
+    SELECT TOP 1 DsNomeArquivo AS ArquivoConemb, DtEnvio AS DtEnvioConemb
+    FROM EDIENVLG WHERE ISNULL(CdTpLayout, 0) = 0 AND CdEmpresa = a.CdEmpresa AND NrSeqControle = a.NrSeqControle
+    ORDER BY DtEnvio DESC
+) AS conemb
+OUTER APPLY (
+    SELECT TOP 1 DsNomeArquivo AS ArquivoOcoren, DtEnvio AS DtEnvioOcoren
+    FROM EDIENVLG WHERE ISNULL(CdTpLayout, 0) = 1 AND CdEmpresa = a.CdEmpresa AND NrSeqControle = a.NrSeqControle
+    ORDER BY DtEnvio DESC
+) AS ocoren
+OUTER APPLY (
+    SELECT TOP 1 DsNomeArquivo AS ArquivoDocCob, DtEnvio AS DtEnvioDocCob
+    FROM EDIENVLG WHERE ISNULL(CdTpLayout, 0) = 2 AND CdEmpresaFat = l.CdEmpresa AND CdFatura = l.CdFatura
+    ORDER BY DtEnvio DESC
+) AS doccob
+OUTER APPLY (
+    SELECT TOP 1 NrPedidoColeta AS Pedido
+    FROM CCECOLET WHERE CdEmpresa = a.CdEmpresaColeta AND NrColeta = a.NrColeta
+) AS pedido
+OUTER APPLY (
+    SELECT TOP 1 (NF.NrCFOP + '-' + ISNULL(NN.DsNaturezaOperacao, '-')) AS ConteudoNF
+    FROM GTCNFCON AS YY
+    LEFT JOIN GTCNF AS NF ON NF.CdRemetente = YY.CdInscricao AND NF.NrSerie = YY.NrSerie AND YY.NrNotaFiscal = NF.NrNotaFiscal
+    LEFT JOIN SISNATOP AS NN ON NN.NrCFOP = NF.NrCFOP
+    WHERE YY.CdEmpresa = a.CdEmpresa AND YY.NrSeqControle = a.NrSeqControle AND ISNULL(NF.NrCFOP, '') &lt;&gt; ''
+) AS conteudo
+WHERE a.DtCancelamento IS NULL
+  AND a.cdremetente IS NOT NULL
+  AND a.dtemissao &gt;= '20240101';
+
+GO</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">600</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."vw_ConsultaVeiculos"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load fBaseFrota\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+                  connectionManagerRefId="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrPlaca]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrPlaca]"
+                      length="8"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrPlaca]"
+                      name="NrPlaca"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdFabricRastreador]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdFabricRastreador]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdFabricRastreador]"
+                      name="CdFabricRastreador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsFabricante]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsFabricante]"
+                      length="40"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsFabricante]"
+                      name="DsFabricante"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NumeroRastreador]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NumeroRastreador]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NumeroRastreador]"
+                      name="NumeroRastreador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrAnoFabricacao]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrAnoFabricacao]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrAnoFabricacao]"
+                      name="NrAnoFabricacao"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsCores]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsCores]"
+                      length="40"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsCores]"
+                      name="DsCores"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrChassis]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrChassis]"
+                      length="25"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrChassis]"
+                      name="NrChassis"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtCadastro]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtCadastro]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtCadastro]"
+                      name="DtCadastro"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUsuarioInc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsUsuarioInc]"
+                      length="10"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUsuarioInc]"
+                      name="DsUsuarioInc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtAtualizacao]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtAtualizacao]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtAtualizacao]"
+                      name="DtAtualizacao"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUsuAlteracao]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsUsuAlteracao]"
+                      length="10"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUsuAlteracao]"
+                      name="DsUsuAlteracao"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrRenavan]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrRenavan]"
+                      length="15"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrRenavan]"
+                      name="NrRenavan"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsObservacao]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsObservacao]"
+                      length="500"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsObservacao]"
+                      name="DsObservacao"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Tipo]"
+                      length="8"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tipo]"
+                      name="Tipo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[Proprietario]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Proprietario]"
+                      length="60"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[Proprietario]"
+                      name="Proprietario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsTpVeiculo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsTpVeiculo]"
+                      length="40"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsTpVeiculo]"
+                      name="DsTpVeiculo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdEmpresa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdEmpresa]"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdEmpresa]"
+                      name="CdEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[Situacao]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Situacao]"
+                      length="7"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[Situacao]"
+                      name="Situacao"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[VeicAnterior]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VeicAnterior]"
+                      length="8"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[VeicAnterior]"
+                      name="VeicAnterior"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdANTT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdANTT]"
+                      length="20"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdANTT]"
+                      name="CdANTT"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrPlaca]"
+                      dataType="wstr"
+                      length="8"
+                      name="NrPlaca" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdFabricRastreador]"
+                      dataType="i4"
+                      name="CdFabricRastreador" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsFabricante]"
+                      dataType="wstr"
+                      length="40"
+                      name="DsFabricante" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NumeroRastreador]"
+                      dataType="i4"
+                      name="NumeroRastreador" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrAnoFabricacao]"
+                      dataType="i4"
+                      name="NrAnoFabricacao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsCores]"
+                      dataType="wstr"
+                      length="40"
+                      name="DsCores" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrChassis]"
+                      dataType="wstr"
+                      length="25"
+                      name="NrChassis" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtCadastro]"
+                      dataType="dbTimeStamp"
+                      name="DtCadastro" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsUsuarioInc]"
+                      dataType="wstr"
+                      length="10"
+                      name="DsUsuarioInc" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtAtualizacao]"
+                      dataType="dbTimeStamp"
+                      name="DtAtualizacao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsUsuAlteracao]"
+                      dataType="wstr"
+                      length="10"
+                      name="DsUsuAlteracao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrRenavan]"
+                      dataType="wstr"
+                      length="15"
+                      name="NrRenavan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsObservacao]"
+                      dataType="wstr"
+                      length="500"
+                      name="DsObservacao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Tipo]"
+                      dataType="wstr"
+                      length="8"
+                      name="Tipo" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Proprietario]"
+                      dataType="wstr"
+                      length="60"
+                      name="Proprietario" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsTpVeiculo]"
+                      dataType="wstr"
+                      length="40"
+                      name="DsTpVeiculo" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdEmpresa]"
+                      dataType="i4"
+                      name="CdEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Situacao]"
+                      dataType="wstr"
+                      length="7"
+                      name="Situacao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VeicAnterior]"
+                      dataType="wstr"
+                      length="8"
+                      name="VeicAnterior" />
+                    <externalMetadataColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdANTT]"
+                      dataType="wstr"
+                      length="20"
+                      name="CdANTT" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrPlaca]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrPlaca]"
+                      name="NrPlaca" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdFabricRastreador]"
+                      dataType="i4"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdFabricRastreador]"
+                      name="CdFabricRastreador" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsFabricante]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsFabricante]"
+                      name="DsFabricante" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NumeroRastreador]"
+                      dataType="i4"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NumeroRastreador]"
+                      name="NumeroRastreador" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrAnoFabricacao]"
+                      dataType="i4"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrAnoFabricacao]"
+                      name="NrAnoFabricacao" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsCores]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsCores]"
+                      name="DsCores" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrChassis]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrChassis]"
+                      name="NrChassis" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtCadastro]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtCadastro]"
+                      name="DtCadastro" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsUsuarioInc]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsUsuarioInc]"
+                      name="DsUsuarioInc" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtAtualizacao]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtAtualizacao]"
+                      name="DtAtualizacao" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsUsuAlteracao]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsUsuAlteracao]"
+                      name="DsUsuAlteracao" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrRenavan]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrRenavan]"
+                      name="NrRenavan" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsObservacao]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsObservacao]"
+                      name="DsObservacao" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Tipo]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Tipo]"
+                      name="Tipo" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Proprietario]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Proprietario]"
+                      name="Proprietario" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsTpVeiculo]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsTpVeiculo]"
+                      name="DsTpVeiculo" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdEmpresa]"
+                      dataType="i4"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdEmpresa]"
+                      name="CdEmpresa" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Situacao]"
+                      dataType="wstr"
+                      length="7"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Situacao]"
+                      name="Situacao" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VeicAnterior]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VeicAnterior]"
+                      name="VeicAnterior" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdANTT]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdANTT]"
+                      name="CdANTT" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load fBaseFrota.Paths[ADO NET Source Output]"
+              endId="Package\Load fBaseFrota\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Load fBaseFrota\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate fBaseFrota"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{c2509cc2-02bf-4ba1-8ac3-79efe26e308b}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate fBaseFrota"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2F749F32-F393-4266-9AA3-35229A2D5C19}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE &quot;fBaseFrota&quot;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{38a1c2f3-f76e-4f11-a6f8-8ab4bf8b7881}"
+      DTS:From="Package\Truncate fBaseFrota"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load fBaseFrota" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Load fBaseFrota"
+          TopLeft="304,60" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Truncate fBaseFrota"
+          TopLeft="60,60" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="239,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65,0"
+              Start="0,0"
+              End="57.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="57.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load fBaseFrota">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Load fBaseFrota\ADO NET Source"
+          TopLeft="79,179" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Load fBaseFrota\ADO NET Destination"
+          TopLeft="334,178" />
+        <EdgeLayout
+          Id="Package\Load fBaseFrota.Paths[ADO NET Source Output]"
+          TopLeft="245,199.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="89,0"
+              Start="0,0"
+              End="81.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="81.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load fBaseFrota\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load fBaseFrota\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

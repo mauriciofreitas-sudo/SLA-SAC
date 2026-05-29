@@ -1,0 +1,2251 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/28/2025 2:15:09 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="D2-WV47-DB01"
+  DTS:CreatorName="GRUPOLCLOG\luiz.costa"
+  DTS:DTSID="{AD1A55B5-801E-48A9-A40E-B4A49BA3ECDA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="ETL_Fichas"
+  DTS:PackageType="5"
+  DTS:VersionBuild="74"
+  DTS:VersionGUID="{D1B0EFC1-3B63-40AD-8AF0-706DBC447CD9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89.DWGrupolc.datalc]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{A326D630-DC1E-4075-A2A6-968555452029}"
+      DTS:ObjectName="10.100.86.89.DWGrupolc.datalc">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DWGrupolc;Persist Security Info=True;TrustServerCertificate=True;Application Name=SSIS-Package-{A326D630-DC1E-4075-A2A6-968555452029}10.100.86.89.DWGrupolc.sqldba;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsy31lhbTokera2CHb2rPGQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACRJRcjRXFjlXQ8zy4q8d2uAAAAAASAAACgAAAAEAAAAJRGRPC4GEj4wCqlrUiu+HcYAAAAfngeEK/inlCmEf2wlqGEFmMyi8BSJlSpFAAAALBIxtGwFsJE74DqepaMLUrTecFR</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.100.86.89.DWGrupolc.sqldba1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2C66603D-CB25-40D4-BA5C-5017E7A5B826}"
+      DTS:ObjectName="10.100.86.89.DWGrupolc.sqldba1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.100.86.89;User ID=sqldba;Initial Catalog=DWGrupolc;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{2C66603D-CB25-40D4-BA5C-5017E7A5B826}10.100.86.89.DWGrupolc.sqldba1;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsy31lhbTokera2CHb2rPGQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB18ER8p1SFTJR6sz2Fz4wcAAAAAASAAACgAAAAEAAAAEIjYYeR/S5wAS3PS/38HY4YAAAAyDzVUalD/byOlTM8uB4K74wHJ7I+cVq4FAAAAJpN746qlPzf8SXhScSqHvb5P0cu</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{8CD88A0D-F9FD-4123-B7A9-85B37AA92D70}"
+      DTS:ObjectName="169.57.181.231.SOFTRAN_TRANSLUTE.datalc">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=169.57.181.231;User ID=softran;Initial Catalog=SOFTRAN_TRANSLUTE;Persist Security Info=True;TrustServerCertificate=True;Application Name=SSIS-Package-{8CD88A0D-F9FD-4123-B7A9-85B37AA92D70}169.57.181.231.SOFTRAN_TRANSLUTE.datalc;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsy31lhbTokera2CHb2rPGQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADY7kupQtldc/gwPHczMk1BAAAAAASAAACgAAAAEAAAAPcehZLoKqBCugc8G/3CNiMQAAAA64KxLJBvUFQa2ofpQEU25BQAAADmo+8Kek+bEs8A9MM0uBBHg6D6fw</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4E31E4DA-F058-488D-9771-19B6C4466A4B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="StartDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/2025</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load fFicha"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{217924CA-7746-47A1-9DEA-28B73CEE2F75}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load fFicha"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load fFicha\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"fFichaViagem"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load fFicha\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.100.86.89.DWGrupolc.datalc]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.100.86.89.DWGrupolc.datalc]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[EmpresaFicha]"
+                      cachedDataType="i4"
+                      cachedName="EmpresaFicha"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[EmpresaFicha]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[EmpresaFicha]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NrFicha]"
+                      cachedDataType="i4"
+                      cachedName="NrFicha"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrFicha]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrFicha]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DtEmissao]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DtEmissao"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtEmissao]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissao]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[VlComissao]"
+                      cachedDataType="numeric"
+                      cachedName="VlComissao"
+                      cachedPrecision="14"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlComissao]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlComissao]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CdRotaRMS]"
+                      cachedDataType="i4"
+                      cachedName="CdRotaRMS"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdRotaRMS]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRotaRMS]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[MotoristaFV]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="MotoristaFV"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[MotoristaFV]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[MotoristaFV]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ProprietarioFV]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ProprietarioFV"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ProprietarioFV]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[ProprietarioFV]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[VeiculoFV]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="VeiculoFV"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VeiculoFV]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VeiculoFV]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CarretaFV]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="CarretaFV"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CarretaFV]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CarretaFV]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Carreta2FV]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Carreta2FV"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Carreta2FV]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta2FV]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Carreta3FV]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Carreta3FV"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Carreta3FV]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta3FV]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[UserFicha]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="UserFicha"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[UserFicha]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserFicha]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[EmpresaRomaneio]"
+                      cachedDataType="i4"
+                      cachedName="EmpresaRomaneio"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[EmpresaRomaneio]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[EmpresaRomaneio]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[RotaRomaneio]"
+                      cachedDataType="i4"
+                      cachedName="RotaRomaneio"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[RotaRomaneio]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[RotaRomaneio]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[RomaneioManifesto]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="RomaneioManifesto"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[RomaneioManifesto]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[RomaneioManifesto]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[UserRomaneioManifesto]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="UserRomaneioManifesto"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[UserRomaneioManifesto]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserRomaneioManifesto]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DtEmissaoRmMan]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DtEmissaoRmMan"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtEmissaoRmMan]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissaoRmMan]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[VeiculoRmMan]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="VeiculoRmMan"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VeiculoRmMan]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VeiculoRmMan]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CarretaRmMan]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="CarretaRmMan"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CarretaRmMan]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CarretaRmMan]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Carreta2RmMan]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Carreta2RmMan"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Carreta2RmMan]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta2RmMan]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Carreta3RmMan]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Carreta3RmMan"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Carreta3RmMan]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta3RmMan]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[MotoristaRmMan]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="MotoristaRmMan"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[MotoristaRmMan]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[MotoristaRmMan]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ProprietarioRmMan]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="ProprietarioRmMan"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ProprietarioRmMan]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[ProprietarioRmMan]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NumeroCTRB]"
+                      cachedDataType="i4"
+                      cachedName="NumeroCTRB"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NumeroCTRB]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[NumeroCTRB]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[UserCtrb]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="UserCtrb"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[UserCtrb]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserCtrb]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DtEmissaoCTRB]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DtEmissaoCTRB"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtEmissaoCTRB]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissaoCTRB]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ValorTotalCTRB]"
+                      cachedDataType="numeric"
+                      cachedName="ValorTotalCTRB"
+                      cachedPrecision="14"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ValorTotalCTRB]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[ValorTotalCTRB]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[AdtoCTRB]"
+                      cachedDataType="numeric"
+                      cachedName="AdtoCTRB"
+                      cachedPrecision="14"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[AdtoCTRB]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[AdtoCTRB]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[PedagioCTRB]"
+                      cachedDataType="numeric"
+                      cachedName="PedagioCTRB"
+                      cachedPrecision="14"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[PedagioCTRB]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[PedagioCTRB]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[EmpresaCTE]"
+                      cachedDataType="i4"
+                      cachedName="EmpresaCTE"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[EmpresaCTE]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[EmpresaCTE]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[VlFretePeso]"
+                      cachedDataType="numeric"
+                      cachedName="VlFretePeso"
+                      cachedPrecision="14"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlFretePeso]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlFretePeso]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[VlFreteValor]"
+                      cachedDataType="numeric"
+                      cachedName="VlFreteValor"
+                      cachedPrecision="14"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlFreteValor]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlFreteValor]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[VlPedagio]"
+                      cachedDataType="numeric"
+                      cachedName="VlPedagio"
+                      cachedPrecision="14"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlPedagio]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlPedagio]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[VlGRIS]"
+                      cachedDataType="numeric"
+                      cachedName="VlGRIS"
+                      cachedPrecision="14"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlGRIS]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlGRIS]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[VlTotalPrestacao]"
+                      cachedDataType="numeric"
+                      cachedName="VlTotalPrestacao"
+                      cachedPrecision="14"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlTotalPrestacao]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlTotalPrestacao]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NrDoctoFiscal]"
+                      cachedDataType="i4"
+                      cachedName="NrDoctoFiscal"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrDoctoFiscal]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrDoctoFiscal]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[UserCTE]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="UserCTE"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[UserCTE]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserCTE]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TipoDoctoFiscal]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="TipoDoctoFiscal"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TipoDoctoFiscal]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoDoctoFiscal]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DtEmissaoCTE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DtEmissaoCTE"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtEmissaoCTE]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissaoCTE]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CidadeColeta]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="CidadeColeta"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CidadeColeta]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CidadeColeta]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsUFOrigem]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="DsUFOrigem"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsUFOrigem]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUFOrigem]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CidadeEntrega]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="CidadeEntrega"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CidadeEntrega]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CidadeEntrega]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsUFDestino]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="DsUFDestino"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsUFDestino]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUFDestino]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CdRemetente]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="CdRemetente"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdRemetente]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRemetente]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsRemetente]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="DsRemetente"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsRemetente]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsRemetente]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CdDestinatario]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="CdDestinatario"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdDestinatario]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdDestinatario]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsDestinatario]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="DsDestinatario"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsDestinatario]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsDestinatario]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CdInscricao]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="CdInscricao"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdInscricao]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdInscricao]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsPagador]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="DsPagador"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsPagador]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsPagador]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CdRedespacho]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="CdRedespacho"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdRedespacho]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRedespacho]" />
+                    <inputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DsRedespacho]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="DsRedespacho"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsRedespacho]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsRedespacho]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[EmpresaFicha]"
+                      dataType="i4"
+                      name="EmpresaFicha" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrFicha]"
+                      dataType="i4"
+                      name="NrFicha" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtEmissao]"
+                      dataType="dbTimeStamp"
+                      name="DtEmissao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlComissao]"
+                      dataType="numeric"
+                      name="VlComissao"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdRotaRMS]"
+                      dataType="i4"
+                      name="CdRotaRMS" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[MotoristaFV]"
+                      dataType="wstr"
+                      length="100"
+                      name="MotoristaFV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ProprietarioFV]"
+                      dataType="wstr"
+                      length="100"
+                      name="ProprietarioFV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VeiculoFV]"
+                      dataType="wstr"
+                      length="8"
+                      name="VeiculoFV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CarretaFV]"
+                      dataType="wstr"
+                      length="8"
+                      name="CarretaFV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Carreta2FV]"
+                      dataType="wstr"
+                      length="8"
+                      name="Carreta2FV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Carreta3FV]"
+                      dataType="wstr"
+                      length="8"
+                      name="Carreta3FV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[UserFicha]"
+                      dataType="wstr"
+                      length="10"
+                      name="UserFicha" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[EmpresaRomaneio]"
+                      dataType="i4"
+                      name="EmpresaRomaneio" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[RotaRomaneio]"
+                      dataType="i4"
+                      name="RotaRomaneio" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[RomaneioManifesto]"
+                      dataType="wstr"
+                      length="20"
+                      name="RomaneioManifesto" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[UserRomaneioManifesto]"
+                      dataType="wstr"
+                      length="10"
+                      name="UserRomaneioManifesto" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtEmissaoRmMan]"
+                      dataType="dbTimeStamp"
+                      name="DtEmissaoRmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VeiculoRmMan]"
+                      dataType="wstr"
+                      length="8"
+                      name="VeiculoRmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CarretaRmMan]"
+                      dataType="wstr"
+                      length="8"
+                      name="CarretaRmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Carreta2RmMan]"
+                      dataType="wstr"
+                      length="8"
+                      name="Carreta2RmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Carreta3RmMan]"
+                      dataType="wstr"
+                      length="8"
+                      name="Carreta3RmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[MotoristaRmMan]"
+                      dataType="wstr"
+                      length="40"
+                      name="MotoristaRmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ProprietarioRmMan]"
+                      dataType="wstr"
+                      length="40"
+                      name="ProprietarioRmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NumeroCTRB]"
+                      dataType="i4"
+                      name="NumeroCTRB" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[UserCtrb]"
+                      dataType="wstr"
+                      length="10"
+                      name="UserCtrb" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtEmissaoCTRB]"
+                      dataType="dbTimeStamp"
+                      name="DtEmissaoCTRB" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ValorTotalCTRB]"
+                      dataType="numeric"
+                      name="ValorTotalCTRB"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[AdtoCTRB]"
+                      dataType="numeric"
+                      name="AdtoCTRB"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[PedagioCTRB]"
+                      dataType="numeric"
+                      name="PedagioCTRB"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[EmpresaCTE]"
+                      dataType="i4"
+                      name="EmpresaCTE" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlFretePeso]"
+                      dataType="numeric"
+                      name="VlFretePeso"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlFreteValor]"
+                      dataType="numeric"
+                      name="VlFreteValor"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlPedagio]"
+                      dataType="numeric"
+                      name="VlPedagio"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlGRIS]"
+                      dataType="numeric"
+                      name="VlGRIS"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[VlTotalPrestacao]"
+                      dataType="numeric"
+                      name="VlTotalPrestacao"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrDoctoFiscal]"
+                      dataType="i4"
+                      name="NrDoctoFiscal" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[UserCTE]"
+                      dataType="wstr"
+                      length="10"
+                      name="UserCTE" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TipoDoctoFiscal]"
+                      dataType="wstr"
+                      length="10"
+                      name="TipoDoctoFiscal" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtEmissaoCTE]"
+                      dataType="dbTimeStamp"
+                      name="DtEmissaoCTE" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CidadeColeta]"
+                      dataType="wstr"
+                      length="30"
+                      name="CidadeColeta" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsUFOrigem]"
+                      dataType="wstr"
+                      length="2"
+                      name="DsUFOrigem" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CidadeEntrega]"
+                      dataType="wstr"
+                      length="30"
+                      name="CidadeEntrega" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsUFDestino]"
+                      dataType="wstr"
+                      length="2"
+                      name="DsUFDestino" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdRemetente]"
+                      dataType="wstr"
+                      length="14"
+                      name="CdRemetente" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsRemetente]"
+                      dataType="wstr"
+                      length="100"
+                      name="DsRemetente" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdDestinatario]"
+                      dataType="wstr"
+                      length="14"
+                      name="CdDestinatario" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsDestinatario]"
+                      dataType="wstr"
+                      length="100"
+                      name="DsDestinatario" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdInscricao]"
+                      dataType="wstr"
+                      length="14"
+                      name="CdInscricao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsPagador]"
+                      dataType="wstr"
+                      length="100"
+                      name="DsPagador" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdRedespacho]"
+                      dataType="wstr"
+                      length="14"
+                      name="CdRedespacho" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsRedespacho]"
+                      dataType="wstr"
+                      length="40"
+                      name="DsRedespacho" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrDiasAtraso]"
+                      dataType="i4"
+                      name="NrDiasAtraso" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="14"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtPrevisaoEntregaCTeNova]"
+                      dataType="dbTimeStamp"
+                      name="DtPrevisaoEntregaCTeNova" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FichaViagem]"
+                      dataType="wstr"
+                      length="32"
+                      name="FichaViagem" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Hora]"
+                      dataType="dbTimeStamp"
+                      name="Hora" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IDCTEPERF]"
+                      dataType="wstr"
+                      length="42"
+                      name="IDCTEPERF" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJRemetente]"
+                      dataType="wstr"
+                      length="14"
+                      name="CNPJRemetente" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NomeRemetente]"
+                      dataType="wstr"
+                      length="100"
+                      name="NomeRemetente" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFSerie]"
+                      dataType="wstr"
+                      length="3"
+                      name="NFSerie" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFNr]"
+                      dataType="i4"
+                      name="NFNr" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFVlr]"
+                      dataType="numeric"
+                      name="NFVlr"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NFDtEmissao]"
+                      dataType="dbTimeStamp"
+                      name="NFDtEmissao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeEmpresa]"
+                      dataType="i4"
+                      name="CTeEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeNr]"
+                      dataType="i4"
+                      name="CTeNr" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeDtEmissao]"
+                      dataType="dbTimeStamp"
+                      name="CTeDtEmissao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtPrevisaoEntregaCTe]"
+                      dataType="dbTimeStamp"
+                      name="DtPrevisaoEntregaCTe" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtAgendamentoEntregaCTe]"
+                      dataType="dbTimeStamp"
+                      name="DtAgendamentoEntregaCTe" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CTeDtEntrega]"
+                      dataType="dbTimeStamp"
+                      name="CTeDtEntrega" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJDestinatario]"
+                      dataType="wstr"
+                      length="14"
+                      name="CNPJDestinatario" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NomeDestinatario]"
+                      dataType="wstr"
+                      length="100"
+                      name="NomeDestinatario" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CidadeDestino]"
+                      dataType="wstr"
+                      length="30"
+                      name="CidadeDestino" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[UFDestino]"
+                      dataType="wstr"
+                      length="2"
+                      name="UFDestino" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CNPJPagador]"
+                      dataType="wstr"
+                      length="14"
+                      name="CNPJPagador" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NomePagador]"
+                      dataType="wstr"
+                      length="100"
+                      name="NomePagador" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrSeqControle]"
+                      dataType="i4"
+                      name="NrSeqControle" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NaturezaCod]"
+                      dataType="i4"
+                      name="NaturezaCod" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NaturezaNome]"
+                      dataType="wstr"
+                      length="40"
+                      name="NaturezaNome" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TipoTransporte]"
+                      dataType="wstr"
+                      length="40"
+                      name="TipoTransporte" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Volumes]"
+                      dataType="numeric"
+                      name="Volumes"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[QtPesoCubado]"
+                      dataType="numeric"
+                      name="QtPesoCubado"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[HistEntregaCod]"
+                      dataType="i4"
+                      name="HistEntregaCod" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[HistEntregaNome]"
+                      dataType="wstr"
+                      length="50"
+                      name="HistEntregaNome" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FichaVUltManifesto]"
+                      dataType="wstr"
+                      length="21"
+                      name="FichaVUltManifesto" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FichaVUltRom]"
+                      dataType="wstr"
+                      length="32"
+                      name="FichaVUltRom" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtRomaneio]"
+                      dataType="dbTimeStamp"
+                      name="DtRomaneio" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DtManifesto]"
+                      dataType="dbTimeStamp"
+                      name="DtManifesto" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TipoEmissao]"
+                      dataType="wstr"
+                      length="16"
+                      name="TipoEmissao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DsGrupoCliente]"
+                      dataType="wstr"
+                      length="100"
+                      name="DsGrupoCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CdGrupoCliente]"
+                      dataType="i4"
+                      name="CdGrupoCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NrRegistros]"
+                      dataType="i4"
+                      name="NrRegistros" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load fFicha\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load fFicha\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">600</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."Ficha_de_Viagem_Geral"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load fFicha\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+                  connectionManagerRefId="Package.ConnectionManagers[169.57.181.231.SOFTRAN_TRANSLUTE.datalc]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[EmpresaFicha]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[EmpresaFicha]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[EmpresaFicha]"
+                      name="EmpresaFicha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrFicha]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrFicha]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrFicha]"
+                      name="NrFicha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissao]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtEmissao]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissao]"
+                      name="DtEmissao"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlComissao]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlComissao]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlComissao]"
+                      name="VlComissao"
+                      precision="14"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRotaRMS]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdRotaRMS]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRotaRMS]"
+                      name="CdRotaRMS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[MotoristaFV]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[MotoristaFV]"
+                      length="100"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[MotoristaFV]"
+                      name="MotoristaFV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[ProprietarioFV]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ProprietarioFV]"
+                      length="100"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[ProprietarioFV]"
+                      name="ProprietarioFV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VeiculoFV]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VeiculoFV]"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VeiculoFV]"
+                      name="VeiculoFV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CarretaFV]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CarretaFV]"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CarretaFV]"
+                      name="CarretaFV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta2FV]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Carreta2FV]"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta2FV]"
+                      name="Carreta2FV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta3FV]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Carreta3FV]"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta3FV]"
+                      name="Carreta3FV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserFicha]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[UserFicha]"
+                      length="10"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserFicha]"
+                      name="UserFicha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[EmpresaRomaneio]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[EmpresaRomaneio]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[EmpresaRomaneio]"
+                      name="EmpresaRomaneio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[RotaRomaneio]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[RotaRomaneio]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[RotaRomaneio]"
+                      name="RotaRomaneio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[RomaneioManifesto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[RomaneioManifesto]"
+                      length="20"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[RomaneioManifesto]"
+                      name="RomaneioManifesto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserRomaneioManifesto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[UserRomaneioManifesto]"
+                      length="10"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserRomaneioManifesto]"
+                      name="UserRomaneioManifesto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissaoRmMan]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtEmissaoRmMan]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissaoRmMan]"
+                      name="DtEmissaoRmMan"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VeiculoRmMan]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VeiculoRmMan]"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VeiculoRmMan]"
+                      name="VeiculoRmMan"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CarretaRmMan]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CarretaRmMan]"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CarretaRmMan]"
+                      name="CarretaRmMan"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta2RmMan]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Carreta2RmMan]"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta2RmMan]"
+                      name="Carreta2RmMan"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta3RmMan]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Carreta3RmMan]"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carreta3RmMan]"
+                      name="Carreta3RmMan"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[MotoristaRmMan]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[MotoristaRmMan]"
+                      length="40"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[MotoristaRmMan]"
+                      name="MotoristaRmMan"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[ProprietarioRmMan]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ProprietarioRmMan]"
+                      length="40"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[ProprietarioRmMan]"
+                      name="ProprietarioRmMan"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[NumeroCTRB]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NumeroCTRB]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[NumeroCTRB]"
+                      name="NumeroCTRB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserCtrb]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[UserCtrb]"
+                      length="10"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserCtrb]"
+                      name="UserCtrb"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissaoCTRB]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtEmissaoCTRB]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissaoCTRB]"
+                      name="DtEmissaoCTRB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[ValorTotalCTRB]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ValorTotalCTRB]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[ValorTotalCTRB]"
+                      name="ValorTotalCTRB"
+                      precision="14"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[AdtoCTRB]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[AdtoCTRB]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[AdtoCTRB]"
+                      name="AdtoCTRB"
+                      precision="14"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[PedagioCTRB]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[PedagioCTRB]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[PedagioCTRB]"
+                      name="PedagioCTRB"
+                      precision="14"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[EmpresaCTE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[EmpresaCTE]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[EmpresaCTE]"
+                      name="EmpresaCTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlFretePeso]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlFretePeso]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlFretePeso]"
+                      name="VlFretePeso"
+                      precision="14"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlFreteValor]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlFreteValor]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlFreteValor]"
+                      name="VlFreteValor"
+                      precision="14"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlPedagio]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlPedagio]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlPedagio]"
+                      name="VlPedagio"
+                      precision="14"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlGRIS]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlGRIS]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlGRIS]"
+                      name="VlGRIS"
+                      precision="14"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlTotalPrestacao]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlTotalPrestacao]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[VlTotalPrestacao]"
+                      name="VlTotalPrestacao"
+                      precision="14"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrDoctoFiscal]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrDoctoFiscal]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[NrDoctoFiscal]"
+                      name="NrDoctoFiscal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserCTE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[UserCTE]"
+                      length="10"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[UserCTE]"
+                      name="UserCTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoDoctoFiscal]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[TipoDoctoFiscal]"
+                      length="10"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[TipoDoctoFiscal]"
+                      name="TipoDoctoFiscal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissaoCTE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtEmissaoCTE]"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DtEmissaoCTE]"
+                      name="DtEmissaoCTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CidadeColeta]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CidadeColeta]"
+                      length="30"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CidadeColeta]"
+                      name="CidadeColeta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUFOrigem]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsUFOrigem]"
+                      length="2"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUFOrigem]"
+                      name="DsUFOrigem"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CidadeEntrega]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CidadeEntrega]"
+                      length="30"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CidadeEntrega]"
+                      name="CidadeEntrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUFDestino]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsUFDestino]"
+                      length="2"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsUFDestino]"
+                      name="DsUFDestino"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRemetente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdRemetente]"
+                      length="14"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRemetente]"
+                      name="CdRemetente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsRemetente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsRemetente]"
+                      length="100"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsRemetente]"
+                      name="DsRemetente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdDestinatario]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdDestinatario]"
+                      length="14"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdDestinatario]"
+                      name="CdDestinatario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsDestinatario]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsDestinatario]"
+                      length="100"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsDestinatario]"
+                      name="DsDestinatario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdInscricao]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdInscricao]"
+                      length="14"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdInscricao]"
+                      name="CdInscricao"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsPagador]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsPagador]"
+                      length="100"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsPagador]"
+                      name="DsPagador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRedespacho]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdRedespacho]"
+                      length="14"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[CdRedespacho]"
+                      name="CdRedespacho"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsRedespacho]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsRedespacho]"
+                      length="40"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].Columns[DsRedespacho]"
+                      name="DsRedespacho"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[EmpresaFicha]"
+                      dataType="i4"
+                      name="EmpresaFicha" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrFicha]"
+                      dataType="i4"
+                      name="NrFicha" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtEmissao]"
+                      dataType="dbTimeStamp"
+                      name="DtEmissao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlComissao]"
+                      dataType="numeric"
+                      name="VlComissao"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdRotaRMS]"
+                      dataType="i4"
+                      name="CdRotaRMS" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[MotoristaFV]"
+                      dataType="wstr"
+                      length="100"
+                      name="MotoristaFV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ProprietarioFV]"
+                      dataType="wstr"
+                      length="100"
+                      name="ProprietarioFV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VeiculoFV]"
+                      dataType="wstr"
+                      length="8"
+                      name="VeiculoFV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CarretaFV]"
+                      dataType="wstr"
+                      length="8"
+                      name="CarretaFV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Carreta2FV]"
+                      dataType="wstr"
+                      length="8"
+                      name="Carreta2FV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Carreta3FV]"
+                      dataType="wstr"
+                      length="8"
+                      name="Carreta3FV" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[UserFicha]"
+                      dataType="wstr"
+                      length="10"
+                      name="UserFicha" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[EmpresaRomaneio]"
+                      dataType="i4"
+                      name="EmpresaRomaneio" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[RotaRomaneio]"
+                      dataType="i4"
+                      name="RotaRomaneio" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[RomaneioManifesto]"
+                      dataType="wstr"
+                      length="20"
+                      name="RomaneioManifesto" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[UserRomaneioManifesto]"
+                      dataType="wstr"
+                      length="10"
+                      name="UserRomaneioManifesto" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtEmissaoRmMan]"
+                      dataType="dbTimeStamp"
+                      name="DtEmissaoRmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VeiculoRmMan]"
+                      dataType="wstr"
+                      length="8"
+                      name="VeiculoRmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CarretaRmMan]"
+                      dataType="wstr"
+                      length="8"
+                      name="CarretaRmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Carreta2RmMan]"
+                      dataType="wstr"
+                      length="8"
+                      name="Carreta2RmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Carreta3RmMan]"
+                      dataType="wstr"
+                      length="8"
+                      name="Carreta3RmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[MotoristaRmMan]"
+                      dataType="wstr"
+                      length="40"
+                      name="MotoristaRmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ProprietarioRmMan]"
+                      dataType="wstr"
+                      length="40"
+                      name="ProprietarioRmMan" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NumeroCTRB]"
+                      dataType="i4"
+                      name="NumeroCTRB" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[UserCtrb]"
+                      dataType="wstr"
+                      length="10"
+                      name="UserCtrb" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtEmissaoCTRB]"
+                      dataType="dbTimeStamp"
+                      name="DtEmissaoCTRB" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ValorTotalCTRB]"
+                      dataType="numeric"
+                      name="ValorTotalCTRB"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[AdtoCTRB]"
+                      dataType="numeric"
+                      name="AdtoCTRB"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[PedagioCTRB]"
+                      dataType="numeric"
+                      name="PedagioCTRB"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[EmpresaCTE]"
+                      dataType="i4"
+                      name="EmpresaCTE" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlFretePeso]"
+                      dataType="numeric"
+                      name="VlFretePeso"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlFreteValor]"
+                      dataType="numeric"
+                      name="VlFreteValor"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlPedagio]"
+                      dataType="numeric"
+                      name="VlPedagio"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlGRIS]"
+                      dataType="numeric"
+                      name="VlGRIS"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VlTotalPrestacao]"
+                      dataType="numeric"
+                      name="VlTotalPrestacao"
+                      precision="14"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NrDoctoFiscal]"
+                      dataType="i4"
+                      name="NrDoctoFiscal" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[UserCTE]"
+                      dataType="wstr"
+                      length="10"
+                      name="UserCTE" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[TipoDoctoFiscal]"
+                      dataType="wstr"
+                      length="10"
+                      name="TipoDoctoFiscal" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DtEmissaoCTE]"
+                      dataType="dbTimeStamp"
+                      name="DtEmissaoCTE" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CidadeColeta]"
+                      dataType="wstr"
+                      length="30"
+                      name="CidadeColeta" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsUFOrigem]"
+                      dataType="wstr"
+                      length="2"
+                      name="DsUFOrigem" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CidadeEntrega]"
+                      dataType="wstr"
+                      length="30"
+                      name="CidadeEntrega" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsUFDestino]"
+                      dataType="wstr"
+                      length="2"
+                      name="DsUFDestino" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdRemetente]"
+                      dataType="wstr"
+                      length="14"
+                      name="CdRemetente" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsRemetente]"
+                      dataType="wstr"
+                      length="100"
+                      name="DsRemetente" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdDestinatario]"
+                      dataType="wstr"
+                      length="14"
+                      name="CdDestinatario" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsDestinatario]"
+                      dataType="wstr"
+                      length="100"
+                      name="DsDestinatario" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdInscricao]"
+                      dataType="wstr"
+                      length="14"
+                      name="CdInscricao" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsPagador]"
+                      dataType="wstr"
+                      length="100"
+                      name="DsPagador" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CdRedespacho]"
+                      dataType="wstr"
+                      length="14"
+                      name="CdRedespacho" />
+                    <externalMetadataColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DsRedespacho]"
+                      dataType="wstr"
+                      length="40"
+                      name="DsRedespacho" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[EmpresaFicha]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[EmpresaFicha]"
+                      name="EmpresaFicha" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrFicha]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrFicha]"
+                      name="NrFicha" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtEmissao]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtEmissao]"
+                      name="DtEmissao" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlComissao]"
+                      dataType="numeric"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlComissao]"
+                      name="VlComissao"
+                      precision="14"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdRotaRMS]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdRotaRMS]"
+                      name="CdRotaRMS" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[MotoristaFV]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[MotoristaFV]"
+                      name="MotoristaFV" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ProprietarioFV]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ProprietarioFV]"
+                      name="ProprietarioFV" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VeiculoFV]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VeiculoFV]"
+                      name="VeiculoFV" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CarretaFV]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CarretaFV]"
+                      name="CarretaFV" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Carreta2FV]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Carreta2FV]"
+                      name="Carreta2FV" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Carreta3FV]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Carreta3FV]"
+                      name="Carreta3FV" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[UserFicha]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[UserFicha]"
+                      name="UserFicha" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[EmpresaRomaneio]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[EmpresaRomaneio]"
+                      name="EmpresaRomaneio" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[RotaRomaneio]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[RotaRomaneio]"
+                      name="RotaRomaneio" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[RomaneioManifesto]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[RomaneioManifesto]"
+                      name="RomaneioManifesto" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[UserRomaneioManifesto]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[UserRomaneioManifesto]"
+                      name="UserRomaneioManifesto" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtEmissaoRmMan]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtEmissaoRmMan]"
+                      name="DtEmissaoRmMan" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VeiculoRmMan]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VeiculoRmMan]"
+                      name="VeiculoRmMan" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CarretaRmMan]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CarretaRmMan]"
+                      name="CarretaRmMan" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Carreta2RmMan]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Carreta2RmMan]"
+                      name="Carreta2RmMan" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Carreta3RmMan]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Carreta3RmMan]"
+                      name="Carreta3RmMan" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[MotoristaRmMan]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[MotoristaRmMan]"
+                      name="MotoristaRmMan" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ProprietarioRmMan]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ProprietarioRmMan]"
+                      name="ProprietarioRmMan" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NumeroCTRB]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NumeroCTRB]"
+                      name="NumeroCTRB" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[UserCtrb]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[UserCtrb]"
+                      name="UserCtrb" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtEmissaoCTRB]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtEmissaoCTRB]"
+                      name="DtEmissaoCTRB" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ValorTotalCTRB]"
+                      dataType="numeric"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ValorTotalCTRB]"
+                      name="ValorTotalCTRB"
+                      precision="14"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[AdtoCTRB]"
+                      dataType="numeric"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[AdtoCTRB]"
+                      name="AdtoCTRB"
+                      precision="14"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[PedagioCTRB]"
+                      dataType="numeric"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[PedagioCTRB]"
+                      name="PedagioCTRB"
+                      precision="14"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[EmpresaCTE]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[EmpresaCTE]"
+                      name="EmpresaCTE" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlFretePeso]"
+                      dataType="numeric"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlFretePeso]"
+                      name="VlFretePeso"
+                      precision="14"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlFreteValor]"
+                      dataType="numeric"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlFreteValor]"
+                      name="VlFreteValor"
+                      precision="14"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlPedagio]"
+                      dataType="numeric"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlPedagio]"
+                      name="VlPedagio"
+                      precision="14"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlGRIS]"
+                      dataType="numeric"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlGRIS]"
+                      name="VlGRIS"
+                      precision="14"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlTotalPrestacao]"
+                      dataType="numeric"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VlTotalPrestacao]"
+                      name="VlTotalPrestacao"
+                      precision="14"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrDoctoFiscal]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NrDoctoFiscal]"
+                      name="NrDoctoFiscal" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[UserCTE]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[UserCTE]"
+                      name="UserCTE" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[TipoDoctoFiscal]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[TipoDoctoFiscal]"
+                      name="TipoDoctoFiscal" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtEmissaoCTE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DtEmissaoCTE]"
+                      name="DtEmissaoCTE" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CidadeColeta]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CidadeColeta]"
+                      name="CidadeColeta" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsUFOrigem]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsUFOrigem]"
+                      name="DsUFOrigem" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CidadeEntrega]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CidadeEntrega]"
+                      name="CidadeEntrega" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsUFDestino]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsUFDestino]"
+                      name="DsUFDestino" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdRemetente]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdRemetente]"
+                      name="CdRemetente" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsRemetente]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsRemetente]"
+                      name="DsRemetente" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdDestinatario]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdDestinatario]"
+                      name="CdDestinatario" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsDestinatario]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsDestinatario]"
+                      name="DsDestinatario" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdInscricao]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdInscricao]"
+                      name="CdInscricao" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsPagador]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsPagador]"
+                      name="DsPagador" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdRedespacho]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CdRedespacho]"
+                      name="CdRedespacho" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsRedespacho]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DsRedespacho]"
+                      name="DsRedespacho" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load fFicha.Paths[ADO NET Source Output]"
+              endId="Package\Load fFicha\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Load fFicha\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate fFicha"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B56FA538-560B-40CC-8E15-2A96FF795DB4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate fFicha"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2C66603D-CB25-40D4-BA5C-5017E7A5B826}"
+          SQLTask:SqlStatementSource="DELETE FROM dbo.fFichaViagem&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::StartDate"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="6"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EC4104CD-224E-4183-8375-78A22F51F286}"
+      DTS:From="Package\Truncate fFicha"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load fFicha" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Load fFicha"
+          TopLeft="73.5,147.333333333333" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Truncate fFicha"
+          TopLeft="68.833333333333,44.6666666666667" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="143.916666666666,86.6666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.6666666666663"
+              Start="0,0"
+              End="0,53.1666666666663">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.1666666666663" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load fFicha">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Load fFicha\ADO NET Destination"
+          TopLeft="453,184" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Load fFicha\ADO NET Source"
+          TopLeft="175,183" />
+        <EdgeLayout
+          Id="Package\Load fFicha.Paths[ADO NET Source Output]"
+          TopLeft="341,204.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112,0"
+              Start="0,0"
+              End="104.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="104.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load fFicha\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load fFicha\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
